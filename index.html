@@ -1,0 +1,1891 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>&#9673;EMOJI</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<style>
+  body {
+    font-family: sans-serif;
+    background-color: LavenderBlush;
+  }
+  ul#them_all{
+    list-style: none;
+    padding-left:0;
+    font-size: 48px;
+  }
+  ul#them_all li{
+    display: none;
+    padding: 2px;
+    cursor: hand;
+  }
+
+  .panel {
+    background-color: LightYellow;
+    font-size: 72px;
+    position: fixed;
+    border-radius: 8px;
+    /*width: 4em;*/
+    padding:  .3ex;
+    /*border:10px solid #EEE;*/
+    box-shadow:  1px 1px 1ex rgba(0,0,0,.1);
+    display: inline-block;
+    text-align: center;
+  }
+  .panel input {
+    background-color: transparent; border: none;
+    text-align: center;
+    cursor: copy;
+  }
+  .panel input:focus{
+    outline-color: transparent;
+    outline-style: none;
+  }
+  .collections {
+    display: block;
+    /*text-align: left;*/
+    font-size: 13px;
+    margin-bottom: 2em;
+  }
+  .collections a {
+    text-decoration: none;
+    display: inline-block;
+    margin: 2px 1px;
+    padding: 2px 1px;
+    text-transform: uppercase;
+    border: none;
+    font-size: 15px;
+    background-color: transparent;
+    border-bottom: 1px solid #999;
+    color: #666;
+  }
+  .collections a:active {
+   /*background-color: Black;*/
+  color: #333;
+  }
+  #status span {
+    display: block;
+  }
+  #status span.emoji input{
+    font-size: 160px;
+    width: 1.25em;
+    padding: 0;
+
+  }
+  #status span.html input,
+  #status span.unicode input,
+  #status span.ctg  {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: monospace;
+    margin-top: 3px;
+
+  }
+  #status span.title {
+    font-size: 24px;
+  }
+  .todo {
+    font-size: 14px;
+    color: #999;
+  }
+
+  @media screen and (min-width: 801px) {
+    #panel-wrapper {
+      display: inline-block;vertical-align: top;
+      max-width: 32vw;
+    }
+
+    .panel {
+      /*transition: all 0.5s ease-in-out;*/
+      top: .66ex;
+      left: 68vw;
+      max-width: 4em;
+      height: 460px;
+
+    }
+    ul#them_all{
+      max-width: 63vw;
+      display: inline-block;
+      vertical-align: top;
+      margin: .5em 1em;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    #them_all{}
+        /*#status span.emoji input*/
+      #status span.emoji {
+        float: left;
+        margin-top: -20px;
+      }
+      #status span, #status span input {
+        text-align: left;
+      }
+    .panel{
+      left: 0;
+      margin-top: 56vh;
+      height: 43vh;
+      width: 100%;
+    }
+  }
+
+  #them_all li {
+    display: none;
+  }
+  #them_all.showall li{
+      display: inline-block;
+  }
+  #them_all.ctg_p li.ctg_p,
+  #them_all.ctg_s li.ctg_s,
+  #them_all.ctg_n li.ctg_n,
+  #them_all.ctg_o li.ctg_o,
+  #them_all.ctg_a li.ctg_a,
+  #them_all.ctg_d li.ctg_d,
+  #them_all.ctg_t li.ctg_t,
+  #them_all.ctg_f li.ctg_f,
+  #them_all.ctg_none li.ctg_none {
+    display: inline-block;
+  }
+
+  #panel-wrapper.showall .xshowall,
+  #panel-wrapper.ctg_p .ctg_p,
+  #panel-wrapper.ctg_s .ctg_s,
+  #panel-wrapper.ctg_n .ctg_n,
+  #panel-wrapper.ctg_o .ctg_o,
+  #panel-wrapper.ctg_a .ctg_a,
+  #panel-wrapper.ctg_d .ctg_d,
+  #panel-wrapper.ctg_t .ctg_t,
+  #panel-wrapper.ctg_f .ctg_f,
+  #panel-wrapper.ctg_none .ctg_none {
+    color: black;
+    border-bottom: 2px solid black;
+    padding-bottom: 1px;
+    box-shadow: 0 1px 0 black;
+  }
+  #show_action{
+    position: fixed;
+    top: 1em; right: 1ex;
+    display: inline-block; width: 300px;
+  }
+  #msg{
+    font-size: 24px;
+    border:1px dotted #999; 
+    display: inline-block;
+    color: Yellow;
+    background-color: red;
+    padding: 1ex;
+    transition: all 0.5s ease-in-out;
+    /*z-index: 99;*/
+    /*box-shadow: 1px 1px 1ex rgba(0,0,0,.2);*/
+    opacity: 0;
+
+  }
+  #msg.show{
+      animation: pulsex 1.2s 1;
+  }
+  #msg.hide{
+      animation: pulsey 1.2s 1;
+  }
+  #msg:empty{
+    display: none;
+  }
+
+  @keyframes pulsex {
+    0% {
+      opacity:0;
+    }
+    50% {
+      opacity:.71;
+      transform: translate(-1em, 0) scale(1.2);
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  @keyframes pulsey {
+    0% {
+      opacity:0;
+    }
+    50% {
+      opacity:.71;
+      transform: translate(-1em, 0) scale(1.2);
+    }
+    100% {
+      opacity:0;
+    }
+  }
+</style>
+
+<script src="emoji.js" ></script>
+</head>
+
+<body class="all">
+  
+<div id="panel-wrapper" class="showall"><span class="panel">
+  <div class="collections">
+  <a href="#" class="xshowall" onclick="filter('showall')" > 💯 ALL</a>
+  <a href="#" class="ctg_p" onclick="filter('ctg_p')" >👳 people</a>
+  <a href="#" class="ctg_s" onclick="filter('ctg_s')" >♣ symbols</a>
+  <a href="#" class="ctg_n" onclick="filter('ctg_n')" >🐵 animals</a>
+  <a href="#" class="ctg_o" onclick="filter('ctg_o')" >🔬 objects</a>
+  <a href="#" class="ctg_a" onclick="filter('ctg_a')" >🏂 activities</a>
+  <a href="#" class="ctg_d" onclick="filter('ctg_d')" >🍗 food</a>
+  <a href="#" class="ctg_t" onclick="filter('ctg_t')" >🚁 transport</a>
+  <a href="#" class="ctg_f" onclick="filter('ctg_f')" >🇨🇭 flags</a>
+  <a href="#" class="ctg_none" onclick="filter('ctg_none')" > 🤖 misc</a>
+ </div>
+  <span  id="status"><mark style="font-size: 14px;">LOADING</mark></span>
+  <br><span class="todo">TODO: Show History  / delete all / edit list</span>
+</span></div>
+
+<div id="show_action"><span id="msg" class="hide"></span></div>
+
+<ul id="them_all" class="showall" onmouseover="doClick()">
+  <li class="ctg_p" title="grinning" xhtml="&#128512;" unicode="1f600" ctg="p" o="1">😀 </li>
+  <li class="ctg_p" title="grin" xhtml="&#128513;" unicode="1f601" ctg="p" o="2">😁 </li>
+  <li class="ctg_p" title="joy" xhtml="&#128514;" unicode="1f602" ctg="p" o="3">😂 </li>
+  <li class="ctg_p" title="smiley" xhtml="&#128515;" unicode="1f603" ctg="p" o="5">😃 </li>
+  <li class="ctg_p" title="smile" xhtml="&#128516;" unicode="1f604" ctg="p" o="6">😄 </li>
+  <li class="ctg_p" title="sweat_smile" xhtml="&#128517;" unicode="1f605" ctg="p" o="7">😅 </li>
+  <li class="ctg_p" title="laughing" xhtml="&#128518;" unicode="1f606" ctg="p" o="8">😆 </li>
+  <li class="ctg_p" title="wink" xhtml="&#128521;" unicode="1f609" ctg="p" o="9">😉 </li>
+  <li class="ctg_p" title="blush" xhtml="&#128522;" unicode="1f60a" ctg="p" o="10">😊 </li>
+  <li class="ctg_p" title="yum" xhtml="&#128523;" unicode="1f60b" ctg="p" o="11">😋 </li>
+  <li class="ctg_p" title="sunglasses" xhtml="&#128526;" unicode="1f60e" ctg="p" o="12">😎 </li>
+  <li class="ctg_p" title="heart_eyes" xhtml="&#128525;" unicode="1f60d" ctg="p" o="13">😍 </li>
+  <li class="ctg_p" title="kissing_heart" xhtml="&#128536;" unicode="1f618" ctg="p" o="14">😘 </li>
+  <li class="ctg_p" title="kissing" xhtml="&#128535;" unicode="1f617" ctg="p" o="15">😗 </li>
+  <li class="ctg_p" title="kissing_smiling_eyes" xhtml="&#128537;" unicode="1f619" ctg="p" o="16">😙 </li>
+  <li class="ctg_p" title="kissing_closed_eyes" xhtml="&#128538;" unicode="1f61a" ctg="p" o="17">😚 </li>
+  <li class="ctg_p" title="slightly_smiling_face" xhtml="&#128578;" unicode="1f642" ctg="p" o="19">🙂 </li>
+  <li class="ctg_p" title="hugging_face" xhtml="&#129303;" unicode="1f917" ctg="p" o="20">🤗 </li>
+  <li class="ctg_p" title="thinking_face" xhtml="&#129300;" unicode="1f914" ctg="p" o="21">🤔 </li>
+  <li class="ctg_p" title="neutral_face" xhtml="&#128528;" unicode="1f610" ctg="p" o="22">😐 </li>
+  <li class="ctg_p" title="expressionless" xhtml="&#128529;" unicode="1f611" ctg="p" o="23">😑 </li>
+  <li class="ctg_p" title="no_mouth" xhtml="&#128566;" unicode="1f636" ctg="p" o="24">😶 </li>
+  <li class="ctg_p" title="face_with_rolling_eyes" xhtml="&#128580;" unicode="1f644" ctg="p" o="25">🙄 </li>
+  <li class="ctg_p" title="smirk" xhtml="&#128527;" unicode="1f60f" ctg="p" o="26">😏 </li>
+  <li class="ctg_p" title="persevere" xhtml="&#128547;" unicode="1f623" ctg="p" o="27">😣 </li>
+  <li class="ctg_p" title="disappointed_relieved" xhtml="&#128549;" unicode="1f625" ctg="p" o="28">😥 </li>
+  <li class="ctg_p" title="open_mouth" xhtml="&#128558;" unicode="1f62e" ctg="p" o="29">😮 </li>
+  <li class="ctg_p" title="zipper_mouth_face" xhtml="&#129296;" unicode="1f910" ctg="p" o="30">🤐 </li>
+  <li class="ctg_p" title="hushed" xhtml="&#128559;" unicode="1f62f" ctg="p" o="31">😯 </li>
+  <li class="ctg_p" title="sleepy" xhtml="&#128554;" unicode="1f62a" ctg="p" o="32">😪 </li>
+  <li class="ctg_p" title="tired_face" xhtml="&#128555;" unicode="1f62b" ctg="p" o="33">😫 </li>
+  <li class="ctg_p" title="sleeping" xhtml="&#128564;" unicode="1f634" ctg="p" o="34">😴 </li>
+  <li class="ctg_p" title="relieved" xhtml="&#128524;" unicode="1f60c" ctg="p" o="35">😌 </li>
+  <li class="ctg_p" title="nerd_face" xhtml="&#129299;" unicode="1f913" ctg="p" o="36">🤓 </li>
+  <li class="ctg_p" title="stuck_out_tongue" xhtml="&#128539;" unicode="1f61b" ctg="p" o="37">😛 </li>
+  <li class="ctg_p" title="stuck_out_tongue_winking_eye" xhtml="&#128540;" unicode="1f61c" ctg="p" o="38">😜 </li>
+  <li class="ctg_p" title="stuck_out_tongue_closed_eyes" xhtml="&#128541;" unicode="1f61d" ctg="p" o="39">😝 </li>
+  <li class="ctg_p" title="unamused" xhtml="&#128530;" unicode="1f612" ctg="p" o="41">😒 </li>
+  <li class="ctg_p" title="sweat" xhtml="&#128531;" unicode="1f613" ctg="p" o="42">😓 </li>
+  <li class="ctg_p" title="pensive" xhtml="&#128532;" unicode="1f614" ctg="p" o="43">😔 </li>
+  <li class="ctg_p" title="confused" xhtml="&#128533;" unicode="1f615" ctg="p" o="44">😕 </li>
+  <li class="ctg_p" title="upside_down_face" xhtml="&#128579;" unicode="1f643" ctg="p" o="45">🙃 </li>
+  <li class="ctg_p" title="astonished" xhtml="&#128562;" unicode="1f632" ctg="p" o="47">😲 </li>
+  <li class="ctg_p" title="confounded" xhtml="&#128534;" unicode="1f616" ctg="p" o="50">😖 </li>
+  <li class="ctg_p" title="disappointed" xhtml="&#128542;" unicode="1f61e" ctg="p" o="51">😞 </li>
+  <li class="ctg_p" title="worried" xhtml="&#128543;" unicode="1f61f" ctg="p" o="52">😟 </li>
+  <li class="ctg_p" title="triumph" xhtml="&#128548;" unicode="1f624" ctg="p" o="53">😤 </li>
+  <li class="ctg_p" title="cry" xhtml="&#128546;" unicode="1f622" ctg="p" o="54">😢 </li>
+  <li class="ctg_p" title="sob" xhtml="&#128557;" unicode="1f62d" ctg="p" o="55">😭 </li>
+  <li class="ctg_p" title="frowning" xhtml="&#128550;" unicode="1f626" ctg="p" o="56">😦 </li>
+  <li class="ctg_p" title="anguished" xhtml="&#128551;" unicode="1f627" ctg="p" o="57">😧 </li>
+  <li class="ctg_p" title="fearful" xhtml="&#128552;" unicode="1f628" ctg="p" o="58">😨 </li>
+  <li class="ctg_p" title="weary" xhtml="&#128553;" unicode="1f629" ctg="p" o="59">😩 </li>
+  <li class="ctg_p" title="grimacing" xhtml="&#128556;" unicode="1f62c" ctg="p" o="60">😬 </li>
+  <li class="ctg_p" title="cold_sweat" xhtml="&#128560;" unicode="1f630" ctg="p" o="61">😰 </li>
+  <li class="ctg_p" title="scream" xhtml="&#128561;" unicode="1f631" ctg="p" o="62">😱 </li>
+  <li class="ctg_p" title="flushed" xhtml="&#128563;" unicode="1f633" ctg="p" o="63">😳 </li>
+  <li class="ctg_p" title="dizzy_face" xhtml="&#128565;" unicode="1f635" ctg="p" o="64">😵 </li>
+  <li class="ctg_p" title="rage" xhtml="&#128545;" unicode="1f621" ctg="p" o="65">😡 </li>
+  <li class="ctg_p" title="angry" xhtml="&#128544;" unicode="1f620" ctg="p" o="66">😠 </li>
+  <li class="ctg_p" title="innocent" xhtml="&#128519;" unicode="1f607" ctg="p" o="67">😇 </li>
+  <li class="ctg_p" title="mask" xhtml="&#128567;" unicode="1f637" ctg="p" o="71">😷 </li>
+  <li class="ctg_p" title="smiling_imp" xhtml="&#128520;" unicode="1f608" ctg="p" o="76">😈 </li>
+  <li class="ctg_p" title="imp" xhtml="&#128127;" unicode="1f47f" ctg="p" o="77">👿 </li>
+  <li class="ctg_p" title="japanese_ogre" xhtml="&#128121;" unicode="1f479" ctg="p" o="78">👹 </li>
+  <li class="ctg_p" title="japanese_goblin" xhtml="&#128122;" unicode="1f47a" ctg="p" o="79">👺 </li>
+  <li class="ctg_p" title="skull" xhtml="&#128128;" unicode="1f480" ctg="p" o="80">💀 </li>
+  <li class="ctg_o" title="skull_and_crossbones" xhtml="&#9760;" unicode="2620" ctg="o" o="81">☠ </li>
+  <li class="ctg_p" title="ghost" xhtml="&#128123;" unicode="1f47b" ctg="p" o="82">👻 </li>
+  <li class="ctg_p" title="alien" xhtml="&#128125;" unicode="1f47d" ctg="p" o="83">👽 </li>
+  <li class="ctg_a" title="space_invader" xhtml="&#128126;" unicode="1f47e" ctg="a" o="84">👾 </li>
+  <li class="ctg_p" title="Pile of Poo" xhtml="&#128169;" unicode="1f4a9" ctg="p" o="85">💩 </li>
+  <li class="ctg_p" title="smiley_cat" xhtml="&#128570;" unicode="1f63a" ctg="p" o="87">😺 </li>
+  <li class="ctg_p" title="smile_cat" xhtml="&#128568;" unicode="1f638" ctg="p" o="88">😸 </li>
+  <li class="ctg_p" title="joy_cat" xhtml="&#128569;" unicode="1f639" ctg="p" o="89">😹 </li>
+  <li class="ctg_p" title="heart_eyes_cat" xhtml="&#128571;" unicode="1f63b" ctg="p" o="90">😻 </li>
+  <li class="ctg_p" title="smirk_cat" xhtml="&#128572;" unicode="1f63c" ctg="p" o="91">😼 </li>
+  <li class="ctg_p" title="kissing_cat" xhtml="&#128573;" unicode="1f63d" ctg="p" o="92">😽 </li>
+  <li class="ctg_p" title="scream_cat" xhtml="&#128576;" unicode="1f640" ctg="p" o="93">🙀 </li>
+  <li class="ctg_p" title="crying_cat_face" xhtml="&#128575;" unicode="1f63f" ctg="p" o="94">😿 </li>
+  <li class="ctg_p" title="pouting_cat" xhtml="&#128574;" unicode="1f63e" ctg="p" o="95">😾 </li>
+  <li class="ctg_n" title="see_no_evil" xhtml="&#128584;" unicode="1f648" ctg="n" o="96">🙈 </li>
+  <li class="ctg_n" title="hear_no_evil" xhtml="&#128585;" unicode="1f649" ctg="n" o="97">🙉 </li>
+  <li class="ctg_n" title="speak_no_evil" xhtml="&#128586;" unicode="1f64a" ctg="n" o="98">🙊 </li>
+  <li class="ctg_p" title="boy" xhtml="&#128102;" unicode="1f466" ctg="p" o="99">👦 </li>
+  <li class="ctg_p" title="girl" xhtml="&#128103;" unicode="1f467" ctg="p" o="105">👧 </li>
+  <li class="ctg_p" title="man" xhtml="&#128104;" unicode="1f468" ctg="p" o="111">👨 </li>
+  <li class="ctg_p" title="woman" xhtml="&#128105;" unicode="1f469" ctg="p" o="117">👩 </li>
+  <li class="ctg_p" title="older_man" xhtml="&#128116;" unicode="1f474" ctg="p" o="123">👴 </li>
+  <li class="ctg_p" title="older_woman" xhtml="&#128117;" unicode="1f475" ctg="p" o="129">👵 </li>
+  <li class="ctg_p" title="baby" xhtml="&#128118;" unicode="1f476" ctg="p" o="135">👶 </li>
+  <li class="ctg_p" title="angel" xhtml="&#128124;" unicode="1f47c" ctg="p" o="141">👼 </li>
+  <li class="ctg_p" title="cop" xhtml="&#128110;" unicode="1f46e" ctg="p" o="339">👮 </li>
+  <li class="ctg_p" title="guardsman" xhtml="&#128130;" unicode="1f482" ctg="p" o="375">💂 </li>
+  <li class="ctg_p" title="construction_worker" xhtml="&#128119;" unicode="1f477" ctg="p" o="393">👷 </li>
+  <li class="ctg_p" title="man_with_turban" xhtml="&#128115;" unicode="1f473" ctg="p" o="411">👳 </li>
+  <li class="ctg_p" title="person_with_blond_hair" xhtml="&#128113;" unicode="1f471" ctg="p" o="429">👱 </li>
+  <li class="ctg_p" title="santa" xhtml="&#127877;" unicode="1f385" ctg="p" o="447">🎅 </li>
+  <li class="ctg_p" title="princess" xhtml="&#128120;" unicode="1f478" ctg="p" o="459">👸 </li>
+  <li class="ctg_p" title="bride_with_veil" xhtml="&#128112;" unicode="1f470" ctg="p" o="471">👰 </li>
+  <li class="ctg_p" title="man_with_gua_pi_mao" xhtml="&#128114;" unicode="1f472" ctg="p" o="489">👲 </li>
+  <li class="ctg_p" title="person_frowning" xhtml="&#128589;" unicode="1f64d" ctg="p" o="495">🙍 </li>
+  <li class="ctg_p" title="person_with_pouting_face" xhtml="&#128590;" unicode="1f64e" ctg="p" o="513">🙎 </li>
+  <li class="ctg_p" title="no_good" xhtml="&#128581;" unicode="1f645" ctg="p" o="531">🙅 </li>
+  <li class="ctg_p" title="ok_woman" xhtml="&#128582;" unicode="1f646" ctg="p" o="549">🙆 </li>
+  <li class="ctg_p" title="information_desk_person" xhtml="&#128129;" unicode="1f481" ctg="p" o="567">💁 </li>
+  <li class="ctg_p" title="raising_hand" xhtml="&#128587;" unicode="1f64b" ctg="p" o="585">🙋 </li>
+  <li class="ctg_p" title="bow" xhtml="&#128583;" unicode="1f647" ctg="p" o="603">🙇 </li>
+  <li class="ctg_p" title="massage" xhtml="&#128134;" unicode="1f486" ctg="p" o="657">💆 </li>
+  <li class="ctg_p" title="haircut" xhtml="&#128135;" unicode="1f487" ctg="p" o="675">💇 </li>
+  <li class="ctg_p" title="walking" xhtml="&#128694;" unicode="1f6b6" ctg="p" o="693">🚶 </li>
+  <li class="ctg_p" title="runner" xhtml="&#127939;" unicode="1f3c3" ctg="p" o="711">🏃 </li>
+  <li class="ctg_p" title="dancer" xhtml="&#128131;" unicode="1f483" ctg="p" o="729">💃 </li>
+  <li class="ctg_p" title="dancers" xhtml="&#128111;" unicode="1f46f" ctg="p" o="741">👯 </li>
+  <li class="ctg_p" title="busts_in_silhouette" xhtml="&#128101;" unicode="1f465" ctg="p" o="767">👥 </li>
+  <li class="ctg_a" title="horse_racing" xhtml="&#127943;" unicode="1f3c7" ctg="a" o="769">🏇 </li>
+  <li class="ctg_a" title="skier" xhtml="&#9975;" unicode="26f7" ctg="a" o="775">⛷ </li>
+  <li class="ctg_a" title="snowboarder" xhtml="&#127938;" unicode="1f3c2" ctg="a" o="776">🏂 </li>
+  <li class="ctg_a" title="golfer" xhtml="&#127948;" unicode="1f3cc" ctg="a" o="782">🏌 </li>
+  <li class="ctg_a" title="Man in Suit Levitating" xhtml="&#128372;" unicode="1f574" ctg="a" o="784">🕴 </li>
+  <li class="ctg_a" title="surfer" xhtml="&#127940;" unicode="1f3c4" ctg="a" o="800">🏄 </li>
+  <li class="ctg_a" title="rowboat" xhtml="&#128675;" unicode="1f6a3" ctg="a" o="818">🚣 </li>
+  <li class="ctg_a" title="swimmer" xhtml="&#127946;" unicode="1f3ca" ctg="a" o="836">🏊 </li>
+  <li class="ctg_a" title="bicyclist" xhtml="&#128692;" unicode="1f6b4" ctg="a" o="890">🚴 </li>
+  <li class="ctg_a" title="mountain_bicyclist" xhtml="&#128693;" unicode="1f6b5" ctg="a" o="908">🚵 </li>
+  <li class="ctg_p" title="couple" xhtml="&#128107;" unicode="1f46b" ctg="p" o="1018">👫 </li>
+  <li class="ctg_p" title="two_men_holding_hands" xhtml="&#128108;" unicode="1f46c" ctg="p" o="1024">👬 </li>
+  <li class="ctg_p" title="two_women_holding_hands" xhtml="&#128109;" unicode="1f46d" ctg="p" o="1030">👭 </li>
+  <li class="ctg_p" title="couplekiss" xhtml="&#128143;" unicode="1f48f" ctg="p" o="1036">💏 </li>
+  <li class="ctg_p" title="couple_with_heart" xhtml="&#128145;" unicode="1f491" ctg="p" o="1040">💑 </li>
+  <li class="ctg_p" title="family" xhtml="&#128106;" unicode="1f46a" ctg="p" o="1044">👪 </li>
+  <li class="ctg_p" title="muscle" xhtml="&#128170;" unicode="1f4aa" ctg="p" o="1080">💪 </li>
+  <li class="ctg_p" title="point_left" xhtml="&#128072;" unicode="1f448" ctg="p" o="1092">👈 </li>
+  <li class="ctg_p" title="point_right" xhtml="&#128073;" unicode="1f449" ctg="p" o="1098">👉 </li>
+  <li class="ctg_p" title="point_up" xhtml="&#9757;" unicode="261d" ctg="p" o="1104">☝️ </li>
+  <li class="ctg_p" title="point_up_2" xhtml="&#128070;" unicode="1f446" ctg="p" o="1110">👆 </li>
+  <li class="ctg_p" title="middle_finger" xhtml="&#128405;" unicode="1f595" ctg="p" o="1116">🖕 </li>
+  <li class="ctg_p" title="point_down" xhtml="&#128071;" unicode="1f447" ctg="p" o="1122">👇 </li>
+  <li class="ctg_p" title="v" xhtml="&#9996;" unicode="270c" ctg="p" o="1128">✌️ </li>
+  <li class="ctg_p" title="ok_hand" xhtml="&#128076;" unicode="1f44c" ctg="p" o="1170">👌 </li>
+  <li class="ctg_p" title="thumbsup" xhtml="&#128077;" unicode="1f44d" ctg="p" o="1176">👍 </li>
+  <li class="ctg_p" title="thumbsdown" xhtml="&#128078;" unicode="1f44e" ctg="p" o="1182">👎 </li>
+  <li class="ctg_p" title="fist" xhtml="&#9994;" unicode="270a" ctg="p" o="1188">✊ </li>
+  <li class="ctg_p" title="wave" xhtml="&#128075;" unicode="1f44b" ctg="p" o="1218">👋 </li>
+  <li class="ctg_p" title="clap" xhtml="&#128079;" unicode="1f44f" ctg="p" o="1224">👏 </li>
+  <li class="ctg_p" title="writing_hand" xhtml="&#9997;" unicode="270d" ctg="p" o="1230">✍ </li>
+  <li class="ctg_p" title="open_hands" xhtml="&#128080;" unicode="1f450" ctg="p" o="1236">👐 </li>
+  <li class="ctg_p" title="raised_hands" xhtml="&#128588;" unicode="1f64c" ctg="p" o="1242">🙌 </li>
+  <li class="ctg_p" title="pray" xhtml="&#128591;" unicode="1f64f" ctg="p" o="1248">🙏 </li>
+  <li class="ctg_p" title="nail_care" xhtml="&#128133;" unicode="1f485" ctg="p" o="1260">💅 </li>
+  <li class="ctg_p" title="ear" xhtml="&#128066;" unicode="1f442" ctg="p" o="1266">👂 </li>
+  <li class="ctg_p" title="nose" xhtml="&#128067;" unicode="1f443" ctg="p" o="1272">👃 </li>
+  <li class="ctg_p" title="footprints" xhtml="&#128099;" unicode="1f463" ctg="p" o="1278">👣 </li>
+  <li class="ctg_p" title="eyes" xhtml="&#128064;" unicode="1f440" ctg="p" o="1279">👀 </li>
+  <li class="ctg_p" title="eye" xhtml="&#128065;" unicode="1f441" ctg="p" o="1280">👁 </li>
+  <li class="ctg_p" title="tongue" xhtml="&#128069;" unicode="1f445" ctg="p" o="1282">👅 </li>
+  <li class="ctg_p" title="lips" xhtml="&#128068;" unicode="1f444" ctg="p" o="1283">👄 </li>
+  <li class="ctg_p" title="kiss" xhtml="&#128139;" unicode="1f48b" ctg="p" o="1284">💋 </li>
+  <li class="ctg_s" title="cupid" xhtml="&#128152;" unicode="1f498" ctg="s" o="1285">💘 </li>
+  <li class="ctg_s" title="heart" xhtml="&#10084;" unicode="2764" ctg="s" o="1286">❤️ </li>
+  <li class="ctg_s" title="heartbeat" xhtml="&#128147;" unicode="1f493" ctg="s" o="1287">💓 </li>
+  <li class="ctg_s" title="broken_heart" xhtml="&#128148;" unicode="1f494" ctg="s" o="1288">💔 </li>
+  <li class="ctg_s" title="two_hearts" xhtml="&#128149;" unicode="1f495" ctg="s" o="1289">💕 </li>
+  <li class="ctg_s" title="sparkling_heart" xhtml="&#128150;" unicode="1f496" ctg="s" o="1290">💖 </li>
+  <li class="ctg_s" title="heartpulse" xhtml="&#128151;" unicode="1f497" ctg="s" o="1291">💗 </li>
+  <li class="ctg_s" title="blue_heart" xhtml="&#128153;" unicode="1f499" ctg="s" o="1292">💙 </li>
+  <li class="ctg_s" title="green_heart" xhtml="&#128154;" unicode="1f49a" ctg="s" o="1293">💚 </li>
+  <li class="ctg_s" title="yellow_heart" xhtml="&#128155;" unicode="1f49b" ctg="s" o="1294">💛 </li>
+  <li class="ctg_s" title="purple_heart" xhtml="&#128156;" unicode="1f49c" ctg="s" o="1295">💜 </li>
+  <li class="ctg_s" title="black_heart" xhtml="&#128420;" unicode="1f5a4" ctg="s" o="1296">🖤 </li>
+  <li class="ctg_s" title="gift_heart" xhtml="&#128157;" unicode="1f49d" ctg="s" o="1297">💝 </li>
+  <li class="ctg_s" title="revolving_hearts" xhtml="&#128158;" unicode="1f49e" ctg="s" o="1298">💞 </li>
+  <li class="ctg_s" title="heart_decoration" xhtml="&#128159;" unicode="1f49f" ctg="s" o="1299">💟 </li>
+  <li class="ctg_s" title="heart_exclamation" xhtml="&#10083;" unicode="2763" ctg="s" o="1300">❣️ </li>
+  <li class="ctg_o" title="love_letter" xhtml="&#128140;" unicode="1f48c" ctg="o" o="1301">💌 </li>
+  <li class="ctg_p" title="zzz" xhtml="&#128164;" unicode="1f4a4" ctg="p" o="1302">💤 </li>
+  <li class="ctg_s" title="anger" xhtml="&#128162;" unicode="1f4a2" ctg="s" o="1303">💢 </li>
+  <li class="ctg_o" title="bomb" xhtml="&#128163;" unicode="1f4a3" ctg="o" o="1304">💣 </li>
+  <li class="ctg_s" title="boom" xhtml="&#128165;" unicode="1f4a5" ctg="s" o="1305">💥 </li>
+  <li class="ctg_n" title="sweat_drops" xhtml="&#128166;" unicode="1f4a6" ctg="n" o="1306">💦 </li>
+  <li class="ctg_n" title="dash" xhtml="&#128168;" unicode="1f4a8" ctg="n" o="1307">💨 </li>
+  <li class="ctg_s" title="dizzy" xhtml="&#128171;" unicode="1f4ab" ctg="s" o="1308">💫 </li>
+  <li class="ctg_s" title="speech_balloon" xhtml="&#128172;" unicode="1f4ac" ctg="s" o="1309">💬 </li>
+  <li class="ctg_s" title="speech_left" xhtml="&#128488;" unicode="1f5e8" ctg="s" o="1310">🗨 </li>
+  <li class="ctg_s" title="anger_right" xhtml="&#128495;" unicode="1f5ef" ctg="s" o="1311">🗯 </li>
+  <li class="ctg_s" title="thought_balloon" xhtml="&#128173;" unicode="1f4ad" ctg="s" o="1312">💭 </li>
+  <li class="ctg_o" title="hole" xhtml="&#128371;" unicode="1f573" ctg="o" o="1313">🕳 </li>
+  <li class="ctg_p" title="eyeglasses" xhtml="&#128083;" unicode="1f453" ctg="p" o="1314">👓 </li>
+  <li class="ctg_p" title="dark_sunglasses" xhtml="&#128374;" unicode="1f576" ctg="p" o="1315">🕶 </li>
+  <li class="ctg_p" title="necktie" xhtml="&#128084;" unicode="1f454" ctg="p" o="1316">👔 </li>
+  <li class="ctg_p" title="shirt" xhtml="&#128085;" unicode="1f455" ctg="p" o="1317">👕 </li>
+  <li class="ctg_p" title="jeans" xhtml="&#128086;" unicode="1f456" ctg="p" o="1318">👖 </li>
+  <li class="ctg_p" title="dress" xhtml="&#128087;" unicode="1f457" ctg="p" o="1319">👗 </li>
+  <li class="ctg_p" title="kimono" xhtml="&#128088;" unicode="1f458" ctg="p" o="1320">👘 </li>
+  <li class="ctg_p" title="bikini" xhtml="&#128089;" unicode="1f459" ctg="p" o="1321">👙 </li>
+  <li class="ctg_p" title="womans_clothes" xhtml="&#128090;" unicode="1f45a" ctg="p" o="1322">👚 </li>
+  <li class="ctg_p" title="purse" xhtml="&#128091;" unicode="1f45b" ctg="p" o="1323">👛 </li>
+  <li class="ctg_p" title="handbag" xhtml="&#128092;" unicode="1f45c" ctg="p" o="1324">👜 </li>
+  <li class="ctg_p" title="pouch" xhtml="&#128093;" unicode="1f45d" ctg="p" o="1325">👝 </li>
+  <li class="ctg_o" title="shopping_bags" xhtml="&#128717;" unicode="1f6cd" ctg="o" o="1326">🛍 </li>
+  <li class="ctg_p" title="school_satchel" xhtml="&#127890;" unicode="1f392" ctg="p" o="1327">🎒 </li>
+  <li class="ctg_p" title="mans_shoe" xhtml="&#128094;" unicode="1f45e" ctg="p" o="1328">👞 </li>
+  <li class="ctg_p" title="athletic_shoe" xhtml="&#128095;" unicode="1f45f" ctg="p" o="1329">👟 </li>
+  <li class="ctg_p" title="high_heel" xhtml="&#128096;" unicode="1f460" ctg="p" o="1330">👠 </li>
+  <li class="ctg_p" title="sandal" xhtml="&#128097;" unicode="1f461" ctg="p" o="1331">👡 </li>
+  <li class="ctg_p" title="boot" xhtml="&#128098;" unicode="1f462" ctg="p" o="1332">👢 </li>
+  <li class="ctg_p" title="crown" xhtml="&#128081;" unicode="1f451" ctg="p" o="1333">👑 </li>
+  <li class="ctg_p" title="womans_hat" xhtml="&#128082;" unicode="1f452" ctg="p" o="1334">👒 </li>
+  <li class="ctg_p" title="tophat" xhtml="&#127913;" unicode="1f3a9" ctg="p" o="1335">🎩 </li>
+  <li class="ctg_p" title="mortar_board" xhtml="&#127891;" unicode="1f393" ctg="p" o="1336">🎓 </li>
+  <li class="ctg_o" title="prayer_beads" xhtml="&#128255;" unicode="1f4ff" ctg="o" o="1338">📿 </li>
+  <li class="ctg_p" title="lipstick" xhtml="&#128132;" unicode="1f484" ctg="p" o="1339">💄 </li>
+  <li class="ctg_p" title="ring" xhtml="&#128141;" unicode="1f48d" ctg="p" o="1340">💍 </li>
+  <li class="ctg_o" title="gem" xhtml="&#128142;" unicode="1f48e" ctg="o" o="1341">💎 </li>
+  <li class="ctg_n" title="monkey_face" xhtml="&#128053;" unicode="1f435" ctg="n" o="1342">🐵 </li>
+  <li class="ctg_n" title="monkey" xhtml="&#128018;" unicode="1f412" ctg="n" o="1343">🐒 </li>
+  <li class="ctg_n" title="dog" xhtml="&#128054;" unicode="1f436" ctg="n" o="1345">🐶 </li>
+  <li class="ctg_n" title="dog2" xhtml="&#128021;" unicode="1f415" ctg="n" o="1346">🐕 </li>
+  <li class="ctg_n" title="poodle" xhtml="&#128041;" unicode="1f429" ctg="n" o="1347">🐩 </li>
+  <li class="ctg_n" title="wolf" xhtml="&#128058;" unicode="1f43a" ctg="n" o="1348">🐺 </li>
+  <li class="ctg_n" title="cat" xhtml="&#128049;" unicode="1f431" ctg="n" o="1350">🐱 </li>
+  <li class="ctg_n" title="cat2" xhtml="&#128008;" unicode="1f408" ctg="n" o="1351">🐈 </li>
+  <li class="ctg_n" title="lion_face" xhtml="&#129409;" unicode="1f981" ctg="n" o="1352">🦁 </li>
+  <li class="ctg_n" title="tiger" xhtml="&#128047;" unicode="1f42f" ctg="n" o="1353">🐯 </li>
+  <li class="ctg_n" title="tiger2" xhtml="&#128005;" unicode="1f405" ctg="n" o="1354">🐅 </li>
+  <li class="ctg_n" title="leopard" xhtml="&#128006;" unicode="1f406" ctg="n" o="1355">🐆 </li>
+  <li class="ctg_n" title="horse" xhtml="&#128052;" unicode="1f434" ctg="n" o="1356">🐴 </li>
+  <li class="ctg_n" title="racehorse" xhtml="&#128014;" unicode="1f40e" ctg="n" o="1357">🐎 </li>
+  <li class="ctg_n" title="cow" xhtml="&#128046;" unicode="1f42e" ctg="n" o="1360">🐮 </li>
+  <li class="ctg_n" title="ox" xhtml="&#128002;" unicode="1f402" ctg="n" o="1361">🐂 </li>
+  <li class="ctg_n" title="water_buffalo" xhtml="&#128003;" unicode="1f403" ctg="n" o="1362">🐃 </li>
+  <li class="ctg_n" title="cow2" xhtml="&#128004;" unicode="1f404" ctg="n" o="1363">🐄 </li>
+  <li class="ctg_n" title="pig" xhtml="&#128055;" unicode="1f437" ctg="n" o="1364">🐷 </li>
+  <li class="ctg_n" title="pig2" xhtml="&#128022;" unicode="1f416" ctg="n" o="1365">🐖 </li>
+  <li class="ctg_n" title="boar" xhtml="&#128023;" unicode="1f417" ctg="n" o="1366">🐗 </li>
+  <li class="ctg_n" title="pig_nose" xhtml="&#128061;" unicode="1f43d" ctg="n" o="1367">🐽 </li>
+  <li class="ctg_n" title="ram" xhtml="&#128015;" unicode="1f40f" ctg="n" o="1368">🐏 </li>
+  <li class="ctg_n" title="sheep" xhtml="&#128017;" unicode="1f411" ctg="n" o="1369">🐑 </li>
+  <li class="ctg_n" title="goat" xhtml="&#128016;" unicode="1f410" ctg="n" o="1370">🐐 </li>
+  <li class="ctg_n" title="dromedary_camel" xhtml="&#128042;" unicode="1f42a" ctg="n" o="1371">🐪 </li>
+  <li class="ctg_n" title="camel" xhtml="&#128043;" unicode="1f42b" ctg="n" o="1372">🐫 </li>
+  <li class="ctg_n" title="elephant" xhtml="&#128024;" unicode="1f418" ctg="n" o="1373">🐘 </li>
+  <li class="ctg_n" title="mouse" xhtml="&#128045;" unicode="1f42d" ctg="n" o="1375">🐭 </li>
+  <li class="ctg_n" title="mouse2" xhtml="&#128001;" unicode="1f401" ctg="n" o="1376">🐁 </li>
+  <li class="ctg_n" title="rat" xhtml="&#128000;" unicode="1f400" ctg="n" o="1377">🐀 </li>
+  <li class="ctg_n" title="hamster" xhtml="&#128057;" unicode="1f439" ctg="n" o="1378">🐹 </li>
+  <li class="ctg_n" title="rabbit" xhtml="&#128048;" unicode="1f430" ctg="n" o="1379">🐰 </li>
+  <li class="ctg_n" title="rabbit2" xhtml="&#128007;" unicode="1f407" ctg="n" o="1380">🐇 </li>
+  <li class="ctg_n" title="chipmunk" xhtml="&#128063;" unicode="1f43f" ctg="n" o="1381">🐿 </li>
+  <li class="ctg_n" title="bear" xhtml="&#128059;" unicode="1f43b" ctg="n" o="1383">🐻 </li>
+  <li class="ctg_n" title="koala" xhtml="&#128040;" unicode="1f428" ctg="n" o="1384">🐨 </li>
+  <li class="ctg_n" title="panda_face" xhtml="&#128060;" unicode="1f43c" ctg="n" o="1385">🐼 </li>
+  <li class="ctg_n" title="feet" xhtml="&#128062;" unicode="1f43e" ctg="n" o="1386">🐾 </li>
+  <li class="ctg_n" title="turkey" xhtml="&#129411;" unicode="1f983" ctg="n" o="1387">🦃 </li>
+  <li class="ctg_n" title="chicken" xhtml="&#128020;" unicode="1f414" ctg="n" o="1388">🐔 </li>
+  <li class="ctg_n" title="rooster" xhtml="&#128019;" unicode="1f413" ctg="n" o="1389">🐓 </li>
+  <li class="ctg_n" title="hatching_chick" xhtml="&#128035;" unicode="1f423" ctg="n" o="1390">🐣 </li>
+  <li class="ctg_n" title="baby_chick" xhtml="&#128036;" unicode="1f424" ctg="n" o="1391">🐤 </li>
+  <li class="ctg_n" title="hatched_chick" xhtml="&#128037;" unicode="1f425" ctg="n" o="1392">🐥 </li>
+  <li class="ctg_n" title="bird" xhtml="&#128038;" unicode="1f426" ctg="n" o="1393">🐦 </li>
+  <li class="ctg_n" title="penguin" xhtml="&#128039;" unicode="1f427" ctg="n" o="1394">🐧 </li>
+  <li class="ctg_n" title="frog" xhtml="&#128056;" unicode="1f438" ctg="n" o="1399">🐸 </li>
+  <li class="ctg_n" title="crocodile" xhtml="&#128010;" unicode="1f40a" ctg="n" o="1400">🐊 </li>
+  <li class="ctg_n" title="turtle" xhtml="&#128034;" unicode="1f422" ctg="n" o="1401">🐢 </li>
+  <li class="ctg_n" title="snake" xhtml="&#128013;" unicode="1f40d" ctg="n" o="1403">🐍 </li>
+  <li class="ctg_n" title="dragon_face" xhtml="&#128050;" unicode="1f432" ctg="n" o="1404">🐲 </li>
+  <li class="ctg_n" title="dragon" xhtml="&#128009;" unicode="1f409" ctg="n" o="1405">🐉 </li>
+  <li class="ctg_n" title="whale" xhtml="&#128051;" unicode="1f433" ctg="n" o="1406">🐳 </li>
+  <li class="ctg_n" title="whale2" xhtml="&#128011;" unicode="1f40b" ctg="n" o="1407">🐋 </li>
+  <li class="ctg_n" title="dolphin" xhtml="&#128044;" unicode="1f42c" ctg="n" o="1408">🐬 </li>
+  <li class="ctg_n" title="fish" xhtml="&#128031;" unicode="1f41f" ctg="n" o="1409">🐟 </li>
+  <li class="ctg_n" title="tropical_fish" xhtml="&#128032;" unicode="1f420" ctg="n" o="1410">🐠 </li>
+  <li class="ctg_n" title="blowfish" xhtml="&#128033;" unicode="1f421" ctg="n" o="1411">🐡 </li>
+  <li class="ctg_n" title="octopus" xhtml="&#128025;" unicode="1f419" ctg="n" o="1413">🐙 </li>
+  <li class="ctg_n" title="shell" xhtml="&#128026;" unicode="1f41a" ctg="n" o="1414">🐚 </li>
+  <li class="ctg_n" title="crab" xhtml="&#129408;" unicode="1f980" ctg="n" o="1415">🦀 </li>
+  <li class="ctg_n" title="snail" xhtml="&#128012;" unicode="1f40c" ctg="n" o="1419">🐌 </li>
+  <li class="ctg_n" title="bug" xhtml="&#128027;" unicode="1f41b" ctg="n" o="1420">🐛 </li>
+  <li class="ctg_n" title="ant" xhtml="&#128028;" unicode="1f41c" ctg="n" o="1421">🐜 </li>
+  <li class="ctg_n" title="bee" xhtml="&#128029;" unicode="1f41d" ctg="n" o="1422">🐝 </li>
+  <li class="ctg_n" title="beetle" xhtml="&#128030;" unicode="1f41e" ctg="n" o="1423">🐞 </li>
+  <li class="ctg_n" title="spider" xhtml="&#128375;" unicode="1f577" ctg="n" o="1424">🕷 </li>
+  <li class="ctg_n" title="spider_web" xhtml="&#128376;" unicode="1f578" ctg="n" o="1425">🕸 </li>
+  <li class="ctg_n" title="scorpion" xhtml="&#129410;" unicode="1f982" ctg="n" o="1426">🦂 </li>
+  <li class="ctg_n" title="bouquet" xhtml="&#128144;" unicode="1f490" ctg="n" o="1427">💐 </li>
+  <li class="ctg_n" title="cherry_blossom" xhtml="&#127800;" unicode="1f338" ctg="n" o="1428">🌸 </li>
+  <li class="ctg_s" title="white_flower" xhtml="&#128174;" unicode="1f4ae" ctg="s" o="1429">💮 </li>
+  <li class="ctg_n" title="rosette" xhtml="&#127989;" unicode="1f3f5" ctg="n" o="1430">🏵 </li>
+  <li class="ctg_n" title="rose" xhtml="&#127801;" unicode="1f339" ctg="n" o="1431">🌹 </li>
+  <li class="ctg_n" title="hibiscus" xhtml="&#127802;" unicode="1f33a" ctg="n" o="1433">🌺 </li>
+  <li class="ctg_n" title="sunflower" xhtml="&#127803;" unicode="1f33b" ctg="n" o="1434">🌻 </li>
+  <li class="ctg_n" title="blossom" xhtml="&#127804;" unicode="1f33c" ctg="n" o="1435">🌼 </li>
+  <li class="ctg_n" title="tulip" xhtml="&#127799;" unicode="1f337" ctg="n" o="1436">🌷 </li>
+  <li class="ctg_n" title="seedling" xhtml="&#127793;" unicode="1f331" ctg="n" o="1437">🌱 </li>
+  <li class="ctg_n" title="evergreen_tree" xhtml="&#127794;" unicode="1f332" ctg="n" o="1438">🌲 </li>
+  <li class="ctg_n" title="deciduous_tree" xhtml="&#127795;" unicode="1f333" ctg="n" o="1439">🌳 </li>
+  <li class="ctg_n" title="palm_tree" xhtml="&#127796;" unicode="1f334" ctg="n" o="1440">🌴 </li>
+  <li class="ctg_n" title="cactus" xhtml="&#127797;" unicode="1f335" ctg="n" o="1441">🌵 </li>
+  <li class="ctg_n" title="ear_of_rice" xhtml="&#127806;" unicode="1f33e" ctg="n" o="1442">🌾 </li>
+  <li class="ctg_n" title="herb" xhtml="&#127807;" unicode="1f33f" ctg="n" o="1443">🌿 </li>
+  <li class="ctg_n" title="shamrock" xhtml="&#9752;" unicode="2618" ctg="n" o="1444">☘ </li>
+  <li class="ctg_n" title="four_leaf_clover" xhtml="&#127808;" unicode="1f340" ctg="n" o="1445">🍀 </li>
+  <li class="ctg_n" title="maple_leaf" xhtml="&#127809;" unicode="1f341" ctg="n" o="1446">🍁 </li>
+  <li class="ctg_n" title="fallen_leaf" xhtml="&#127810;" unicode="1f342" ctg="n" o="1447">🍂 </li>
+  <li class="ctg_n" title="leaves" xhtml="&#127811;" unicode="1f343" ctg="n" o="1448">🍃 </li>
+  <li class="ctg_d" title="grapes" xhtml="&#127815;" unicode="1f347" ctg="d" o="1449">🍇 </li>
+  <li class="ctg_d" title="melon" xhtml="&#127816;" unicode="1f348" ctg="d" o="1450">🍈 </li>
+  <li class="ctg_d" title="watermelon" xhtml="&#127817;" unicode="1f349" ctg="d" o="1451">🍉 </li>
+  <li class="ctg_d" title="tangerine" xhtml="&#127818;" unicode="1f34a" ctg="d" o="1452">🍊 </li>
+  <li class="ctg_d" title="lemon" xhtml="&#127819;" unicode="1f34b" ctg="d" o="1453">🍋 </li>
+  <li class="ctg_d" title="banana" xhtml="&#127820;" unicode="1f34c" ctg="d" o="1454">🍌 </li>
+  <li class="ctg_d" title="pineapple" xhtml="&#127821;" unicode="1f34d" ctg="d" o="1455">🍍 </li>
+  <li class="ctg_d" title="apple" xhtml="&#127822;" unicode="1f34e" ctg="d" o="1456">🍎 </li>
+  <li class="ctg_d" title="green_apple" xhtml="&#127823;" unicode="1f34f" ctg="d" o="1457">🍏 </li>
+  <li class="ctg_d" title="pear" xhtml="&#127824;" unicode="1f350" ctg="d" o="1458">🍐 </li>
+  <li class="ctg_d" title="peach" xhtml="&#127825;" unicode="1f351" ctg="d" o="1459">🍑 </li>
+  <li class="ctg_d" title="cherries" xhtml="&#127826;" unicode="1f352" ctg="d" o="1460">🍒 </li>
+  <li class="ctg_d" title="strawberry" xhtml="&#127827;" unicode="1f353" ctg="d" o="1461">🍓 </li>
+  <li class="ctg_d" title="tomato" xhtml="&#127813;" unicode="1f345" ctg="d" o="1463">🍅 </li>
+  <li class="ctg_d" title="eggplant" xhtml="&#127814;" unicode="1f346" ctg="d" o="1465">🍆 </li>
+  <li class="ctg_d" title="corn" xhtml="&#127805;" unicode="1f33d" ctg="d" o="1468">🌽 </li>
+  <li class="ctg_d" title="hot_pepper" xhtml="&#127798;" unicode="1f336" ctg="d" o="1469">🌶 </li>
+  <li class="ctg_n" title="mushroom" xhtml="&#127812;" unicode="1f344" ctg="n" o="1471">🍄 </li>
+  <li class="ctg_d" title="bread" xhtml="&#127838;" unicode="1f35e" ctg="d" o="1474">🍞 </li>
+  <li class="ctg_d" title="meat_on_bone" xhtml="&#127830;" unicode="1f356" ctg="d" o="1479">🍖 </li>
+  <li class="ctg_d" title="poultry_leg" xhtml="&#127831;" unicode="1f357" ctg="d" o="1480">🍗 </li>
+  <li class="ctg_d" title="hamburger" xhtml="&#127828;" unicode="1f354" ctg="d" o="1482">🍔 </li>
+  <li class="ctg_d" title="fries" xhtml="&#127839;" unicode="1f35f" ctg="d" o="1483">🍟 </li>
+  <li class="ctg_d" title="pizza" xhtml="&#127829;" unicode="1f355" ctg="d" o="1484">🍕 </li>
+  <li class="ctg_d" title="hotdog" xhtml="&#127789;" unicode="1f32d" ctg="d" o="1485">🌭 </li>
+  <li class="ctg_d" title="taco" xhtml="&#127790;" unicode="1f32e" ctg="d" o="1486">🌮 </li>
+  <li class="ctg_d" title="burrito" xhtml="&#127791;" unicode="1f32f" ctg="d" o="1487">🌯 </li>
+  <li class="ctg_d" title="egg" xhtml="&#129370;" unicode="1f95a" ctg="d" o="1489">🥚 </li>
+  <li class="ctg_d" title="stew" xhtml="&#127858;" unicode="1f372" ctg="d" o="1492">🍲 </li>
+  <li class="ctg_d" title="popcorn" xhtml="&#127871;" unicode="1f37f" ctg="d" o="1494">🍿 </li>
+  <li class="ctg_d" title="bento" xhtml="&#127857;" unicode="1f371" ctg="d" o="1495">🍱 </li>
+  <li class="ctg_d" title="rice_cracker" xhtml="&#127832;" unicode="1f358" ctg="d" o="1496">🍘 </li>
+  <li class="ctg_d" title="rice_ball" xhtml="&#127833;" unicode="1f359" ctg="d" o="1497">🍙 </li>
+  <li class="ctg_d" title="rice" xhtml="&#127834;" unicode="1f35a" ctg="d" o="1498">🍚 </li>
+  <li class="ctg_d" title="curry" xhtml="&#127835;" unicode="1f35b" ctg="d" o="1499">🍛 </li>
+  <li class="ctg_d" title="ramen" xhtml="&#127836;" unicode="1f35c" ctg="d" o="1500">🍜 </li>
+  <li class="ctg_d" title="spaghetti" xhtml="&#127837;" unicode="1f35d" ctg="d" o="1501">🍝 </li>
+  <li class="ctg_d" title="sweet_potato" xhtml="&#127840;" unicode="1f360" ctg="d" o="1502">🍠 </li>
+  <li class="ctg_d" title="oden" xhtml="&#127842;" unicode="1f362" ctg="d" o="1503">🍢 </li>
+  <li class="ctg_d" title="sushi" xhtml="&#127843;" unicode="1f363" ctg="d" o="1504">🍣 </li>
+  <li class="ctg_d" title="fried_shrimp" xhtml="&#127844;" unicode="1f364" ctg="d" o="1505">🍤 </li>
+  <li class="ctg_d" title="fish_cake" xhtml="&#127845;" unicode="1f365" ctg="d" o="1506">🍥 </li>
+  <li class="ctg_d" title="dango" xhtml="&#127841;" unicode="1f361" ctg="d" o="1507">🍡 </li>
+  <li class="ctg_d" title="icecream" xhtml="&#127846;" unicode="1f366" ctg="d" o="1508">🍦 </li>
+  <li class="ctg_d" title="shaved_ice" xhtml="&#127847;" unicode="1f367" ctg="d" o="1509">🍧 </li>
+  <li class="ctg_d" title="ice_cream" xhtml="&#127848;" unicode="1f368" ctg="d" o="1510">🍨 </li>
+  <li class="ctg_d" title="doughnut" xhtml="&#127849;" unicode="1f369" ctg="d" o="1511">🍩 </li>
+  <li class="ctg_d" title="cookie" xhtml="&#127850;" unicode="1f36a" ctg="d" o="1512">🍪 </li>
+  <li class="ctg_d" title="birthday" xhtml="&#127874;" unicode="1f382" ctg="d" o="1513">🎂 </li>
+  <li class="ctg_d" title="cake" xhtml="&#127856;" unicode="1f370" ctg="d" o="1514">🍰 </li>
+  <li class="ctg_d" title="chocolate_bar" xhtml="&#127851;" unicode="1f36b" ctg="d" o="1515">🍫 </li>
+  <li class="ctg_d" title="candy" xhtml="&#127852;" unicode="1f36c" ctg="d" o="1516">🍬 </li>
+  <li class="ctg_d" title="lollipop" xhtml="&#127853;" unicode="1f36d" ctg="d" o="1517">🍭 </li>
+  <li class="ctg_d" title="custard" xhtml="&#127854;" unicode="1f36e" ctg="d" o="1518">🍮 </li>
+  <li class="ctg_d" title="honey_pot" xhtml="&#127855;" unicode="1f36f" ctg="d" o="1519">🍯 </li>
+  <li class="ctg_d" title="baby_bottle" xhtml="&#127868;" unicode="1f37c" ctg="d" o="1520">🍼 </li>
+  <li class="ctg_d" title="coffee" xhtml="&#9749;" unicode="2615" ctg="d" o="1522">☕ </li>
+  <li class="ctg_d" title="tea" xhtml="&#127861;" unicode="1f375" ctg="d" o="1523">🍵 </li>
+  <li class="ctg_d" title="sake" xhtml="&#127862;" unicode="1f376" ctg="d" o="1524">🍶 </li>
+  <li class="ctg_d" title="champagne" xhtml="&#127870;" unicode="1f37e" ctg="d" o="1525">🍾 </li>
+  <li class="ctg_d" title="wine_glass" xhtml="&#127863;" unicode="1f377" ctg="d" o="1526">🍷 </li>
+  <li class="ctg_d" title="cocktail" xhtml="&#127864;" unicode="1f378" ctg="d" o="1527">🍸 </li>
+  <li class="ctg_d" title="tropical_drink" xhtml="&#127865;" unicode="1f379" ctg="d" o="1528">🍹 </li>
+  <li class="ctg_d" title="beer" xhtml="&#127866;" unicode="1f37a" ctg="d" o="1529">🍺 </li>
+  <li class="ctg_d" title="beers" xhtml="&#127867;" unicode="1f37b" ctg="d" o="1530">🍻 </li>
+  <li class="ctg_d" title="fork_and_knife" xhtml="&#127860;" unicode="1f374" ctg="d" o="1534">🍴 </li>
+  <li class="ctg_o" title="amphora" xhtml="&#127994;" unicode="1f3fa" ctg="o" o="1537">🏺 </li>
+  <li class="ctg_n" title="earth_africa" xhtml="&#127757;" unicode="1f30d" ctg="n" o="1538">🌍 </li>
+  <li class="ctg_n" title="earth_americas" xhtml="&#127758;" unicode="1f30e" ctg="n" o="1539">🌎 </li>
+  <li class="ctg_n" title="earth_asia" xhtml="&#127759;" unicode="1f30f" ctg="n" o="1540">🌏 </li>
+  <li class="ctg_s" title="globe_with_meridians" xhtml="&#127760;" unicode="1f310" ctg="s" o="1541">🌐 </li>
+  <li class="ctg_t" title="japan" xhtml="&#128510;" unicode="1f5fe" ctg="t" o="1543">🗾 </li>
+  <li class="ctg_t" title="mountain" xhtml="&#9968;" unicode="26f0" ctg="t" o="1545">⛰ </li>
+  <li class="ctg_t" title="volcano" xhtml="&#127755;" unicode="1f30b" ctg="t" o="1546">🌋 </li>
+  <li class="ctg_t" title="mount_fuji" xhtml="&#128507;" unicode="1f5fb" ctg="t" o="1547">🗻 </li>
+  <li class="ctg_t" title="camping" xhtml="&#127957;" unicode="1f3d5" ctg="t" o="1548">🏕 </li>
+  <li class="ctg_t" title="desert" xhtml="&#127964;" unicode="1f3dc" ctg="t" o="1550">🏜 </li>
+  <li class="ctg_t" title="stadium" xhtml="&#127967;" unicode="1f3df" ctg="t" o="1553">🏟 </li>
+  <li class="ctg_t" title="classical_building" xhtml="&#127963;" unicode="1f3db" ctg="t" o="1554">🏛 </li>
+  <li class="ctg_t" title="cityscape" xhtml="&#127961;" unicode="1f3d9" ctg="t" o="1557">🏙 </li>
+  <li class="ctg_t" title="house" xhtml="&#127968;" unicode="1f3e0" ctg="t" o="1559">🏠 </li>
+  <li class="ctg_t" title="house_with_garden" xhtml="&#127969;" unicode="1f3e1" ctg="t" o="1560">🏡 </li>
+  <li class="ctg_t" title="office" xhtml="&#127970;" unicode="1f3e2" ctg="t" o="1561">🏢 </li>
+  <li class="ctg_t" title="post_office" xhtml="&#127971;" unicode="1f3e3" ctg="t" o="1562">🏣 </li>
+  <li class="ctg_t" title="european_post_office" xhtml="&#127972;" unicode="1f3e4" ctg="t" o="1563">🏤 </li>
+  <li class="ctg_t" title="hospital" xhtml="&#127973;" unicode="1f3e5" ctg="t" o="1564">🏥 </li>
+  <li class="ctg_t" title="bank" xhtml="&#127974;" unicode="1f3e6" ctg="t" o="1565">🏦 </li>
+  <li class="ctg_t" title="hotel" xhtml="&#127976;" unicode="1f3e8" ctg="t" o="1566">🏨 </li>
+  <li class="ctg_t" title="love_hotel" xhtml="&#127977;" unicode="1f3e9" ctg="t" o="1567">🏩 </li>
+  <li class="ctg_t" title="convenience_store" xhtml="&#127978;" unicode="1f3ea" ctg="t" o="1568">🏪 </li>
+  <li class="ctg_t" title="school" xhtml="&#127979;" unicode="1f3eb" ctg="t" o="1569">🏫 </li>
+  <li class="ctg_t" title="department_store" xhtml="&#127980;" unicode="1f3ec" ctg="t" o="1570">🏬 </li>
+  <li class="ctg_t" title="factory" xhtml="&#127981;" unicode="1f3ed" ctg="t" o="1571">🏭 </li>
+  <li class="ctg_t" title="japanese_castle" xhtml="&#127983;" unicode="1f3ef" ctg="t" o="1572">🏯 </li>
+  <li class="ctg_t" title="european_castle" xhtml="&#127984;" unicode="1f3f0" ctg="t" o="1573">🏰 </li>
+  <li class="ctg_t" title="wedding" xhtml="&#128146;" unicode="1f492" ctg="t" o="1574">💒 </li>
+  <li class="ctg_t" title="tokyo_tower" xhtml="&#128508;" unicode="1f5fc" ctg="t" o="1575">🗼 </li>
+  <li class="ctg_t" title="statue_of_liberty" xhtml="&#128509;" unicode="1f5fd" ctg="t" o="1576">🗽 </li>
+  <li class="ctg_t" title="church" xhtml="&#9962;" unicode="26ea" ctg="t" o="1577">⛪ </li>
+  <li class="ctg_t" title="mosque" xhtml="&#128332;" unicode="1f54c" ctg="t" o="1578">🕌 </li>
+  <li class="ctg_t" title="synagogue" xhtml="&#128333;" unicode="1f54d" ctg="t" o="1579">🕍 </li>
+  <li class="ctg_t" title="shinto_shrine" xhtml="&#9961;" unicode="2.60E+10" ctg="t" o="1580">⛩ </li>
+  <li class="ctg_t" title="kaaba" xhtml="&#128331;" unicode="1f54b" ctg="t" o="1581">🕋 </li>
+  <li class="ctg_t" title="fountain" xhtml="&#9970;" unicode="26f2" ctg="t" o="1582">⛲ </li>
+  <li class="ctg_t" title="tent" xhtml="&#9978;" unicode="26fa" ctg="t" o="1583">⛺ </li>
+  <li class="ctg_t" title="foggy" xhtml="&#127745;" unicode="1f301" ctg="t" o="1584">🌁 </li>
+  <li class="ctg_t" title="night_with_stars" xhtml="&#127747;" unicode="1f303" ctg="t" o="1585">🌃 </li>
+  <li class="ctg_t" title="sunrise_over_mountains" xhtml="&#127748;" unicode="1f304" ctg="t" o="1586">🌄 </li>
+  <li class="ctg_t" title="sunrise" xhtml="&#127749;" unicode="1f305" ctg="t" o="1587">🌅 </li>
+  <li class="ctg_t" title="city_sunset" xhtml="&#127751;" unicode="1f307" ctg="t" o="1589">🌇 </li>
+  <li class="ctg_t" title="bridge_at_night" xhtml="&#127753;" unicode="1f309" ctg="t" o="1590">🌉 </li>
+  <li class="ctg_s" title="hotsprings" xhtml="&#9832;" unicode="2668" ctg="s" o="1591">♨️ </li>
+  <li class="ctg_t" title="milky_way" xhtml="&#127756;" unicode="1f30c" ctg="t" o="1592">🌌 </li>
+  <li class="ctg_t" title="carousel_horse" xhtml="&#127904;" unicode="1f3a0" ctg="t" o="1593">🎠 </li>
+  <li class="ctg_t" title="ferris_wheel" xhtml="&#127905;" unicode="1f3a1" ctg="t" o="1594">🎡 </li>
+  <li class="ctg_t" title="roller_coaster" xhtml="&#127906;" unicode="1f3a2" ctg="t" o="1595">🎢 </li>
+  <li class="ctg_o" title="barber" xhtml="&#128136;" unicode="1f488" ctg="o" o="1596">💈 </li>
+  <li class="ctg_a" title="circus_tent" xhtml="&#127914;" unicode="1f3aa" ctg="a" o="1597">🎪 </li>
+  <li class="ctg_a" title="performing_arts" xhtml="&#127917;" unicode="1f3ad" ctg="a" o="1598">🎭 </li>
+  <li class="ctg_a" title="slot_machine" xhtml="&#127920;" unicode="1f3b0" ctg="a" o="1601">🎰 </li>
+  <li class="ctg_t" title="steam_locomotive" xhtml="&#128642;" unicode="1f682" ctg="t" o="1602">🚂 </li>
+  <li class="ctg_t" title="railway_car" xhtml="&#128643;" unicode="1f683" ctg="t" o="1603">🚃 </li>
+  <li class="ctg_t" title="bullettrain_side" xhtml="&#128644;" unicode="1f684" ctg="t" o="1604">🚄 </li>
+  <li class="ctg_t" title="bullettrain_front" xhtml="&#128645;" unicode="1f685" ctg="t" o="1605">🚅 </li>
+  <li class="ctg_t" title="train2" xhtml="&#128646;" unicode="1f686" ctg="t" o="1606">🚆 </li>
+  <li class="ctg_t" title="metro" xhtml="&#128647;" unicode="1f687" ctg="t" o="1607">🚇 </li>
+  <li class="ctg_t" title="light_rail" xhtml="&#128648;" unicode="1f688" ctg="t" o="1608">🚈 </li>
+  <li class="ctg_t" title="station" xhtml="&#128649;" unicode="1f689" ctg="t" o="1609">🚉 </li>
+  <li class="ctg_t" title="tram" xhtml="&#128650;" unicode="1f68a" ctg="t" o="1610">🚊 </li>
+  <li class="ctg_t" title="monorail" xhtml="&#128669;" unicode="1f69d" ctg="t" o="1611">🚝 </li>
+  <li class="ctg_t" title="mountain_railway" xhtml="&#128670;" unicode="1f69e" ctg="t" o="1612">🚞 </li>
+  <li class="ctg_t" title="train" xhtml="&#128651;" unicode="1f68b" ctg="t" o="1613">🚋 </li>
+  <li class="ctg_t" title="bus" xhtml="&#128652;" unicode="1f68c" ctg="t" o="1614">🚌 </li>
+  <li class="ctg_t" title="oncoming_bus" xhtml="&#128653;" unicode="1f68d" ctg="t" o="1615">🚍 </li>
+  <li class="ctg_t" title="trolleybus" xhtml="&#128654;" unicode="1f68e" ctg="t" o="1616">🚎 </li>
+  <li class="ctg_t" title="minibus" xhtml="&#128656;" unicode="1f690" ctg="t" o="1617">🚐 </li>
+  <li class="ctg_t" title="ambulance" xhtml="&#128657;" unicode="1f691" ctg="t" o="1618">🚑 </li>
+  <li class="ctg_t" title="fire_engine" xhtml="&#128658;" unicode="1f692" ctg="t" o="1619">🚒 </li>
+  <li class="ctg_t" title="police_car" xhtml="&#128659;" unicode="1f693" ctg="t" o="1620">🚓 </li>
+  <li class="ctg_t" title="oncoming_police_car" xhtml="&#128660;" unicode="1f694" ctg="t" o="1621">🚔 </li>
+  <li class="ctg_t" title="taxi" xhtml="&#128661;" unicode="1f695" ctg="t" o="1622">🚕 </li>
+  <li class="ctg_t" title="oncoming_taxi" xhtml="&#128662;" unicode="1f696" ctg="t" o="1623">🚖 </li>
+  <li class="ctg_t" title="oncoming_automobile" xhtml="&#128664;" unicode="1f698" ctg="t" o="1625">🚘 </li>
+  <li class="ctg_t" title="blue_car" xhtml="&#128665;" unicode="1f699" ctg="t" o="1626">🚙 </li>
+  <li class="ctg_t" title="truck" xhtml="&#128666;" unicode="1f69a" ctg="t" o="1627">🚚 </li>
+  <li class="ctg_t" title="articulated_lorry" xhtml="&#128667;" unicode="1f69b" ctg="t" o="1628">🚛 </li>
+  <li class="ctg_t" title="tractor" xhtml="&#128668;" unicode="1f69c" ctg="t" o="1629">🚜 </li>
+  <li class="ctg_t" title="bike" xhtml="&#128690;" unicode="1f6b2" ctg="t" o="1630">🚲 </li>
+  <li class="ctg_t" title="busstop" xhtml="&#128655;" unicode="1f68f" ctg="t" o="1633">🚏 </li>
+  <li class="ctg_t" title="motorway" xhtml="&#128739;" unicode="1f6e3" ctg="t" o="1634">🛣 </li>
+  <li class="ctg_t" title="railway_track" xhtml="&#128740;" unicode="1f6e4" ctg="t" o="1635">🛤 </li>
+  <li class="ctg_t" title="fuelpump" xhtml="&#9981;" unicode="26fd" ctg="t" o="1636">⛽ </li>
+  <li class="ctg_t" title="rotating_light" xhtml="&#128680;" unicode="1f6a8" ctg="t" o="1637">🚨 </li>
+  <li class="ctg_t" title="traffic_light" xhtml="&#128677;" unicode="1f6a5" ctg="t" o="1638">🚥 </li>
+  <li class="ctg_t" title="vertical_traffic_light" xhtml="&#128678;" unicode="1f6a6" ctg="t" o="1639">🚦 </li>
+  <li class="ctg_t" title="construction" xhtml="&#128679;" unicode="1f6a7" ctg="t" o="1640">🚧 </li>
+  <li class="ctg_s" title="octagonal_sign" xhtml="&#128721;" unicode="1f6d1" ctg="s" o="1641">🛑 </li>
+  <li class="ctg_t" title="anchor" xhtml="&#9875;" unicode="2693" ctg="t" o="1642">⚓ </li>
+  <li class="ctg_t" title="speedboat" xhtml="&#128676;" unicode="1f6a4" ctg="t" o="1645">🚤 </li>
+  <li class="ctg_t" title="ferry" xhtml="&#9972;" unicode="26f4" ctg="t" o="1647">⛴ </li>
+  <li class="ctg_t" title="ship" xhtml="&#128674;" unicode="1f6a2" ctg="t" o="1649">🚢 </li>
+  <li class="ctg_t" title="airplane" xhtml="&#9992;" unicode="2708" ctg="t" o="1650">✈️ </li>
+  <li class="ctg_t" title="airplane_departure" xhtml="&#128747;" unicode="1f6eb" ctg="t" o="1652">🛫 </li>
+  <li class="ctg_t" title="airplane_arriving" xhtml="&#128748;" unicode="1f6ec" ctg="t" o="1653">🛬 </li>
+  <li class="ctg_t" title="seat" xhtml="&#128186;" unicode="1f4ba" ctg="t" o="1654">💺 </li>
+  <li class="ctg_t" title="helicopter" xhtml="&#128641;" unicode="1f681" ctg="t" o="1655">🚁 </li>
+  <li class="ctg_t" title="suspension_railway" xhtml="&#128671;" unicode="1f69f" ctg="t" o="1656">🚟 </li>
+  <li class="ctg_t" title="mountain_cableway" xhtml="&#128672;" unicode="1f6a0" ctg="t" o="1657">🚠 </li>
+  <li class="ctg_t" title="aerial_tramway" xhtml="&#128673;" unicode="1f6a1" ctg="t" o="1658">🚡 </li>
+  <li class="ctg_t" title="rocket" xhtml="&#128640;" unicode="1f680" ctg="t" o="1659">🚀 </li>
+  <li class="ctg_o" title="door" xhtml="&#128682;" unicode="1f6aa" ctg="o" o="1662">🚪 </li>
+  <li class="ctg_o" title="sleeping_accommodation" xhtml="&#128716;" unicode="1f6cc" ctg="o" o="1663">🛌 </li>
+  <li class="ctg_o" title="bed" xhtml="&#128719;" unicode="1f6cf" ctg="o" o="1669">🛏 </li>
+  <li class="ctg_o" title="toilet" xhtml="&#128701;" unicode="1f6bd" ctg="o" o="1671">🚽 </li>
+  <li class="ctg_o" title="shower" xhtml="&#128703;" unicode="1f6bf" ctg="o" o="1672">🚿 </li>
+  <li class="ctg_a" title="bath" xhtml="&#128704;" unicode="1f6c0" ctg="a" o="1673">🛀 </li>
+  <li class="ctg_o" title="bathtub" xhtml="&#128705;" unicode="1f6c1" ctg="o" o="1679">🛁 </li>
+  <li class="ctg_o" title="hourglass" xhtml="&#8987;" unicode="231b" ctg="o" o="1680">⌛ </li>
+  <li class="ctg_o" title="hourglass_flowing_sand" xhtml="&#9203;" unicode="23f3" ctg="o" o="1681">⏳ </li>
+  <li class="ctg_o" title="watch" xhtml="&#8986;" unicode="231a" ctg="o" o="1682">⌚ </li>
+  <li class="ctg_o" title="alarm_clock" xhtml="&#9200;" unicode="23f0" ctg="o" o="1683">⏰ </li>
+  <li class="ctg_o" title="stopwatch" xhtml="&#9201;" unicode="23f1" ctg="o" o="1684">⏱ </li>
+  <li class="ctg_s" title="clock12" xhtml="&#128347;" unicode="1f55b" ctg="s" o="1687">🕛 </li>
+  <li class="ctg_s" title="clock1230" xhtml="&#128359;" unicode="1f567" ctg="s" o="1688">🕧 </li>
+  <li class="ctg_s" title="clock1" xhtml="&#128336;" unicode="1f550" ctg="s" o="1689">🕐 </li>
+  <li class="ctg_s" title="clock130" xhtml="&#128348;" unicode="1f55c" ctg="s" o="1690">🕜 </li>
+  <li class="ctg_s" title="clock2" xhtml="&#128337;" unicode="1f551" ctg="s" o="1691">🕑 </li>
+  <li class="ctg_s" title="clock230" xhtml="&#128349;" unicode="1f55d" ctg="s" o="1692">🕝 </li>
+  <li class="ctg_s" title="clock3" xhtml="&#128338;" unicode="1f552" ctg="s" o="1693">🕒 </li>
+  <li class="ctg_s" title="clock330" xhtml="&#128350;" unicode="1f55e" ctg="s" o="1694">🕞 </li>
+  <li class="ctg_s" title="clock4" xhtml="&#128339;" unicode="1f553" ctg="s" o="1695">🕓 </li>
+  <li class="ctg_s" title="clock430" xhtml="&#128351;" unicode="1f55f" ctg="s" o="1696">🕟 </li>
+  <li class="ctg_s" title="clock5" xhtml="&#128340;" unicode="1f554" ctg="s" o="1697">🕔 </li>
+  <li class="ctg_s" title="clock530" xhtml="&#128352;" unicode="1f560" ctg="s" o="1698">🕠 </li>
+  <li class="ctg_s" title="clock6" xhtml="&#128341;" unicode="1f555" ctg="s" o="1699">🕕 </li>
+  <li class="ctg_s" title="clock630" xhtml="&#128353;" unicode="1f561" ctg="s" o="1700">🕡 </li>
+  <li class="ctg_s" title="clock7" xhtml="&#128342;" unicode="1f556" ctg="s" o="1701">🕖 </li>
+  <li class="ctg_s" title="clock730" xhtml="&#128354;" unicode="1f562" ctg="s" o="1702">🕢 </li>
+  <li class="ctg_s" title="clock8" xhtml="&#128343;" unicode="1f557" ctg="s" o="1703">🕗 </li>
+  <li class="ctg_s" title="clock830" xhtml="&#128355;" unicode="1f563" ctg="s" o="1704">🕣 </li>
+  <li class="ctg_s" title="clock9" xhtml="&#128344;" unicode="1f558" ctg="s" o="1705">🕘 </li>
+  <li class="ctg_s" title="clock930" xhtml="&#128356;" unicode="1f564" ctg="s" o="1706">🕤 </li>
+  <li class="ctg_s" title="clock10" xhtml="&#128345;" unicode="1f559" ctg="s" o="1707">🕙 </li>
+  <li class="ctg_s" title="clock1030" xhtml="&#128357;" unicode="1f565" ctg="s" o="1708">🕥 </li>
+  <li class="ctg_s" title="clock11" xhtml="&#128346;" unicode="1f55a" ctg="s" o="1709">🕚 </li>
+  <li class="ctg_s" title="clock1130" xhtml="&#128358;" unicode="1f566" ctg="s" o="1710">🕦 </li>
+  <li class="ctg_n" title="new_moon" xhtml="&#127761;" unicode="1f311" ctg="n" o="1711">🌑 </li>
+  <li class="ctg_n" title="waxing_crescent_moon" xhtml="&#127762;" unicode="1f312" ctg="n" o="1712">🌒 </li>
+  <li class="ctg_n" title="first_quarter_moon" xhtml="&#127763;" unicode="1f313" ctg="n" o="1713">🌓 </li>
+  <li class="ctg_n" title="full_moon" xhtml="&#127765;" unicode="1f315" ctg="n" o="1715">🌕 </li>
+  <li class="ctg_n" title="waning_gibbous_moon" xhtml="&#127766;" unicode="1f316" ctg="n" o="1716">🌖 </li>
+  <li class="ctg_n" title="last_quarter_moon" xhtml="&#127767;" unicode="1f317" ctg="n" o="1717">🌗 </li>
+  <li class="ctg_n" title="waning_crescent_moon" xhtml="&#127768;" unicode="1f318" ctg="n" o="1718">🌘 </li>
+  <li class="ctg_n" title="crescent_moon" xhtml="&#127769;" unicode="1f319" ctg="n" o="1719">🌙 </li>
+  <li class="ctg_n" title="new_moon_with_face" xhtml="&#127770;" unicode="1f31a" ctg="n" o="1720">🌚 </li>
+  <li class="ctg_n" title="first_quarter_moon_with_face" xhtml="&#127771;" unicode="1f31b" ctg="n" o="1721">🌛 </li>
+  <li class="ctg_n" title="last_quarter_moon_with_face" xhtml="&#127772;" unicode="1f31c" ctg="n" o="1722">🌜 </li>
+  <li class="ctg_o" title="thermometer" xhtml="&#127777;" unicode="1f321" ctg="o" o="1723">🌡 </li>
+  <li class="ctg_n" title="sunny" xhtml="&#9728;" unicode="2600" ctg="n" o="1724">☀️ </li>
+  <li class="ctg_n" title="full_moon_with_face" xhtml="&#127773;" unicode="1f31d" ctg="n" o="1725">🌝 </li>
+  <li class="ctg_n" title="sun_with_face" xhtml="&#127774;" unicode="1f31e" ctg="n" o="1726">🌞 </li>
+  <li class="ctg_n" title="star" xhtml="&#11088;" unicode="2b50" ctg="n" o="1727">⭐ </li>
+  <li class="ctg_n" title="star2" xhtml="&#127775;" unicode="1f31f" ctg="n" o="1728">🌟 </li>
+  <li class="ctg_t" title="stars" xhtml="&#127776;" unicode="1f320" ctg="t" o="1729">🌠 </li>
+  <li class="ctg_n" title="cloud" xhtml="&#9729;" unicode="2601" ctg="n" o="1730">☁ </li>
+  <li class="ctg_n" title="partly_sunny" xhtml="&#9925;" unicode="26c5" ctg="n" o="1731">⛅ </li>
+  <li class="ctg_n" title="fog" xhtml="&#127787;" unicode="1f32b" ctg="n" o="1740">🌫 </li>
+  <li class="ctg_n" title="wind_blowing_face" xhtml="&#127788;" unicode="1f32c" ctg="n" o="1741">🌬 </li>
+  <li class="ctg_s" title="cyclone" xhtml="&#127744;" unicode="1f300" ctg="s" o="1742">🌀 </li>
+  <li class="ctg_t" title="rainbow" xhtml="&#127752;" unicode="1f308" ctg="t" o="1743">🌈 </li>
+  <li class="ctg_p" title="closed_umbrella" xhtml="&#127746;" unicode="1f302" ctg="p" o="1744">🌂 </li>
+  <li class="ctg_n" title="umbrella" xhtml="&#9748;" unicode="2614" ctg="n" o="1746">☔ </li>
+  <li class="ctg_o" title="beach_umbrella" xhtml="&#9969;" unicode="26f1" ctg="o" o="1747">⛱ </li>
+  <li class="ctg_n" title="zap" xhtml="&#9889;" unicode="26a1" ctg="n" o="1748">⚡ </li>
+  <li class="ctg_n" title="snowflake" xhtml="&#10052;" unicode="2744" ctg="n" o="1749">❄️ </li>
+  <li class="ctg_n" title="snowman" xhtml="&#9924;" unicode="26c4" ctg="n" o="1751">⛄ </li>
+  <li class="ctg_n" title="comet" xhtml="&#9732;" unicode="2604" ctg="n" o="1752">☄ </li>
+  <li class="ctg_n" title="fire" xhtml="&#128293;" unicode="1f525" ctg="n" o="1753">🔥 </li>
+  <li class="ctg_n" title="droplet" xhtml="&#128167;" unicode="1f4a7" ctg="n" o="1754">💧 </li>
+  <li class="ctg_n" title="ocean" xhtml="&#127754;" unicode="1f30a" ctg="n" o="1755">🌊 </li>
+  <li class="ctg_n" title="jack_o_lantern" xhtml="&#127875;" unicode="1f383" ctg="n" o="1756">🎃 </li>
+  <li class="ctg_n" title="christmas_tree" xhtml="&#127876;" unicode="1f384" ctg="n" o="1757">🎄 </li>
+  <li class="ctg_t" title="fireworks" xhtml="&#127878;" unicode="1f386" ctg="t" o="1758">🎆 </li>
+  <li class="ctg_t" title="sparkler" xhtml="&#127879;" unicode="1f387" ctg="t" o="1759">🎇 </li>
+  <li class="ctg_n" title="sparkles" xhtml="&#10024;" unicode="2728" ctg="n" o="1760">✨ </li>
+  <li class="ctg_o" title="balloon" xhtml="&#127880;" unicode="1f388" ctg="o" o="1761">🎈 </li>
+  <li class="ctg_o" title="tada" xhtml="&#127881;" unicode="1f389" ctg="o" o="1762">🎉 </li>
+  <li class="ctg_o" title="confetti_ball" xhtml="&#127882;" unicode="1f38a" ctg="o" o="1763">🎊 </li>
+  <li class="ctg_n" title="tanabata_tree" xhtml="&#127883;" unicode="1f38b" ctg="n" o="1764">🎋 </li>
+  <li class="ctg_n" title="bamboo" xhtml="&#127885;" unicode="1f38d" ctg="n" o="1765">🎍 </li>
+  <li class="ctg_o" title="dolls" xhtml="&#127886;" unicode="1f38e" ctg="o" o="1766">🎎 </li>
+  <li class="ctg_o" title="flags" xhtml="&#127887;" unicode="1f38f" ctg="o" o="1767">🎏 </li>
+  <li class="ctg_o" title="wind_chime" xhtml="&#127888;" unicode="1f390" ctg="o" o="1768">🎐 </li>
+  <li class="ctg_t" title="rice_scene" xhtml="&#127889;" unicode="1f391" ctg="t" o="1769">🎑 </li>
+  <li class="ctg_o" title="ribbon" xhtml="&#127872;" unicode="1f380" ctg="o" o="1770">🎀 </li>
+  <li class="ctg_o" title="gift" xhtml="&#127873;" unicode="1f381" ctg="o" o="1771">🎁 </li>
+  <li class="ctg_a" title="reminder_ribbon" xhtml="&#127895;" unicode="1f397" ctg="a" o="1772">🎗 </li>
+  <li class="ctg_a" title="ticket" xhtml="&#127915;" unicode="1f3ab" ctg="a" o="1774">🎫 </li>
+  <li class="ctg_a" title="trophy" xhtml="&#127942;" unicode="1f3c6" ctg="a" o="1776">🏆 </li>
+  <li class="ctg_a" title="medal" xhtml="&#127941;" unicode="1f3c5" ctg="a" o="1777">🏅 </li>
+  <li class="ctg_a" title="soccer" xhtml="&#9917;" unicode="26bd" ctg="a" o="1781">⚽ </li>
+  <li class="ctg_a" title="baseball" xhtml="&#9918;" unicode="26be" ctg="a" o="1782">⚾️ </li>
+  <li class="ctg_a" title="basketball" xhtml="&#127936;" unicode="1f3c0" ctg="a" o="1783">🏀 </li>
+  <li class="ctg_a" title="volleyball" xhtml="&#127952;" unicode="1f3d0" ctg="a" o="1784">🏐 </li>
+  <li class="ctg_a" title="football" xhtml="&#127944;" unicode="1f3c8" ctg="a" o="1785">🏈 </li>
+  <li class="ctg_a" title="rugby_football" xhtml="&#127945;" unicode="1f3c9" ctg="a" o="1786">🏉 </li>
+  <li class="ctg_a" title="tennis" xhtml="&#127934;" unicode="1f3be" ctg="a" o="1787">🎾 </li>
+  <li class="ctg_a" title="8ball" xhtml="&#127921;" unicode="1f3b1" ctg="a" o="1788">🎱 </li>
+  <li class="ctg_a" title="bowling" xhtml="&#127923;" unicode="1f3b3" ctg="a" o="1789">🎳 </li>
+  <li class="ctg_a" title="dart" xhtml="&#127919;" unicode="1f3af" ctg="a" o="1798">🎯 </li>
+  <li class="ctg_a" title="golf" xhtml="&#9971;" unicode="26f3" ctg="a" o="1799">⛳ </li>
+  <li class="ctg_a" title="ice_skate" xhtml="&#9976;" unicode="26f8" ctg="a" o="1800">⛸ </li>
+  <li class="ctg_a" title="fishing_pole_and_fish" xhtml="&#127907;" unicode="1f3a3" ctg="a" o="1801">🎣 </li>
+  <li class="ctg_a" title="running_shirt_with_sash" xhtml="&#127933;" unicode="1f3bd" ctg="a" o="1802">🎽 </li>
+  <li class="ctg_a" title="ski" xhtml="&#127935;" unicode="1f3bf" ctg="a" o="1803">🎿 </li>
+  <li class="ctg_a" title="video_game" xhtml="&#127918;" unicode="1f3ae" ctg="a" o="1804">🎮 </li>
+  <li class="ctg_o" title="joystick" xhtml="&#128377;" unicode="1f579" ctg="o" o="1805">🕹 </li>
+  <li class="ctg_a" title="game_die" xhtml="&#127922;" unicode="1f3b2" ctg="a" o="1806">🎲 </li>
+  <li class="ctg_s" title="spades" xhtml="&spades;" unicode="2660" ctg="s" o="1807">♠ </li>
+  <li class="ctg_s" title="hearts" xhtml="&hearts;" unicode="2665" ctg="s" o="1808">♥ </li>
+  <li class="ctg_s" title="diamonds" xhtml="&diams;" unicode="2666" ctg="s" o="1809">♦ </li>
+  <li class="ctg_s" title="clubs" xhtml="&clubs;" unicode="2663" ctg="s" o="1810">♣ </li>
+  <li class="ctg_s" title="black_joker" xhtml="&#127183;" unicode="1f0cf" ctg="s" o="1811">🃏 </li>
+  <li class="ctg_s" title="mahjong" xhtml="&#126980;" unicode="1f004" ctg="s" o="1812">🀄 </li>
+  <li class="ctg_s" title="flower_playing_cards" xhtml="&#127924;" unicode="1f3b4" ctg="s" o="1813">🎴 </li>
+  <li class="ctg_s" title="mute" xhtml="&#128263;" unicode="1f507" ctg="s" o="1814">🔇 </li>
+  <li class="ctg_s" title="speaker" xhtml="&#128264;" unicode="1f508" ctg="s" o="1815">🔈 </li>
+  <li class="ctg_s" title="sound" xhtml="&#128265;" unicode="1f509" ctg="s" o="1816">🔉 </li>
+  <li class="ctg_s" title="loud_sound" xhtml="&#128266;" unicode="1f50a" ctg="s" o="1817">🔊 </li>
+  <li class="ctg_s" title="loudspeaker" xhtml="&#128226;" unicode="1f4e2" ctg="s" o="1818">📢 </li>
+  <li class="ctg_s" title="mega" xhtml="&#128227;" unicode="1f4e3" ctg="s" o="1819">📣 </li>
+  <li class="ctg_o" title="postal_horn" xhtml="&#128239;" unicode="1f4ef" ctg="o" o="1820">📯 </li>
+  <li class="ctg_s" title="bell" xhtml="&#128276;" unicode="1f514" ctg="s" o="1821">🔔 </li>
+  <li class="ctg_s" title="no_bell" xhtml="&#128277;" unicode="1f515" ctg="s" o="1822">🔕 </li>
+  <li class="ctg_a" title="musical_score" xhtml="&#127932;" unicode="1f3bc" ctg="a" o="1823">🎼 </li>
+  <li class="ctg_s" title="musical_note" xhtml="&#127925;" unicode="1f3b5" ctg="s" o="1824">🎵 </li>
+  <li class="ctg_s" title="notes" xhtml="&#127926;" unicode="1f3b6" ctg="s" o="1825">🎶 </li>
+  <li class="ctg_o" title="level_slider" xhtml="&#127898;" unicode="1f39a" ctg="o" o="1827">🎚 </li>
+  <li class="ctg_o" title="control_knobs" xhtml="&#127899;" unicode="1f39b" ctg="o" o="1828">🎛 </li>
+  <li class="ctg_a" title="microphone" xhtml="&#127908;" unicode="1f3a4" ctg="a" o="1829">🎤 </li>
+  <li class="ctg_a" title="headphones" xhtml="&#127911;" unicode="1f3a7" ctg="a" o="1830">🎧 </li>
+  <li class="ctg_o" title="radio" xhtml="&#128251;" unicode="1f4fb" ctg="o" o="1831">📻 </li>
+  <li class="ctg_a" title="saxophone" xhtml="&#127927;" unicode="1f3b7" ctg="a" o="1832">🎷 </li>
+  <li class="ctg_a" title="guitar" xhtml="&#127928;" unicode="1f3b8" ctg="a" o="1833">🎸 </li>
+  <li class="ctg_a" title="musical_keyboard" xhtml="&#127929;" unicode="1f3b9" ctg="a" o="1834">🎹 </li>
+  <li class="ctg_a" title="trumpet" xhtml="&#127930;" unicode="1f3ba" ctg="a" o="1835">🎺 </li>
+  <li class="ctg_a" title="violin" xhtml="&#127931;" unicode="1f3bb" ctg="a" o="1836">🎻 </li>
+  <li class="ctg_a" title="drum" xhtml="&#129345;" unicode="1f941" ctg="a" o="1837">🥁 </li>
+  <li class="ctg_o" title="iphone" xhtml="&#128241;" unicode="1f4f1" ctg="o" o="1838">📱 </li>
+  <li class="ctg_o" title="calling" xhtml="&#128242;" unicode="1f4f2" ctg="o" o="1839">📲 </li>
+  <li class="ctg_o" title="telephone" xhtml="&#9742;" unicode="260e" ctg="o" o="1840">☎️ </li>
+  <li class="ctg_o" title="telephone_receiver" xhtml="&#128222;" unicode="1f4de" ctg="o" o="1841">📞 </li>
+  <li class="ctg_o" title="pager" xhtml="&#128223;" unicode="1f4df" ctg="o" o="1842">📟 </li>
+  <li class="ctg_o" title="fax" xhtml="&#128224;" unicode="1f4e0" ctg="o" o="1843">📠 </li>
+  <li class="ctg_o" title="battery" xhtml="&#128267;" unicode="1f50b" ctg="o" o="1844">🔋 </li>
+  <li class="ctg_o" title="electric_plug" xhtml="&#128268;" unicode="1f50c" ctg="o" o="1845">🔌 </li>
+  <li class="ctg_o" title="computer" xhtml="&#128187;" unicode="1f4bb" ctg="o" o="1846">💻 </li>
+  <li class="ctg_o" title="printer" xhtml="&#128424;" unicode="1f5a8" ctg="o" o="1848">🖨 </li>
+  <li class="ctg_o" title="keyboard" xhtml="&#9000;" unicode="2328" ctg="o" o="1849">⌨ </li>
+  <li class="ctg_o" title="trackball" xhtml="&#128434;" unicode="1f5b2" ctg="o" o="1851">🖲 </li>
+  <li class="ctg_o" title="minidisc" xhtml="&#128189;" unicode="1f4bd" ctg="o" o="1852">💽 </li>
+  <li class="ctg_o" title="floppy_disk" xhtml="&#128190;" unicode="1f4be" ctg="o" o="1853">💾 </li>
+  <li class="ctg_o" title="cd" xhtml="&#128191;" unicode="1f4bf" ctg="o" o="1854">💿 </li>
+  <li class="ctg_o" title="dvd" xhtml="&#128192;" unicode="1f4c0" ctg="o" o="1855">📀 </li>
+  <li class="ctg_o" title="movie_camera" xhtml="&#127909;" unicode="1f3a5" ctg="o" o="1856">🎥 </li>
+  <li class="ctg_o" title="film_frames" xhtml="&#127902;" unicode="1f39e" ctg="o" o="1857">🎞 </li>
+  <li class="ctg_a" title="clapper" xhtml="&#127916;" unicode="1f3ac" ctg="a" o="1859">🎬 </li>
+  <li class="ctg_o" title="tv" xhtml="&#128250;" unicode="1f4fa" ctg="o" o="1860">📺 </li>
+  <li class="ctg_o" title="camera" xhtml="&#128247;" unicode="1f4f7" ctg="o" o="1861">📷 </li>
+  <li class="ctg_o" title="camera_with_flash" xhtml="&#128248;" unicode="1f4f8" ctg="o" o="1862">📸 </li>
+  <li class="ctg_o" title="video_camera" xhtml="&#128249;" unicode="1f4f9" ctg="o" o="1863">📹 </li>
+  <li class="ctg_o" title="vhs" xhtml="&#128252;" unicode="1f4fc" ctg="o" o="1864">📼 </li>
+  <li class="ctg_o" title="mag" xhtml="&#128269;" unicode="1f50d" ctg="o" o="1865">🔍 </li>
+  <li class="ctg_o" title="mag_right" xhtml="&#128270;" unicode="1f50e" ctg="o" o="1866">🔎 </li>
+  <li class="ctg_o" title="microscope" xhtml="&#128300;" unicode="1f52c" ctg="o" o="1867">🔬 </li>
+  <li class="ctg_o" title="telescope" xhtml="&#128301;" unicode="1f52d" ctg="o" o="1868">🔭 </li>
+  <li class="ctg_o" title="satellite" xhtml="&#128225;" unicode="1f4e1" ctg="o" o="1869">📡 </li>
+  <li class="ctg_o" title="candle" xhtml="&#128367;" unicode="1f56f" ctg="o" o="1870">🕯 </li>
+  <li class="ctg_o" title="bulb" xhtml="&#128161;" unicode="1f4a1" ctg="o" o="1871">💡 </li>
+  <li class="ctg_o" title="flashlight" xhtml="&#128294;" unicode="1f526" ctg="o" o="1872">🔦 </li>
+  <li class="ctg_o" title="izakaya_lantern" xhtml="&#127982;" unicode="1f3ee" ctg="o" o="1873">🏮 </li>
+  <li class="ctg_o" title="notebook_with_decorative_cover" xhtml="&#128212;" unicode="1f4d4" ctg="o" o="1874">📔 </li>
+  <li class="ctg_o" title="closed_book" xhtml="&#128213;" unicode="1f4d5" ctg="o" o="1875">📕 </li>
+  <li class="ctg_o" title="book" xhtml="&#128214;" unicode="1f4d6" ctg="o" o="1876">📖 </li>
+  <li class="ctg_o" title="green_book" xhtml="&#128215;" unicode="1f4d7" ctg="o" o="1877">📗 </li>
+  <li class="ctg_o" title="blue_book" xhtml="&#128216;" unicode="1f4d8" ctg="o" o="1878">📘 </li>
+  <li class="ctg_o" title="orange_book" xhtml="&#128217;" unicode="1f4d9" ctg="o" o="1879">📙 </li>
+  <li class="ctg_o" title="books" xhtml="&#128218;" unicode="1f4da" ctg="o" o="1880">📚 </li>
+  <li class="ctg_o" title="notebook" xhtml="&#128211;" unicode="1f4d3" ctg="o" o="1881">📓 </li>
+  <li class="ctg_o" title="ledger" xhtml="&#128210;" unicode="1f4d2" ctg="o" o="1882">📒 </li>
+  <li class="ctg_o" title="page_with_curl" xhtml="&#128195;" unicode="1f4c3" ctg="o" o="1883">📃 </li>
+  <li class="ctg_o" title="scroll" xhtml="&#128220;" unicode="1f4dc" ctg="o" o="1884">📜 </li>
+  <li class="ctg_o" title="page_facing_up" xhtml="&#128196;" unicode="1f4c4" ctg="o" o="1885">📄 </li>
+  <li class="ctg_o" title="newspaper" xhtml="&#128240;" unicode="1f4f0" ctg="o" o="1886">📰 </li>
+  <li class="ctg_o" title="bookmark_tabs" xhtml="&#128209;" unicode="1f4d1" ctg="o" o="1888">📑 </li>
+  <li class="ctg_o" title="bookmark" xhtml="&#128278;" unicode="1f516" ctg="o" o="1889">🔖 </li>
+  <li class="ctg_o" title="label" xhtml="&#127991;" unicode="1f3f7" ctg="o" o="1890">🏷 </li>
+  <li class="ctg_o" title="moneybag" xhtml="&#128176;" unicode="1f4b0" ctg="o" o="1891">💰 </li>
+  <li class="ctg_o" title="yen" xhtml="&#128180;" unicode="1f4b4" ctg="o" o="1892">💴 </li>
+  <li class="ctg_o" title="dollar" xhtml="&#128181;" unicode="1f4b5" ctg="o" o="1893">💵 </li>
+  <li class="ctg_o" title="euro" xhtml="&#128182;" unicode="1f4b6" ctg="o" o="1894">💶 </li>
+  <li class="ctg_o" title="pound" xhtml="&#128183;" unicode="1f4b7" ctg="o" o="1895">💷 </li>
+  <li class="ctg_o" title="money_with_wings" xhtml="&#128184;" unicode="1f4b8" ctg="o" o="1896">💸 </li>
+  <li class="ctg_o" title="credit_card" xhtml="&#128179;" unicode="1f4b3" ctg="o" o="1897">💳 </li>
+  <li class="ctg_s" title="chart" xhtml="&#128185;" unicode="1f4b9" ctg="s" o="1898">💹 </li>
+  <li class="ctg_s" title="currency_exchange" xhtml="&#128177;" unicode="1f4b1" ctg="s" o="1899">💱 </li>
+  <li class="ctg_s" title="heavy_dollar_sign" xhtml="&#128178;" unicode="1f4b2" ctg="s" o="1900">💲 </li>
+  <li class="ctg_o" title="e-mail" xhtml="&#128231;" unicode="1f4e7" ctg="o" o="1902">📧 </li>
+  <li class="ctg_o" title="incoming_envelope" xhtml="&#128232;" unicode="1f4e8" ctg="o" o="1903">📨 </li>
+  <li class="ctg_o" title="envelope_with_arrow" xhtml="&#128233;" unicode="1f4e9" ctg="o" o="1904">📩 </li>
+  <li class="ctg_o" title="outbox_tray" xhtml="&#128228;" unicode="1f4e4" ctg="o" o="1905">📤 </li>
+  <li class="ctg_o" title="inbox_tray" xhtml="&#128229;" unicode="1f4e5" ctg="o" o="1906">📥 </li>
+  <li class="ctg_o" title="package" xhtml="&#128230;" unicode="1f4e6" ctg="o" o="1907">📦 </li>
+  <li class="ctg_o" title="mailbox" xhtml="&#128235;" unicode="1f4eb" ctg="o" o="1908">📫 </li>
+  <li class="ctg_o" title="mailbox_closed" xhtml="&#128234;" unicode="1f4ea" ctg="o" o="1909">📪 </li>
+  <li class="ctg_o" title="mailbox_with_mail" xhtml="&#128236;" unicode="1f4ec" ctg="o" o="1910">📬 </li>
+  <li class="ctg_o" title="mailbox_with_no_mail" xhtml="&#128237;" unicode="1f4ed" ctg="o" o="1911">📭 </li>
+  <li class="ctg_o" title="postbox" xhtml="&#128238;" unicode="1f4ee" ctg="o" o="1912">📮 </li>
+  <li class="ctg_o" title="ballot_box" xhtml="&#128499;" unicode="1f5f3" ctg="o" o="1913">🗳 </li>
+  <li class="ctg_o" title="pencil2" xhtml="&#9999;" unicode="270f" ctg="o" o="1914">✏ </li>
+  <li class="ctg_o" title="black_nib" xhtml="&#10002;" unicode="2712" ctg="o" o="1915">✒ </li>
+  <li class="ctg_p" title="briefcase" xhtml="&#128188;" unicode="1f4bc" ctg="p" o="1921">💼 </li>
+  <li class="ctg_o" title="file_folder" xhtml="&#128193;" unicode="1f4c1" ctg="o" o="1922">📁 </li>
+  <li class="ctg_o" title="open_file_folder" xhtml="&#128194;" unicode="1f4c2" ctg="o" o="1923">📂 </li>
+  <li class="ctg_o" title="date" xhtml="&#128197;" unicode="1f4c5" ctg="o" o="1925">📅 </li>
+  <li class="ctg_o" title="calendar" xhtml="&#128198;" unicode="1f4c6" ctg="o" o="1926">📆 </li>
+  <li class="ctg_o" title="card_index" xhtml="&#128199;" unicode="1f4c7" ctg="o" o="1929">📇 </li>
+  <li class="ctg_o" title="chart_with_upwards_trend" xhtml="&#128200;" unicode="1f4c8" ctg="o" o="1930">📈 </li>
+  <li class="ctg_o" title="chart_with_downwards_trend" xhtml="&#128201;" unicode="1f4c9" ctg="o" o="1931">📉 </li>
+  <li class="ctg_o" title="bar_chart" xhtml="&#128202;" unicode="1f4ca" ctg="o" o="1932">📊 </li>
+  <li class="ctg_o" title="clipboard" xhtml="&#128203;" unicode="1f4cb" ctg="o" o="1933">📋 </li>
+  <li class="ctg_o" title="pushpin" xhtml="&#128204;" unicode="1f4cc" ctg="o" o="1934">📌 </li>
+  <li class="ctg_o" title="round_pushpin" xhtml="&#128205;" unicode="1f4cd" ctg="o" o="1935">📍 </li>
+  <li class="ctg_o" title="paperclip" xhtml="&#128206;" unicode="1f4ce" ctg="o" o="1936">📎 </li>
+  <li class="ctg_o" title="straight_ruler" xhtml="&#128207;" unicode="1f4cf" ctg="o" o="1938">📏 </li>
+  <li class="ctg_o" title="triangular_ruler" xhtml="&#128208;" unicode="1f4d0" ctg="o" o="1939">📐 </li>
+  <li class="ctg_o" title="scissors" xhtml="&#9986;" unicode="2702" ctg="o" o="1940">✂️ </li>
+  <li class="ctg_o" title="file_cabinet" xhtml="&#128452;" unicode="1f5c4" ctg="o" o="1942">🗄 </li>
+  <li class="ctg_o" title="wastebasket" xhtml="&#128465;" unicode="1f5d1" ctg="o" o="1943">🗑 </li>
+  <li class="ctg_o" title="lock" xhtml="&#128274;" unicode="1f512" ctg="o" o="1944">🔒 </li>
+  <li class="ctg_o" title="unlock" xhtml="&#128275;" unicode="1f513" ctg="o" o="1945">🔓 </li>
+  <li class="ctg_o" title="lock_with_ink_pen" xhtml="&#128271;" unicode="1f50f" ctg="o" o="1946">🔏 </li>
+  <li class="ctg_o" title="closed_lock_with_key" xhtml="&#128272;" unicode="1f510" ctg="o" o="1947">🔐 </li>
+  <li class="ctg_o" title="key" xhtml="&#128273;" unicode="1f511" ctg="o" o="1948">🔑 </li>
+  <li class="ctg_o" title="hammer" xhtml="&#128296;" unicode="1f528" ctg="o" o="1950">🔨 </li>
+  <li class="ctg_o" title="pick" xhtml="&#9935;" unicode="26cf" ctg="o" o="1951">⛏ </li>
+  <li class="ctg_o" title="crossed_swords" xhtml="&#9876;" unicode="2694" ctg="o" o="1955">⚔ </li>
+  <li class="ctg_o" title="gun" xhtml="&#128299;" unicode="1f52b" ctg="o" o="1956">🔫 </li>
+  <li class="ctg_a" title="bow_and_arrow" xhtml="&#127993;" unicode="1f3f9" ctg="a" o="1957">🏹 </li>
+  <li class="ctg_o" title="shield" xhtml="&#128737;" unicode="1f6e1" ctg="o" o="1958">🛡 </li>
+  <li class="ctg_o" title="wrench" xhtml="&#128295;" unicode="1f527" ctg="o" o="1959">🔧 </li>
+  <li class="ctg_o" title="nut_and_bolt" xhtml="&#128297;" unicode="1f529" ctg="o" o="1960">🔩 </li>
+  <li class="ctg_o" title="gear" xhtml="&#9881;" unicode="2699" ctg="o" o="1961">⚙ </li>
+  <li class="ctg_o" title="compression" xhtml="&#128476;" unicode="1f5dc" ctg="o" o="1962">🗜 </li>
+  <li class="ctg_o" title="alembic" xhtml="&#9879;" unicode="2697" ctg="o" o="1963">⚗ </li>
+  <li class="ctg_o" title="scales" xhtml="&#9878;" unicode="2696" ctg="o" o="1964">⚖ </li>
+  <li class="ctg_o" title="link" xhtml="&#128279;" unicode="1f517" ctg="o" o="1965">🔗 </li>
+  <li class="ctg_o" title="chains" xhtml="&#9939;" unicode="26d3" ctg="o" o="1966">⛓ </li>
+  <li class="ctg_o" title="syringe" xhtml="&#128137;" unicode="1f489" ctg="o" o="1967">💉 </li>
+  <li class="ctg_o" title="pill" xhtml="&#128138;" unicode="1f48a" ctg="o" o="1968">💊 </li>
+  <li class="ctg_o" title="smoking" xhtml="&#128684;" unicode="1f6ac" ctg="o" o="1969">🚬 </li>
+  <li class="ctg_o" title="coffin" xhtml="&#9904;" unicode="26b0" ctg="o" o="1970">⚰ </li>
+  <li class="ctg_o" title="moyai" xhtml="&#128511;" unicode="1f5ff" ctg="o" o="1972">🗿 </li>
+  <li class="ctg_o" title="crystal_ball" xhtml="&#128302;" unicode="1f52e" ctg="o" o="1974">🔮 </li>
+  <li class="ctg_s" title="atm" xhtml="&#127975;" unicode="1f3e7" ctg="s" o="1976">🏧 </li>
+  <li class="ctg_s" title="put_litter_in_its_place" xhtml="&#128686;" unicode="1f6ae" ctg="s" o="1977">🚮 </li>
+  <li class="ctg_s" title="potable_water" xhtml="&#128688;" unicode="1f6b0" ctg="s" o="1978">🚰 </li>
+  <li class="ctg_s" title="wheelchair" xhtml="&#9855;" unicode="267f" ctg="s" o="1979">♿ </li>
+  <li class="ctg_s" title="mens" xhtml="&#128697;" unicode="1f6b9" ctg="s" o="1980">🚹 </li>
+  <li class="ctg_s" title="womens" xhtml="&#128698;" unicode="1f6ba" ctg="s" o="1981">🚺 </li>
+  <li class="ctg_s" title="restroom" xhtml="&#128699;" unicode="1f6bb" ctg="s" o="1982">🚻 </li>
+  <li class="ctg_s" title="baby_symbol" xhtml="&#128700;" unicode="1f6bc" ctg="s" o="1983">🚼 </li>
+  <li class="ctg_s" title="wc" xhtml="&#128702;" unicode="1f6be" ctg="s" o="1984">🚾 </li>
+  <li class="ctg_s" title="passport_control" xhtml="&#128706;" unicode="1f6c2" ctg="s" o="1985">🛂 </li>
+  <li class="ctg_s" title="customs" xhtml="&#128707;" unicode="1f6c3" ctg="s" o="1986">🛃 </li>
+  <li class="ctg_s" title="baggage_claim" xhtml="&#128708;" unicode="1f6c4" ctg="s" o="1987">🛄 </li>
+  <li class="ctg_s" title="left_luggage" xhtml="&#128709;" unicode="1f6c5" ctg="s" o="1988">🛅 </li>
+  <li class="ctg_s" title="warning" xhtml="&#9888;" unicode="26a0" ctg="s" o="1989">⚠️ </li>
+  <li class="ctg_s" title="children_crossing" xhtml="&#128696;" unicode="1f6b8" ctg="s" o="1990">🚸 </li>
+  <li class="ctg_s" title="no_entry" xhtml="&#9940;" unicode="26d4" ctg="s" o="1991">⛔ </li>
+  <li class="ctg_s" title="no_entry_sign" xhtml="&#128683;" unicode="1f6ab" ctg="s" o="1992">🚫 </li>
+  <li class="ctg_s" title="no_bicycles" xhtml="&#128691;" unicode="1f6b3" ctg="s" o="1993">🚳 </li>
+  <li class="ctg_s" title="no_smoking" xhtml="&#128685;" unicode="1f6ad" ctg="s" o="1994">🚭 </li>
+  <li class="ctg_s" title="do_not_litter" xhtml="&#128687;" unicode="1f6af" ctg="s" o="1995">🚯 </li>
+  <li class="ctg_s" title="non-potable_water" xhtml="&#128689;" unicode="1f6b1" ctg="s" o="1996">🚱 </li>
+  <li class="ctg_s" title="no_pedestrians" xhtml="&#128695;" unicode="1f6b7" ctg="s" o="1997">🚷 </li>
+  <li class="ctg_s" title="no_mobile_phones" xhtml="&#128245;" unicode="1f4f5" ctg="s" o="1998">📵 </li>
+  <li class="ctg_s" title="underage" xhtml="&#128286;" unicode="1f51e" ctg="s" o="1999">🔞 </li>
+  <li class="ctg_s" title="radioactive" xhtml="&#9762;" unicode="2622" ctg="s" o="2000">☢ </li>
+  <li class="ctg_s" title="biohazard" xhtml="&#9763;" unicode="2623" ctg="s" o="2001">☣ </li>
+  <li class="ctg_s" title="arrow_up" xhtml="&#11014;" unicode="2b06" ctg="s" o="2002">⬆️ </li>
+  <li class="ctg_s" title="arrow_upper_right" xhtml="&#8599;" unicode="2197" ctg="s" o="2003">↗️ </li>
+  <li class="ctg_s" title="arrow_right" xhtml="&#10145;" unicode="27a1" ctg="s" o="2004">➡ </li>
+  <li class="ctg_s" title="arrow_lower_right" xhtml="&#8600;" unicode="2198" ctg="s" o="2005">↘️ </li>
+  <li class="ctg_s" title="arrow_down" xhtml="&#11015;" unicode="2b07" ctg="s" o="2006">⬇️ </li>
+  <li class="ctg_s" title="arrow_lower_left" xhtml="&#8601;" unicode="2199" ctg="s" o="2007">↙️ </li>
+  <li class="ctg_s" title="arrow_left" xhtml="&#11013;" unicode="2b05" ctg="s" o="2008">⬅️ </li>
+  <li class="ctg_s" title="arrow_upper_left" xhtml="&#8598;" unicode="2196" ctg="s" o="2009">↖ </li>
+  <li class="ctg_s" title="arrow_up_down" xhtml="&#8597;" unicode="2195" ctg="s" o="2010">↕ </li>
+  <li class="ctg_s" title="left_right_arrow" xhtml="&harr;" unicode="2194" ctg="s" o="2011">↔ </li>
+  <li class="ctg_s" title="leftwards_arrow_with_hook" xhtml="&#8617;" unicode="21a9" ctg="s" o="2012">↩️ </li>
+  <li class="ctg_s" title="arrow_right_hook" xhtml="&#8618;" unicode="21aa" ctg="s" o="2013">↪️ </li>
+  <li class="ctg_s" title="arrow_heading_up" xhtml="&#10548;" unicode="2934" ctg="s" o="2014">⤴️ </li>
+  <li class="ctg_s" title="arrow_heading_down" xhtml="&#10549;" unicode="2935" ctg="s" o="2015">⤵️ </li>
+  <li class="ctg_s" title="arrows_clockwise" xhtml="&#128259;" unicode="1f503" ctg="s" o="2016">🔃 </li>
+  <li class="ctg_s" title="arrows_counterclockwise" xhtml="&#128260;" unicode="1f504" ctg="s" o="2017">🔄 </li>
+  <li class="ctg_s" title="back" xhtml="&#128281;" unicode="1f519" ctg="s" o="2018">🔙 </li>
+  <li class="ctg_s" title="end" xhtml="&#128282;" unicode="1f51a" ctg="s" o="2019">🔚 </li>
+  <li class="ctg_s" title="on" xhtml="&#128283;" unicode="1f51b" ctg="s" o="2020">🔛 </li>
+  <li class="ctg_s" title="soon" xhtml="&#128284;" unicode="1f51c" ctg="s" o="2021">🔜 </li>
+  <li class="ctg_s" title="top" xhtml="&#128285;" unicode="1f51d" ctg="s" o="2022">🔝 </li>
+  <li class="ctg_s" title="place_of_worship" xhtml="&#128720;" unicode="1f6d0" ctg="s" o="2023">🛐 </li>
+  <li class="ctg_s" title="atom" xhtml="&#9883;" unicode="269b" ctg="s" o="2024">⚛ </li>
+  <li class="ctg_s" title="om_symbol" xhtml="&#128329;" unicode="1f549" ctg="s" o="2025">🕉 </li>
+  <li class="ctg_s" title="star_of_david" xhtml="&#10017;" unicode="2721" ctg="s" o="2026">✡️ </li>
+  <li class="ctg_s" title="wheel_of_dharma" xhtml="&#9784;" unicode="2638" ctg="s" o="2027">☸ </li>
+  <li class="ctg_s" title="yin_yang" xhtml="&#9775;" unicode="262f" ctg="s" o="2028">☯ </li>
+  <li class="ctg_s" title="cross" xhtml="&#10013;" unicode="271d" ctg="s" o="2029">✝️ </li>
+  <li class="ctg_s" title="orthodox_cross" xhtml="&#9766;" unicode="2626" ctg="s" o="2030">☦ </li>
+  <li class="ctg_s" title="star_and_crescent" xhtml="&#9770;" unicode="262a" ctg="s" o="2031">☪ </li>
+  <li class="ctg_s" title="peace" xhtml="&#9774;" unicode="262e" ctg="s" o="2032">☮ </li>
+  <li class="ctg_s" title="menorah" xhtml="&#128334;" unicode="1f54e" ctg="s" o="2033">🕎 </li>
+  <li class="ctg_s" title="six_pointed_star" xhtml="&#128303;" unicode="1f52f" ctg="s" o="2034">🔯 </li>
+  <li class="ctg_s" title="aries" xhtml="&#9800;" unicode="2648" ctg="s" o="2035">♈ </li>
+  <li class="ctg_s" title="taurus" xhtml="&#9801;" unicode="2649" ctg="s" o="2036">♉ </li>
+  <li class="ctg_s" title="gemini" xhtml="&#9802;" unicode="264a" ctg="s" o="2037">♊ </li>
+  <li class="ctg_s" title="cancer" xhtml="&#9803;" unicode="264b" ctg="s" o="2038">♋ </li>
+  <li class="ctg_s" title="leo" xhtml="&#9804;" unicode="264c" ctg="s" o="2039">♌ </li>
+  <li class="ctg_s" title="virgo" xhtml="&#9805;" unicode="264d" ctg="s" o="2040">♍ </li>
+  <li class="ctg_s" title="libra" xhtml="&#9806;" unicode="264e" ctg="s" o="2041">♎ </li>
+  <li class="ctg_s" title="scorpius" xhtml="&#9807;" unicode="264f" ctg="s" o="2042">♏ </li>
+  <li class="ctg_s" title="sagittarius" xhtml="&#9808;" unicode="2650" ctg="s" o="2043">♐ </li>
+  <li class="ctg_s" title="capricorn" xhtml="&#9809;" unicode="2651" ctg="s" o="2044">♑ </li>
+  <li class="ctg_s" title="aquarius" xhtml="&#9810;" unicode="2652" ctg="s" o="2045">♒ </li>
+  <li class="ctg_s" title="pisces" xhtml="&#9811;" unicode="2653" ctg="s" o="2046">♓ </li>
+  <li class="ctg_s" title="ophiuchus" xhtml="&#9934;" unicode="26ce" ctg="s" o="2047">⛎ </li>
+  <li class="ctg_s" title="twisted_rightwards_arrows" xhtml="&#128256;" unicode="1f500" ctg="s" o="2048">🔀 </li>
+  <li class="ctg_s" title="repeat" xhtml="&#128257;" unicode="1f501" ctg="s" o="2049">🔁 </li>
+  <li class="ctg_s" title="repeat_one" xhtml="&#128258;" unicode="1f502" ctg="s" o="2050">🔂 </li>
+  <li class="ctg_s" title="arrow_forward" xhtml="&#9654;" unicode="25b6" ctg="s" o="2051">▶️ </li>
+  <li class="ctg_s" title="fast_forward" xhtml="&#9193;" unicode="2.30E+10" ctg="s" o="2052">⏩ </li>
+  <li class="ctg_s" title="track_next" xhtml="&#9197;" unicode="23ed" ctg="s" o="2053">⏭ </li>
+  <li class="ctg_s" title="play_pause" xhtml="&#9199;" unicode="23ef" ctg="s" o="2054">⏯ </li>
+  <li class="ctg_s" title="arrow_backward" xhtml="&#9664;" unicode="25c0" ctg="s" o="2055">◀️ </li>
+  <li class="ctg_s" title="rewind" xhtml="&#9194;" unicode="23ea" ctg="s" o="2056">⏪ </li>
+  <li class="ctg_s" title="track_previous" xhtml="&#9198;" unicode="23ee" ctg="s" o="2057">⏮ </li>
+  <li class="ctg_s" title="arrow_up_small" xhtml="&#128316;" unicode="1f53c" ctg="s" o="2058">🔼 </li>
+  <li class="ctg_s" title="arrow_double_up" xhtml="&#9195;" unicode="23eb" ctg="s" o="2059">⏫ </li>
+  <li class="ctg_s" title="arrow_down_small" xhtml="&#128317;" unicode="1f53d" ctg="s" o="2060">🔽 </li>
+  <li class="ctg_s" title="arrow_double_down" xhtml="&#9196;" unicode="23ec" ctg="s" o="2061">⏬ </li>
+  <li class="ctg_s" title="cinema" xhtml="&#127910;" unicode="1f3a6" ctg="s" o="2066">🎦 </li>
+  <li class="ctg_s" title="low_brightness" xhtml="&#128261;" unicode="1f505" ctg="s" o="2067">🔅 </li>
+  <li class="ctg_s" title="high_brightness" xhtml="&#128262;" unicode="1f506" ctg="s" o="2068">🔆 </li>
+  <li class="ctg_s" title="signal_strength" xhtml="&#128246;" unicode="1f4f6" ctg="s" o="2069">📶 </li>
+  <li class="ctg_s" title="vibration_mode" xhtml="&#128243;" unicode="1f4f3" ctg="s" o="2070">📳 </li>
+  <li class="ctg_s" title="mobile_phone_off" xhtml="&#128244;" unicode="1f4f4" ctg="s" o="2071">📴 </li>
+  <li class="ctg_s" title="recycle" xhtml="&#9851;" unicode="267b" ctg="s" o="2072">♻ </li>
+  <li class="ctg_s" title="name_badge" xhtml="&#128219;" unicode="1f4db" ctg="s" o="2073">📛 </li>
+  <li class="ctg_s" title="fleur-de-lis" xhtml="&#9884;" unicode="269c" ctg="s" o="2074">⚜ </li>
+  <li class="ctg_s" title="beginner" xhtml="&#128304;" unicode="1f530" ctg="s" o="2075">🔰 </li>
+  <li class="ctg_s" title="trident" xhtml="&#128305;" unicode="1f531" ctg="s" o="2076">🔱 </li>
+  <li class="ctg_s" title="o" xhtml="&#11093;" unicode="2b55" ctg="s" o="2077">⭕ </li>
+  <li class="ctg_s" title="white_check_mark" xhtml="&#9989;" unicode="2705" ctg="s" o="2078">✅ </li>
+  <li class="ctg_s" title="ballot_box_with_check" xhtml="&#9745;" unicode="2611" ctg="s" o="2079">☑️ </li>
+  <li class="ctg_s" title="heavy_check_mark" xhtml="&#10004;" unicode="2714" ctg="s" o="2080">✔️ </li>
+  <li class="ctg_s" title="heavy_multiplication_x" xhtml="&#10006;" unicode="2716" ctg="s" o="2081">✖️ </li>
+  <li class="ctg_s" title="x" xhtml="&#10060;" unicode="274c" ctg="s" o="2082">❌ </li>
+  <li class="ctg_s" title="negative_squared_cross_mark" xhtml="&#10062;" unicode="274e" ctg="s" o="2083">❎ </li>
+  <li class="ctg_s" title="heavy_plus_sign" xhtml="&#10133;" unicode="2795" ctg="s" o="2084">➕ </li>
+  <li class="ctg_s" title="heavy_minus_sign" xhtml="&#10134;" unicode="2796" ctg="s" o="2088">➖ </li>
+  <li class="ctg_s" title="heavy_division_sign" xhtml="&#10135;" unicode="2797" ctg="s" o="2089">➗ </li>
+  <li class="ctg_s" title="curly_loop" xhtml="&#10160;" unicode="27b0" ctg="s" o="2090">➰ </li>
+  <li class="ctg_s" title="loop" xhtml="&#10175;" unicode="27bf" ctg="s" o="2091">➿ </li>
+  <li class="ctg_s" title="part_alternation_mark" xhtml="&#12349;" unicode="303d" ctg="s" o="2092">〽️ </li>
+  <li class="ctg_s" title="eight_spoked_asterisk" xhtml="&#10035;" unicode="2733" ctg="s" o="2093">✳️ </li>
+  <li class="ctg_s" title="eight_pointed_black_star" xhtml="&#10036;" unicode="2734" ctg="s" o="2094">✴️ </li>
+  <li class="ctg_s" title="sparkle" xhtml="&#10055;" unicode="2747" ctg="s" o="2095">❇️ </li>
+  <li class="ctg_s" title="bangbang" xhtml="&#8252;" unicode="203c" ctg="s" o="2096">‼️ </li>
+  <li class="ctg_s" title="interrobang" xhtml="&#8265;" unicode="2049" ctg="s" o="2097">⁉️ </li>
+  <li class="ctg_s" title="question" xhtml="&#10067;" unicode="2753" ctg="s" o="2098">❓ </li>
+  <li class="ctg_s" title="grey_question" xhtml="&#10068;" unicode="2754" ctg="s" o="2099">❔ </li>
+  <li class="ctg_s" title="grey_exclamation" xhtml="&#10069;" unicode="2755" ctg="s" o="2100">❕ </li>
+  <li class="ctg_s" title="exclamation" xhtml="&#10071;" unicode="2757" ctg="s" o="2101">❗ </li>
+  <li class="ctg_s" title="wavy_dash" xhtml="&#12336;" unicode="3030" ctg="s" o="2102">〰 </li>
+  <li class="ctg_s" title="copyright" xhtml="&copy;" unicode="00a9" ctg="s" o="2103">© </li>
+  <li class="ctg_s" title="registered" xhtml="&reg;" unicode="00ae" ctg="s" o="2104">® </li>
+  <li class="ctg_s" title="tm" xhtml="&trade;" unicode="2122" ctg="s" o="2105">™ </li>
+  <li class="ctg_s" title="hash xhtml="#&#8419;" unicode="0023-20e3" ctg="s" o="2106">#⃣ </li>
+  <li class="ctg_s" title="asterisk xhtml="*&#8419;" unicode="002a-20e3" ctg="s" o="2107">*⃣ </li>
+  <li class="ctg_s" title="zero xhtml="0&#8419;" unicode="0030-20e3" ctg="s" o="2108">0⃣ </li>
+  <li class="ctg_s" title="one xhtml="1&#8419;" unicode="0031-20e3" ctg="s" o="2109">1⃣ </li>
+  <li class="ctg_s" title="two xhtml="2&#8419;" unicode="0032-20e3" ctg="s" o="2110">2⃣ </li>
+  <li class="ctg_s" title="three xhtml="3&#8419;" unicode="0033-20e3" ctg="s" o="2111">3⃣ </li>
+  <li class="ctg_s" title="four xhtml="4&#8419;" unicode="0034-20e3" ctg="s" o="2112">4⃣ </li>
+  <li class="ctg_s" title="five xhtml="5&#8419;" unicode="0035-20e3" ctg="s" o="2113">5⃣ </li>
+  <li class="ctg_s" title="six xhtml="6&#8419;" unicode="0036-20e3" ctg="s" o="2114">6⃣ </li>
+  <li class="ctg_s" title="seven xhtml="7&#8419;" unicode="0037-20e3" ctg="s" o="2115">7⃣ </li>
+  <li class="ctg_s" title="eight xhtml="8&#8419;" unicode="0038-20e3" ctg="s" o="2116">8⃣ </li>
+  <li class="ctg_s" title="asterisk" xhtml="&#42;" unicode=""ctg="s" o="2118">*️⃣ </li>
+  <li class="ctg_s" title="keycap_ten" xhtml="&#128287;" unicode="1f51f" ctg="s" o="2118">🔟 </li>
+  <li class="ctg_s" title="capital_abcd" xhtml="&#128288;" unicode="1f520" ctg="s" o="2120">🔠 </li>
+  <li class="ctg_s" title="abcd" xhtml="&#128289;" unicode="1f521" ctg="s" o="2121">🔡 </li>
+  <li class="ctg_s" title="symbols" xhtml="&#128291;" unicode="1f523" ctg="s" o="2123">🔣 </li>
+  <li class="ctg_s" title="abc" xhtml="&#128292;" unicode="1f524" ctg="s" o="2124">🔤 </li>
+  <li class="ctg_s" title="a" xhtml="&#127344;" unicode="1f170" ctg="s" o="2125">🅰️ </li>
+  <li class="ctg_s" title="ab" xhtml="&#127374;" unicode="1f18e" ctg="s" o="2126">🆎 </li>
+  <li class="ctg_s" title="b" xhtml="&#127345;" unicode="1f171" ctg="s" o="2127">🅱️ </li>
+  <li class="ctg_s" title="cl" xhtml="&#127377;" unicode="1f191" ctg="s" o="2128">🆑 </li>
+  <li class="ctg_s" title="cool" xhtml="&#127378;" unicode="1f192" ctg="s" o="2129">🆒 </li>
+  <li class="ctg_s" title="free" xhtml="&#127379;" unicode="1f193" ctg="s" o="2130">🆓 </li>
+  <li class="ctg_s" title="information_source" xhtml="&#8505;" unicode="2139" ctg="s" o="2131">ℹ </li>
+  <li class="ctg_s" title="id" xhtml="&#127380;" unicode="1f194" ctg="s" o="2132">🆔 </li>
+  <li class="ctg_s" title="m" xhtml="&#9410;" unicode="24c2" ctg="s" o="2133">Ⓜ️ </li>
+  <li class="ctg_s" title="new" xhtml="&#127381;" unicode="1f195" ctg="s" o="2134">🆕 </li>
+  <li class="ctg_s" title="ng" xhtml="&#127382;" unicode="1f196" ctg="s" o="2135">🆖 </li>
+  <li class="ctg_s" title="o2" xhtml="&#127358;" unicode="1f17e" ctg="s" o="2136">🅾️ </li>
+  <li class="ctg_s" title="ok" xhtml="&#127383;" unicode="1f197" ctg="s" o="2137">🆗 </li>
+  <li class="ctg_s" title="parking" xhtml="&#127359;" unicode="1f17f" ctg="s" o="2138">🅿️ </li>
+  <li class="ctg_s" title="sos" xhtml="&#127384;" unicode="1f198" ctg="s" o="2139">🆘 </li>
+  <li class="ctg_s" title="up" xhtml="&#127385;" unicode="1f199" ctg="s" o="2140">🆙 </li>
+  <li class="ctg_s" title="vs" xhtml="&#127386;" unicode="1f19a" ctg="s" o="2141">🆚 </li>
+  <li class="ctg_s" title="koko" xhtml="&#127489;" unicode="1f201" ctg="s" o="2142">🈁 </li>
+  <li class="ctg_s" title="sa" xhtml="&#127490;" unicode="1f202" ctg="s" o="2143">🈂️ </li>
+  <li class="ctg_s" title="u6708" xhtml="&#127543;" unicode="1f237" ctg="s" o="2144">🈷 </li>
+  <li class="ctg_s" title="u6709" xhtml="&#127542;" unicode="1f236" ctg="s" o="2145">🈶 </li>
+  <li class="ctg_s" title="u6307" xhtml="&#127535;" unicode="1f22f" ctg="s" o="2146">🈯️ </li>
+  <li class="ctg_s" title="ideograph_advantage" xhtml="&#127568;" unicode="1f250" ctg="s" o="2147">🉐 </li>
+  <li class="ctg_s" title="u5272" xhtml="&#127545;" unicode="1f239" ctg="s" o="2148">🈹 </li>
+  <li class="ctg_s" title="u7121" xhtml="&#127514;" unicode="1f21a" ctg="s" o="2149">🈚️ </li>
+  <li class="ctg_s" title="u7981" xhtml="&#127538;" unicode="1f232" ctg="s" o="2150">🈲 </li>
+  <li class="ctg_s" title="accept" xhtml="&#127569;" unicode="1f251" ctg="s" o="2151">🉑 </li>
+  <li class="ctg_s" title="u7533" xhtml="&#127544;" unicode="1f238" ctg="s" o="2152">🈸 </li>
+  <li class="ctg_s" title="u5408" xhtml="&#127540;" unicode="1f234" ctg="s" o="2153">🈴 </li>
+  <li class="ctg_s" title="u7a7a" xhtml="&#127539;" unicode="1f233" ctg="s" o="2154">🈳 </li>
+  <li class="ctg_s" title="congratulations" xhtml="&#12951;" unicode="3297" ctg="s" o="2155">㊗ </li>
+  <li class="ctg_s" title="secret" xhtml="&#12953;" unicode="3299" ctg="s" o="2156">㊙ </li>
+  <li class="ctg_s" title="u55b6" xhtml="&#127546;" unicode="1f23a" ctg="s" o="2157">🈺 </li>
+  <li class="ctg_s" title="u6e80" xhtml="&#127541;" unicode="1f235" ctg="s" o="2158">🈵 </li>
+  <li class="ctg_s" title="black_small_square" xhtml="&#9642;" unicode="25aa" ctg="s" o="2159">▪️ </li>
+  <li class="ctg_s" title="white_small_square" xhtml="&#9643;" unicode="25ab" ctg="s" o="2160">▫ </li>
+  <li class="ctg_s" title="white_medium_square" xhtml="&#9723;" unicode="25fb" ctg="s" o="2161">◻️ </li>
+  <li class="ctg_s" title="black_medium_square" xhtml="&#9724;" unicode="25fc" ctg="s" o="2162">◼ </li>
+  <li class="ctg_s" title="white_medium_small_square" xhtml="&#9725;" unicode="25fd" ctg="s" o="2163">◽ </li>
+  <li class="ctg_s" title="black_medium_small_square" xhtml="&#9726;" unicode="25fe" ctg="s" o="2164">◾ </li>
+  <li class="ctg_s" title="black_large_square" xhtml="&#11035;" unicode="2b1b" ctg="s" o="2165">⬛ </li>
+  <li class="ctg_s" title="white_large_square" xhtml="&#11036;" unicode="2b1c" ctg="s" o="2166">⬜ </li>
+  <li class="ctg_s" title="large_orange_diamond" xhtml="&#128310;" unicode="1f536" ctg="s" o="2167">🔶 </li>
+  <li class="ctg_s" title="large_blue_diamond" xhtml="&#128311;" unicode="1f537" ctg="s" o="2168">🔷 </li>
+  <li class="ctg_s" title="small_orange_diamond" xhtml="&#128312;" unicode="1f538" ctg="s" o="2169">🔸 </li>
+  <li class="ctg_s" title="small_blue_diamond" xhtml="&#128313;" unicode="1f539" ctg="s" o="2170">🔹 </li>
+  <li class="ctg_s" title="small_red_triangle" xhtml="&#128314;" unicode="1f53a" ctg="s" o="2171">🔺 </li>
+  <li class="ctg_s" title="small_red_triangle_down" xhtml="&#128315;" unicode="1f53b" ctg="s" o="2172">🔻 </li>
+  <li class="ctg_s" title="diamond_shape_with_a_dot_inside" xhtml="&#128160;" unicode="1f4a0" ctg="s" o="2173">💠 </li>
+  <li class="ctg_s" title="radio_button" xhtml="&#128280;" unicode="1f518" ctg="s" o="2174">🔘 </li>
+  <li class="ctg_s" title="black_square_button" xhtml="&#128306;" unicode="1f532" ctg="s" o="2175">🔲 </li>
+  <li class="ctg_s" title="white_square_button" xhtml="&#128307;" unicode="1f533" ctg="s" o="2176">🔳 </li>
+  <li class="ctg_s" title="white_circle" xhtml="&#9898;" unicode="26aa" ctg="s" o="2177">⚪ </li>
+  <li class="ctg_s" title="black_circle" xhtml="&#9899;" unicode="26ab" ctg="s" o="2178">⚫ </li>
+  <li class="ctg_s" title="red_circle" xhtml="&#128308;" unicode="1f534" ctg="s" o="2179">🔴 </li>
+  <li class="ctg_s" title="blue_circle" xhtml="&#128309;" unicode="1f535" ctg="s" o="2180">🔵 </li>
+  <li class="ctg_t" title="checkered_flag" xhtml="&#127937;" unicode="1f3c1" ctg="t" o="2181">🏁 </li>
+  <li class="ctg_o" title="triangular_flag_on_post" xhtml="&#128681;" unicode="1f6a9" ctg="o" o="2182">🚩 </li>
+  <li class="ctg_o" title="crossed_flags" xhtml="&#127884;" unicode="1f38c" ctg="o" o="2183">🎌 </li>
+  <li class="ctg_o" title="waving_black_flag" xhtml="&#127988;" unicode="1f3f4" ctg="o" o="2184">🏴 </li>
+  <li class="ctg_o" title="waving_white_flag" xhtml="&#127987;" unicode="1f3f3" ctg="o" o="2185">🏳 </li>
+  <li class="ctg_f" title="Ascension Island" xhtml="&#127462;&#127464;" unicode="1f1e6-1f1e8" ctg="f" o="2187">🇦🇨 </li>
+  <li class="ctg_f" title="Andorra" xhtml="&#127462;&#127465;" unicode="1f1e6-1f1e9" ctg="f" o="2188">🇦🇩 </li>
+  <li class="ctg_f" title="United Arab Emirates" xhtml="&#127462;&#127466;" unicode="1f1e6-1f1ea" ctg="f" o="2189">🇦🇪 </li>
+  <li class="ctg_f" title="Afghanistan" xhtml="&#127462;&#127467;" unicode="1f1e6-1f1eb" ctg="f" o="2190">🇦🇫 </li>
+  <li class="ctg_f" title="Antigua and Barbuda" xhtml="&#127462;&#127468;" unicode="1f1e6-1f1ec" ctg="f" o="2191">🇦🇬 </li>
+  <li class="ctg_f" title="Anguilla" xhtml="&#127462;&#127470;" unicode="1f1e6-1f1ee" ctg="f" o="2192">🇦🇮 </li>
+  <li class="ctg_f" title="Albania" xhtml="&#127462;&#127473;" unicode="1f1e6-1f1f1" ctg="f" o="2193">🇦🇱 </li>
+  <li class="ctg_f" title="Armenia" xhtml="&#127462;&#127474;" unicode="1f1e6-1f1f2" ctg="f" o="2194">🇦🇲 </li>
+  <li class="ctg_f" title="Angola" xhtml="&#127462;&#127476;" unicode="1f1e6-1f1f4" ctg="f" o="2195">🇦🇴 </li>
+  <li class="ctg_f" title="Antarctica" xhtml="&#127462;&#127478;" unicode="1f1e6-1f1f6" ctg="f" o="2196">🇦🇶 </li>
+  <li class="ctg_f" title="Argentina" xhtml="&#127462;&#127479;" unicode="1f1e6-1f1f7" ctg="f" o="2197">🇦🇷 </li>
+  <li class="ctg_f" title="American Samoa" xhtml="&#127462;&#127480;" unicode="1f1e6-1f1f8" ctg="f" o="2198">🇦🇸 </li>
+  <li class="ctg_f" title="Austria" xhtml="&#127462;&#127481;" unicode="1f1e6-1f1f9" ctg="f" o="2199">🇦🇹 </li>
+  <li class="ctg_f" title="Australia" xhtml="&#127462;&#127482;" unicode="1f1e6-1f1fa" ctg="f" o="2200">🇦🇺 </li>
+  <li class="ctg_f" title="Aruba" xhtml="&#127462;&#127484;" unicode="1f1e6-1f1fc" ctg="f" o="2201">🇦🇼 </li>
+  <li class="ctg_f" title="Åland Islands" xhtml="&#127462;&#127485;" unicode="1f1e6-1f1fd" ctg="f" o="2202">🇦🇽 </li>
+  <li class="ctg_f" title="Azerbaijan" xhtml="&#127462;&#127487;" unicode="1f1e6-1f1ff" ctg="f" o="2203">🇦🇿 </li>
+  <li class="ctg_f" title="Bosnia and Herzegovina" xhtml="&#127463;&#127462;" unicode="1f1e7-1f1e6" ctg="f" o="2204">🇧🇦 </li>
+  <li class="ctg_f" title="Barbados" xhtml="&#127463;&#127463;" unicode="1f1e7-1f1e7" ctg="f" o="2205">🇧🇧 </li>
+  <li class="ctg_f" title="Bangladesh" xhtml="&#127463;&#127465;" unicode="1f1e7-1f1e9" ctg="f" o="2206">🇧🇩 </li>
+  <li class="ctg_f" title="Belgium" xhtml="&#127463;&#127466;" unicode="1f1e7-1f1ea" ctg="f" o="2207">🇧🇪 </li>
+  <li class="ctg_f" title="Burkina Faso" xhtml="&#127463;&#127467;" unicode="1f1e7-1f1eb" ctg="f" o="2208">🇧🇫 </li>
+  <li class="ctg_f" title="Bulgaria" xhtml="&#127463;&#127468;" unicode="1f1e7-1f1ec" ctg="f" o="2209">🇧🇬 </li>
+  <li class="ctg_f" title="Bahrain" xhtml="&#127463;&#127469;" unicode="1f1e7-1f1ed" ctg="f" o="2210">🇧🇭 </li>
+  <li class="ctg_f" title="Burundi" xhtml="&#127463;&#127470;" unicode="1f1e7-1f1ee" ctg="f" o="2211">🇧🇮 </li>
+  <li class="ctg_f" title="Benin" xhtml="&#127463;&#127471;" unicode="1f1e7-1f1ef" ctg="f" o="2212">🇧🇯 </li>
+  <li class="ctg_f" title="St. Barthélemy" xhtml="&#127463;&#127473;" unicode="1f1e7-1f1f1" ctg="f" o="2213">🇧🇱 </li>
+  <li class="ctg_f" title="Bermuda" xhtml="&#127463;&#127474;" unicode="1f1e7-1f1f2" ctg="f" o="2214">🇧🇲 </li>
+  <li class="ctg_f" title="Brunei" xhtml="&#127463;&#127475;" unicode="1f1e7-1f1f3" ctg="f" o="2215">🇧🇳 </li>
+  <li class="ctg_f" title="Bolivia" xhtml="&#127463;&#127476;" unicode="1f1e7-1f1f4" ctg="f" o="2216">🇧🇴 </li>
+  <li class="ctg_f" title="Caribbean Netherlands" xhtml="&#127463;&#127478;" unicode="1f1e7-1f1f6" ctg="f" o="2217">🇧🇶 </li>
+  <li class="ctg_f" title="Brazil" xhtml="&#127463;&#127479;" unicode="1f1e7-1f1f7" ctg="f" o="2218">🇧🇷 </li>
+  <li class="ctg_f" title="Bahamas" xhtml="&#127463;&#127480;" unicode="1f1e7-1f1f8" ctg="f" o="2219">🇧🇸 </li>
+  <li class="ctg_f" title="Bhutan" xhtml="&#127463;&#127481;" unicode="1f1e7-1f1f9" ctg="f" o="2220">🇧🇹 </li>
+  <li class="ctg_f" title="Bouvet Island" xhtml="&#127463;&#127483;" unicode="1f1e7-1f1fb" ctg="f" o="2221">🇧🇻 </li>
+  <li class="ctg_f" title="Botswana" xhtml="&#127463;&#127484;" unicode="1f1e7-1f1fc" ctg="f" o="2222">🇧🇼 </li>
+  <li class="ctg_f" title="Belarus" xhtml="&#127463;&#127486;" unicode="1f1e7-1f1fe" ctg="f" o="2223">🇧🇾 </li>
+  <li class="ctg_f" title="Belize" xhtml="&#127463;&#127487;" unicode="1f1e7-1f1ff" ctg="f" o="2224">🇧🇿 </li>
+  <li class="ctg_f" title="Canada" xhtml="&#127464;&#127462;" unicode="1f1e8-1f1e6" ctg="f" o="2225">🇨🇦 </li>
+  <li class="ctg_f" title="Cocos (Keeling) Islands" xhtml="&#127464;&#127464;" unicode="1f1e8-1f1e8" ctg="f" o="2226">🇨🇨 </li>
+  <li class="ctg_f" title="Congo - Kinshasa" xhtml="&#127464;&#127465;" unicode="1f1e8-1f1e9" ctg="f" o="2227">🇨🇩 </li>
+  <li class="ctg_f" title="Central African Republic" xhtml="&#127464;&#127467;" unicode="1f1e8-1f1eb" ctg="f" o="2228">🇨🇫 </li>
+  <li class="ctg_f" title="Congo - Brazzaville" xhtml="&#127464;&#127468;" unicode="1f1e8-1f1ec" ctg="f" o="2229">🇨🇬 </li>
+  <li class="ctg_f" title="Switzerland" xhtml="&#127464;&#127469;" unicode="1f1e8-1f1ed" ctg="f" o="2230">🇨🇭 </li>
+  <li class="ctg_f" title="Côte d'Ivoire" xhtml="&#127464;&#127470;" unicode="1f1e8-1f1ee" ctg="f" o="2231">🇨🇮 </li>
+  <li class="ctg_f" title="Cook Islands" xhtml="&#127464;&#127472;" unicode="1f1e8-1f1f0" ctg="f" o="2232">🇨🇰 </li>
+  <li class="ctg_f" title="Chile" xhtml="&#127464;&#127473;" unicode="1f1e8-1f1f1" ctg="f" o="2233">🇨🇱 </li>
+  <li class="ctg_f" title="Cameroon" xhtml="&#127464;&#127474;" unicode="1f1e8-1f1f2" ctg="f" o="2234">🇨🇲 </li>
+  <li class="ctg_f" title="China" xhtml="&#127464;&#127475;" unicode="1f1e8-1f1f3" ctg="f" o="2235">🇨🇳 </li>
+  <li class="ctg_f" title="Colombia" xhtml="&#127464;&#127476;" unicode="1f1e8-1f1f4" ctg="f" o="2236">🇨🇴 </li>
+  <li class="ctg_f" title="Clipperton Island" xhtml="&#127464;&#127477;" unicode="1f1e8-1f1f5" ctg="f" o="2237">🇨🇵 </li>
+  <li class="ctg_f" title="Costa Rica" xhtml="&#127464;&#127479;" unicode="1f1e8-1f1f7" ctg="f" o="2238">🇨🇷 </li>
+  <li class="ctg_f" title="Cuba" xhtml="&#127464;&#127482;" unicode="1f1e8-1f1fa" ctg="f" o="2239">🇨🇺 </li>
+  <li class="ctg_f" title="Cape Verde" xhtml="&#127464;&#127483;" unicode="1f1e8-1f1fb" ctg="f" o="2240">🇨🇻 </li>
+  <li class="ctg_f" title="Curaçao" xhtml="&#127464;&#127484;" unicode="1f1e8-1f1fc" ctg="f" o="2241">🇨🇼 </li>
+  <li class="ctg_f" title="Christmas Island" xhtml="&#127464;&#127485;" unicode="1f1e8-1f1fd" ctg="f" o="2242">🇨🇽 </li>
+  <li class="ctg_f" title="Cyprus" xhtml="&#127464;&#127486;" unicode="1f1e8-1f1fe" ctg="f" o="2243">🇨🇾 </li>
+  <li class="ctg_f" title="Czech Republic" xhtml="&#127464;&#127487;" unicode="1f1e8-1f1ff" ctg="f" o="2244">🇨🇿 </li>
+  <li class="ctg_f" title="Germany" xhtml="&#127465;&#127466;" unicode="1f1e9-1f1ea" ctg="f" o="2245">🇩🇪 </li>
+  <li class="ctg_f" title="Diego Garcia" xhtml="&#127465;&#127468;" unicode="1f1e9-1f1ec" ctg="f" o="2246">🇩🇬 </li>
+  <li class="ctg_f" title="Djibouti" xhtml="&#127465;&#127471;" unicode="1f1e9-1f1ef" ctg="f" o="2247">🇩🇯 </li>
+  <li class="ctg_f" title="Denmark" xhtml="&#127465;&#127472;" unicode="1f1e9-1f1f0" ctg="f" o="2248">🇩🇰 </li>
+  <li class="ctg_f" title="Dominica" xhtml="&#127465;&#127474;" unicode="1f1e9-1f1f2" ctg="f" o="2249">🇩🇲 </li>
+  <li class="ctg_f" title="Dominican Republic" xhtml="&#127465;&#127476;" unicode="1f1e9-1f1f4" ctg="f" o="2250">🇩🇴 </li>
+  <li class="ctg_f" title="Algeria" xhtml="&#127465;&#127487;" unicode="1f1e9-1f1ff" ctg="f" o="2251">🇩🇿 </li>
+  <li class="ctg_f" title="Ceuta and Melilla" xhtml="&#127466;&#127462;" unicode="1f1ea-1f1e6" ctg="f" o="2252">🇪🇦 </li>
+  <li class="ctg_f" title="Ecuador" xhtml="&#127466;&#127464;" unicode="1f1ea-1f1e8" ctg="f" o="2253">🇪🇨 </li>
+  <li class="ctg_f" title="Estonia" xhtml="&#127466;&#127466;" unicode="1f1ea-1f1ea" ctg="f" o="2254">🇪🇪 </li>
+  <li class="ctg_f" title="Egypt" xhtml="&#127466;&#127468;" unicode="1f1ea-1f1ec" ctg="f" o="2255">🇪🇬 </li>
+  <li class="ctg_f" title="Western Sahara" xhtml="&#127466;&#127469;" unicode="1f1ea-1f1ed" ctg="f" o="2256">🇪🇭 </li>
+  <li class="ctg_f" title="Eritrea" xhtml="&#127466;&#127479;" unicode="1f1ea-1f1f7" ctg="f" o="2257">🇪🇷 </li>
+  <li class="ctg_f" title="Spain" xhtml="&#127466;&#127480;" unicode="1f1ea-1f1f8" ctg="f" o="2258">🇪🇸 </li>
+  <li class="ctg_f" title="Ethiopia" xhtml="&#127466;&#127481;" unicode="1f1ea-1f1f9" ctg="f" o="2259">🇪🇹 </li>
+  <li class="ctg_f" title="European Union" xhtml="&#127466;&#127482;" unicode="1f1ea-1f1fa" ctg="f" o="2260">🇪🇺 </li>
+  <li class="ctg_f" title="Finland" xhtml="&#127467;&#127470;" unicode="1f1eb-1f1ee" ctg="f" o="2261">🇫🇮 </li>
+  <li class="ctg_f" title="Fiji" xhtml="&#127467;&#127471;" unicode="1f1eb-1f1ef" ctg="f" o="2262">🇫🇯 </li>
+  <li class="ctg_f" title="Falkland Islands" xhtml="&#127467;&#127472;" unicode="1f1eb-1f1f0" ctg="f" o="2263">🇫🇰 </li>
+  <li class="ctg_f" title="Micronesia" xhtml="&#127467;&#127474;" unicode="1f1eb-1f1f2" ctg="f" o="2264">🇫🇲 </li>
+  <li class="ctg_f" title="Faroe Islands" xhtml="&#127467;&#127476;" unicode="1f1eb-1f1f4" ctg="f" o="2265">🇫🇴 </li>
+  <li class="ctg_f" title="France" xhtml="&#127467;&#127479;" unicode="1f1eb-1f1f7" ctg="f" o="2266">🇫🇷 </li>
+  <li class="ctg_f" title="Gabon" xhtml="&#127468;&#127462;" unicode="1f1ec-1f1e6" ctg="f" o="2267">🇬🇦 </li>
+  <li class="ctg_f" title="United Kingdom" xhtml="&#127468;&#127463;" unicode="1f1ec-1f1e7" ctg="f" o="2268">🇬🇧 </li>
+  <li class="ctg_f" title="Grenada" xhtml="&#127468;&#127465;" unicode="1f1ec-1f1e9" ctg="f" o="2269">🇬🇩 </li>
+  <li class="ctg_f" title="Georgia" xhtml="&#127468;&#127466;" unicode="1f1ec-1f1ea" ctg="f" o="2270">🇬🇪 </li>
+  <li class="ctg_f" title="French Guiana" xhtml="&#127468;&#127467;" unicode="1f1ec-1f1eb" ctg="f" o="2271">🇬🇫 </li>
+  <li class="ctg_f" title="Guernsey" xhtml="&#127468;&#127468;" unicode="1f1ec-1f1ec" ctg="f" o="2272">🇬🇬 </li>
+  <li class="ctg_f" title="Ghana" xhtml="&#127468;&#127469;" unicode="1f1ec-1f1ed" ctg="f" o="2273">🇬🇭 </li>
+  <li class="ctg_f" title="Gibraltar" xhtml="&#127468;&#127470;" unicode="1f1ec-1f1ee" ctg="f" o="2274">🇬🇮 </li>
+  <li class="ctg_f" title="Greenland" xhtml="&#127468;&#127473;" unicode="1f1ec-1f1f1" ctg="f" o="2275">🇬🇱 </li>
+  <li class="ctg_f" title="Gambia" xhtml="&#127468;&#127474;" unicode="1f1ec-1f1f2" ctg="f" o="2276">🇬🇲 </li>
+  <li class="ctg_f" title="Guinea" xhtml="&#127468;&#127475;" unicode="1f1ec-1f1f3" ctg="f" o="2277">🇬🇳 </li>
+  <li class="ctg_f" title="Guadeloupe" xhtml="&#127468;&#127477;" unicode="1f1ec-1f1f5" ctg="f" o="2278">🇬🇵 </li>
+  <li class="ctg_f" title="Equatorial Guinea" xhtml="&#127468;&#127478;" unicode="1f1ec-1f1f6" ctg="f" o="2279">🇬🇶 </li>
+  <li class="ctg_f" title="Greece" xhtml="&#127468;&#127479;" unicode="1f1ec-1f1f7" ctg="f" o="2280">🇬🇷 </li>
+  <li class="ctg_f" title="South Georgia and South Sandwich Islands" xhtml="&#127468;&#127480;" unicode="1f1ec-1f1f8" ctg="f" o="2281">🇬🇸 </li>
+  <li class="ctg_f" title="Guatemala" xhtml="&#127468;&#127481;" unicode="1f1ec-1f1f9" ctg="f" o="2282">🇬🇹 </li>
+  <li class="ctg_f" title="Guam" xhtml="&#127468;&#127482;" unicode="1f1ec-1f1fa" ctg="f" o="2283">🇬🇺 </li>
+  <li class="ctg_f" title="Guinea-Bissau" xhtml="&#127468;&#127484;" unicode="1f1ec-1f1fc" ctg="f" o="2284">🇬🇼 </li>
+  <li class="ctg_f" title="Guyana" xhtml="&#127468;&#127486;" unicode="1f1ec-1f1fe" ctg="f" o="2285">🇬🇾 </li>
+  <li class="ctg_f" title="Hong Kong SAR China" xhtml="&#127469;&#127472;" unicode="1f1ed-1f1f0" ctg="f" o="2286">🇭🇰 </li>
+  <li class="ctg_f" title="Heard and McDonald Islands" xhtml="&#127469;&#127474;" unicode="1f1ed-1f1f2" ctg="f" o="2287">🇭🇲 </li>
+  <li class="ctg_f" title="Honduras" xhtml="&#127469;&#127475;" unicode="1f1ed-1f1f3" ctg="f" o="2288">🇭🇳 </li>
+  <li class="ctg_f" title="Croatia" xhtml="&#127469;&#127479;" unicode="1f1ed-1f1f7" ctg="f" o="2289">🇭🇷 </li>
+  <li class="ctg_f" title="Haiti" xhtml="&#127469;&#127481;" unicode="1f1ed-1f1f9" ctg="f" o="2290">🇭🇹 </li>
+  <li class="ctg_f" title="Hungary" xhtml="&#127469;&#127482;" unicode="1f1ed-1f1fa" ctg="f" o="2291">🇭🇺 </li>
+  <li class="ctg_f" title="Canary Islands" xhtml="&#127470;&#127464;" unicode="1f1ee-1f1e8" ctg="f" o="2292">🇮🇨 </li>
+  <li class="ctg_f" title="Indonesia" xhtml="&#127470;&#127465;" unicode="1f1ee-1f1e9" ctg="f" o="2293">🇮🇩 </li>
+  <li class="ctg_f" title="Ireland" xhtml="&#127470;&#127466;" unicode="1f1ee-1f1ea" ctg="f" o="2294">🇮🇪 </li>
+  <li class="ctg_f" title="Israel" xhtml="&#127470;&#127473;" unicode="1f1ee-1f1f1" ctg="f" o="2295">🇮🇱 </li>
+  <li class="ctg_f" title="Isle of Man" xhtml="&#127470;&#127474;" unicode="1f1ee-1f1f2" ctg="f" o="2296">🇮🇲 </li>
+  <li class="ctg_f" title="India" xhtml="&#127470;&#127475;" unicode="1f1ee-1f1f3" ctg="f" o="2297">🇮🇳 </li>
+  <li class="ctg_f" title="British Indian Ocean Territory" xhtml="&#127470;&#127476;" unicode="1f1ee-1f1f4" ctg="f" o="2298">🇮🇴 </li>
+  <li class="ctg_f" title="Iraq" xhtml="&#127470;&#127478;" unicode="1f1ee-1f1f6" ctg="f" o="2299">🇮🇶 </li>
+  <li class="ctg_f" title="Iran" xhtml="&#127470;&#127479;" unicode="1f1ee-1f1f7" ctg="f" o="2300">🇮🇷 </li>
+  <li class="ctg_f" title="Iceland" xhtml="&#127470;&#127480;" unicode="1f1ee-1f1f8" ctg="f" o="2301">🇮🇸 </li>
+  <li class="ctg_f" title="Italy" xhtml="&#127470;&#127481;" unicode="1f1ee-1f1f9" ctg="f" o="2302">🇮🇹 </li>
+  <li class="ctg_f" title="Jersey" xhtml="&#127471;&#127466;" unicode="1f1ef-1f1ea" ctg="f" o="2303">🇯🇪 </li>
+  <li class="ctg_f" title="Jamaica" xhtml="&#127471;&#127474;" unicode="1f1ef-1f1f2" ctg="f" o="2304">🇯🇲 </li>
+  <li class="ctg_f" title="Jordan" xhtml="&#127471;&#127476;" unicode="1f1ef-1f1f4" ctg="f" o="2305">🇯🇴 </li>
+  <li class="ctg_f" title="Japan" xhtml="&#127471;&#127477;" unicode="1f1ef-1f1f5" ctg="f" o="2306">🇯🇵 </li>
+  <li class="ctg_f" title="Kenya" xhtml="&#127472;&#127466;" unicode="1f1f0-1f1ea" ctg="f" o="2307">🇰🇪 </li>
+  <li class="ctg_f" title="Kyrgyzstan" xhtml="&#127472;&#127468;" unicode="1f1f0-1f1ec" ctg="f" o="2308">🇰🇬 </li>
+  <li class="ctg_f" title="Cambodia" xhtml="&#127472;&#127469;" unicode="1f1f0-1f1ed" ctg="f" o="2309">🇰🇭 </li>
+  <li class="ctg_f" title="Kiribati" xhtml="&#127472;&#127470;" unicode="1f1f0-1f1ee" ctg="f" o="2310">🇰🇮 </li>
+  <li class="ctg_f" title="Comoros" xhtml="&#127472;&#127474;" unicode="1f1f0-1f1f2" ctg="f" o="2311">🇰🇲 </li>
+  <li class="ctg_f" title="St. Kitts and Nevis" xhtml="&#127472;&#127475;" unicode="1f1f0-1f1f3" ctg="f" o="2312">🇰🇳 </li>
+  <li class="ctg_f" title="North Korea" xhtml="&#127472;&#127477;" unicode="1f1f0-1f1f5" ctg="f" o="2313">🇰🇵 </li>
+  <li class="ctg_f" title="South Korea" xhtml="&#127472;&#127479;" unicode="1f1f0-1f1f7" ctg="f" o="2314">🇰🇷 </li>
+  <li class="ctg_f" title="Kuwait" xhtml="&#127472;&#127484;" unicode="1f1f0-1f1fc" ctg="f" o="2315">🇰🇼 </li>
+  <li class="ctg_f" title="Cayman Islands" xhtml="&#127472;&#127486;" unicode="1f1f0-1f1fe" ctg="f" o="2316">🇰🇾 </li>
+  <li class="ctg_f" title="Kazakhstan" xhtml="&#127472;&#127487;" unicode="1f1f0-1f1ff" ctg="f" o="2317">🇰🇿 </li>
+  <li class="ctg_f" title="Laos" xhtml="&#127473;&#127462;" unicode="1f1f1-1f1e6" ctg="f" o="2318">🇱🇦 </li>
+  <li class="ctg_f" title="Lebanon" xhtml="&#127473;&#127463;" unicode="1f1f1-1f1e7" ctg="f" o="2319">🇱🇧 </li>
+  <li class="ctg_f" title="St. Lucia" xhtml="&#127473;&#127464;" unicode="1f1f1-1f1e8" ctg="f" o="2320">🇱🇨 </li>
+  <li class="ctg_f" title="Liechtenstein" xhtml="&#127473;&#127470;" unicode="1f1f1-1f1ee" ctg="f" o="2321">🇱🇮 </li>
+  <li class="ctg_f" title="Sri Lanka" xhtml="&#127473;&#127472;" unicode="1f1f1-1f1f0" ctg="f" o="2322">🇱🇰 </li>
+  <li class="ctg_f" title="Liberia" xhtml="&#127473;&#127479;" unicode="1f1f1-1f1f7" ctg="f" o="2323">🇱🇷 </li>
+  <li class="ctg_f" title="Lesotho" xhtml="&#127473;&#127480;" unicode="1f1f1-1f1f8" ctg="f" o="2324">🇱🇸 </li>
+  <li class="ctg_f" title="Lithuania" xhtml="&#127473;&#127481;" unicode="1f1f1-1f1f9" ctg="f" o="2325">🇱🇹 </li>
+  <li class="ctg_f" title="Luxembourg" xhtml="&#127473;&#127482;" unicode="1f1f1-1f1fa" ctg="f" o="2326">🇱🇺 </li>
+  <li class="ctg_f" title="Latvia" xhtml="&#127473;&#127483;" unicode="1f1f1-1f1fb" ctg="f" o="2327">🇱🇻 </li>
+  <li class="ctg_f" title="Libya" xhtml="&#127473;&#127486;" unicode="1f1f1-1f1fe" ctg="f" o="2328">🇱🇾 </li>
+  <li class="ctg_f" title="Morocco" xhtml="&#127474;&#127462;" unicode="1f1f2-1f1e6" ctg="f" o="2329">🇲🇦 </li>
+  <li class="ctg_f" title="Monaco" xhtml="&#127474;&#127464;" unicode="1f1f2-1f1e8" ctg="f" o="2330">🇲🇨 </li>
+  <li class="ctg_f" title="Moldova" xhtml="&#127474;&#127465;" unicode="1f1f2-1f1e9" ctg="f" o="2331">🇲🇩 </li>
+  <li class="ctg_f" title="Montenegro" xhtml="&#127474;&#127466;" unicode="1f1f2-1f1ea" ctg="f" o="2332">🇲🇪 </li>
+  <li class="ctg_f" title="St. Martin" xhtml="&#127474;&#127467;" unicode="1f1f2-1f1eb" ctg="f" o="2333">🇲🇫 </li>
+  <li class="ctg_f" title="Madagascar" xhtml="&#127474;&#127468;" unicode="1f1f2-1f1ec" ctg="f" o="2334">🇲🇬 </li>
+  <li class="ctg_f" title="Marshall Islands" xhtml="&#127474;&#127469;" unicode="1f1f2-1f1ed" ctg="f" o="2335">🇲🇭 </li>
+  <li class="ctg_f" title="Macedonia" xhtml="&#127474;&#127472;" unicode="1f1f2-1f1f0" ctg="f" o="2336">🇲🇰 </li>
+  <li class="ctg_f" title="Mali" xhtml="&#127474;&#127473;" unicode="1f1f2-1f1f1" ctg="f" o="2337">🇲🇱 </li>
+  <li class="ctg_f" title="Myanmar (Burma)" xhtml="&#127474;&#127474;" unicode="1f1f2-1f1f2" ctg="f" o="2338">🇲🇲 </li>
+  <li class="ctg_f" title="Mongolia" xhtml="&#127474;&#127475;" unicode="1f1f2-1f1f3" ctg="f" o="2339">🇲🇳 </li>
+  <li class="ctg_f" title="Macau SAR China" xhtml="&#127474;&#127476;" unicode="1f1f2-1f1f4" ctg="f" o="2340">🇲🇴 </li>
+  <li class="ctg_f" title="Northern Mariana Islands" xhtml="&#127474;&#127477;" unicode="1f1f2-1f1f5" ctg="f" o="2341">🇲🇵 </li>
+  <li class="ctg_f" title="Martinique" xhtml="&#127474;&#127478;" unicode="1f1f2-1f1f6" ctg="f" o="2342">🇲🇶 </li>
+  <li class="ctg_f" title="Mauritania" xhtml="&#127474;&#127479;" unicode="1f1f2-1f1f7" ctg="f" o="2343">🇲🇷 </li>
+  <li class="ctg_f" title="Montserrat" xhtml="&#127474;&#127480;" unicode="1f1f2-1f1f8" ctg="f" o="2344">🇲🇸 </li>
+  <li class="ctg_f" title="Malta" xhtml="&#127474;&#127481;" unicode="1f1f2-1f1f9" ctg="f" o="2345">🇲🇹 </li>
+  <li class="ctg_f" title="Mauritius" xhtml="&#127474;&#127482;" unicode="1f1f2-1f1fa" ctg="f" o="2346">🇲🇺 </li>
+  <li class="ctg_f" title="Maldives" xhtml="&#127474;&#127483;" unicode="1f1f2-1f1fb" ctg="f" o="2347">🇲🇻 </li>
+  <li class="ctg_f" title="Malawi" xhtml="&#127474;&#127484;" unicode="1f1f2-1f1fc" ctg="f" o="2348">🇲🇼 </li>
+  <li class="ctg_f" title="Mexico" xhtml="&#127474;&#127485;" unicode="1f1f2-1f1fd" ctg="f" o="2349">🇲🇽 </li>
+  <li class="ctg_f" title="Malaysia" xhtml="&#127474;&#127486;" unicode="1f1f2-1f1fe" ctg="f" o="2350">🇲🇾 </li>
+  <li class="ctg_f" title="Mozambique" xhtml="&#127474;&#127487;" unicode="1f1f2-1f1ff" ctg="f" o="2351">🇲🇿 </li>
+  <li class="ctg_f" title="Namibia" xhtml="&#127475;&#127462;" unicode="1f1f3-1f1e6" ctg="f" o="2352">🇳🇦 </li>
+  <li class="ctg_f" title="New Caledonia" xhtml="&#127475;&#127464;" unicode="1f1f3-1f1e8" ctg="f" o="2353">🇳🇨 </li>
+  <li class="ctg_f" title="Niger" xhtml="&#127475;&#127466;" unicode="1f1f3-1f1ea" ctg="f" o="2354">🇳🇪 </li>
+  <li class="ctg_f" title="Norfolk Island" xhtml="&#127475;&#127467;" unicode="1f1f3-1f1eb" ctg="f" o="2355">🇳🇫 </li>
+  <li class="ctg_f" title="Nigeria" xhtml="&#127475;&#127468;" unicode="1f1f3-1f1ec" ctg="f" o="2356">🇳🇬 </li>
+  <li class="ctg_f" title="Nicaragua" xhtml="&#127475;&#127470;" unicode="1f1f3-1f1ee" ctg="f" o="2357">🇳🇮 </li>
+  <li class="ctg_f" title="Netherlands" xhtml="&#127475;&#127473;" unicode="1f1f3-1f1f1" ctg="f" o="2358">🇳🇱 </li>
+  <li class="ctg_f" title="Norway" xhtml="&#127475;&#127476;" unicode="1f1f3-1f1f4" ctg="f" o="2359">🇳🇴 </li>
+  <li class="ctg_f" title="Nepal" xhtml="&#127475;&#127477;" unicode="1f1f3-1f1f5" ctg="f" o="2360">🇳🇵 </li>
+  <li class="ctg_f" title="Nauru" xhtml="&#127475;&#127479;" unicode="1f1f3-1f1f7" ctg="f" o="2361">🇳🇷 </li>
+  <li class="ctg_f" title="Niue" xhtml="&#127475;&#127482;" unicode="1f1f3-1f1fa" ctg="f" o="2362">🇳🇺 </li>
+  <li class="ctg_f" title="New Zealand" xhtml="&#127475;&#127487;" unicode="1f1f3-1f1ff" ctg="f" o="2363">🇳🇿 </li>
+  <li class="ctg_f" title="Oman" xhtml="&#127476;&#127474;" unicode="1f1f4-1f1f2" ctg="f" o="2364">🇴🇲 </li>
+  <li class="ctg_f" title="Panama" xhtml="&#127477;&#127462;" unicode="1f1f5-1f1e6" ctg="f" o="2365">🇵🇦 </li>
+  <li class="ctg_f" title="Peru" xhtml="&#127477;&#127466;" unicode="1f1f5-1f1ea" ctg="f" o="2366">🇵🇪 </li>
+  <li class="ctg_f" title="French Polynesia" xhtml="&#127477;&#127467;" unicode="1f1f5-1f1eb" ctg="f" o="2367">🇵🇫 </li>
+  <li class="ctg_f" title="Papua New Guinea" xhtml="&#127477;&#127468;" unicode="1f1f5-1f1ec" ctg="f" o="2368">🇵🇬 </li>
+  <li class="ctg_f" title="Philippines" xhtml="&#127477;&#127469;" unicode="1f1f5-1f1ed" ctg="f" o="2369">🇵🇭 </li>
+  <li class="ctg_f" title="Pakistan" xhtml="&#127477;&#127472;" unicode="1f1f5-1f1f0" ctg="f" o="2370">🇵🇰 </li>
+  <li class="ctg_f" title="Poland" xhtml="&#127477;&#127473;" unicode="1f1f5-1f1f1" ctg="f" o="2371">🇵🇱 </li>
+  <li class="ctg_f" title="St. Pierre and Miquelon" xhtml="&#127477;&#127474;" unicode="1f1f5-1f1f2" ctg="f" o="2372">🇵🇲 </li>
+  <li class="ctg_f" title="Pitcairn Islands" xhtml="&#127477;&#127475;" unicode="1f1f5-1f1f3" ctg="f" o="2373">🇵🇳 </li>
+  <li class="ctg_f" title="Puerto Rico" xhtml="&#127477;&#127479;" unicode="1f1f5-1f1f7" ctg="f" o="2374">🇵🇷 </li>
+  <li class="ctg_f" title="Palestinian Territories" xhtml="&#127477;&#127480;" unicode="1f1f5-1f1f8" ctg="f" o="2375">🇵🇸 </li>
+  <li class="ctg_f" title="Portugal" xhtml="&#127477;&#127481;" unicode="1f1f5-1f1f9" ctg="f" o="2376">🇵🇹 </li>
+  <li class="ctg_f" title="Palau" xhtml="&#127477;&#127484;" unicode="1f1f5-1f1fc" ctg="f" o="2377">🇵🇼 </li>
+  <li class="ctg_f" title="Paraguay" xhtml="&#127477;&#127486;" unicode="1f1f5-1f1fe" ctg="f" o="2378">🇵🇾 </li>
+  <li class="ctg_f" title="Qatar" xhtml="&#127478;&#127462;" unicode="1f1f6-1f1e6" ctg="f" o="2379">🇶🇦 </li>
+  <li class="ctg_f" title="Réunion" xhtml="&#127479;&#127466;" unicode="1f1f7-1f1ea" ctg="f" o="2380">🇷🇪 </li>
+  <li class="ctg_f" title="Romania" xhtml="&#127479;&#127476;" unicode="1f1f7-1f1f4" ctg="f" o="2381">🇷🇴 </li>
+  <li class="ctg_f" title="Serbia" xhtml="&#127479;&#127480;" unicode="1f1f7-1f1f8" ctg="f" o="2382">🇷🇸 </li>
+  <li class="ctg_f" title="Russia" xhtml="&#127479;&#127482;" unicode="1f1f7-1f1fa" ctg="f" o="2383">🇷🇺 </li>
+  <li class="ctg_f" title="Rwanda" xhtml="&#127479;&#127484;" unicode="1f1f7-1f1fc" ctg="f" o="2384">🇷🇼 </li>
+  <li class="ctg_f" title="Saudi Arabia" xhtml="&#127480;&#127462;" unicode="1f1f8-1f1e6" ctg="f" o="2385">🇸🇦 </li>
+  <li class="ctg_f" title="Solomon Islands" xhtml="&#127480;&#127463;" unicode="1f1f8-1f1e7" ctg="f" o="2386">🇸🇧 </li>
+  <li class="ctg_f" title="Seychelles" xhtml="&#127480;&#127464;" unicode="1f1f8-1f1e8" ctg="f" o="2387">🇸🇨 </li>
+  <li class="ctg_f" title="Sudan" xhtml="&#127480;&#127465;" unicode="1f1f8-1f1e9" ctg="f" o="2388">🇸🇩 </li>
+  <li class="ctg_f" title="Sweden" xhtml="&#127480;&#127466;" unicode="1f1f8-1f1ea" ctg="f" o="2389">🇸🇪 </li>
+  <li class="ctg_f" title="Singapore" xhtml="&#127480;&#127468;" unicode="1f1f8-1f1ec" ctg="f" o="2390">🇸🇬 </li>
+  <li class="ctg_f" title="St. Helena" xhtml="&#127480;&#127469;" unicode="1f1f8-1f1ed" ctg="f" o="2391">🇸🇭 </li>
+  <li class="ctg_f" title="Slovenia" xhtml="&#127480;&#127470;" unicode="1f1f8-1f1ee" ctg="f" o="2392">🇸🇮 </li>
+  <li class="ctg_f" title="Svalbard and Jan Mayen" xhtml="&#127480;&#127471;" unicode="1f1f8-1f1ef" ctg="f" o="2393">🇸🇯 </li>
+  <li class="ctg_f" title="Slovakia" xhtml="&#127480;&#127472;" unicode="1f1f8-1f1f0" ctg="f" o="2394">🇸🇰 </li>
+  <li class="ctg_f" title="Sierra Leone" xhtml="&#127480;&#127473;" unicode="1f1f8-1f1f1" ctg="f" o="2395">🇸🇱 </li>
+  <li class="ctg_f" title="San Marino" xhtml="&#127480;&#127474;" unicode="1f1f8-1f1f2" ctg="f" o="2396">🇸🇲 </li>
+  <li class="ctg_f" title="Senegal" xhtml="&#127480;&#127475;" unicode="1f1f8-1f1f3" ctg="f" o="2397">🇸🇳 </li>
+  <li class="ctg_f" title="Somalia" xhtml="&#127480;&#127476;" unicode="1f1f8-1f1f4" ctg="f" o="2398">🇸🇴 </li>
+  <li class="ctg_f" title="Suriname" xhtml="&#127480;&#127479;" unicode="1f1f8-1f1f7" ctg="f" o="2399">🇸🇷 </li>
+  <li class="ctg_f" title="South Sudan" xhtml="&#127480;&#127480;" unicode="1f1f8-1f1f8" ctg="f" o="2400">🇸🇸 </li>
+  <li class="ctg_f" title="São Tomé and Prí­ncipe" xhtml="&#127480;&#127481;" unicode="1f1f8-1f1f9" ctg="f" o="2401">🇸🇹 </li>
+  <li class="ctg_f" title="El Salvador" xhtml="&#127480;&#127483;" unicode="1f1f8-1f1fb" ctg="f" o="2402">🇸🇻 </li>
+  <li class="ctg_f" title="Sint Maarten" xhtml="&#127480;&#127485;" unicode="1f1f8-1f1fd" ctg="f" o="2403">🇸🇽 </li>
+  <li class="ctg_f" title="Syria" xhtml="&#127480;&#127486;" unicode="1f1f8-1f1fe" ctg="f" o="2404">🇸🇾 </li>
+  <li class="ctg_f" title="Swaziland" xhtml="&#127480;&#127487;" unicode="1f1f8-1f1ff" ctg="f" o="2405">🇸🇿 </li>
+  <li class="ctg_f" title="Tristan da Cunha" xhtml="&#127481;&#127462;" unicode="1f1f9-1f1e6" ctg="f" o="2406">🇹🇦 </li>
+  <li class="ctg_f" title="Turks and Caicos Islands" xhtml="&#127481;&#127464;" unicode="1f1f9-1f1e8" ctg="f" o="2407">🇹🇨 </li>
+  <li class="ctg_f" title="Chad" xhtml="&#127481;&#127465;" unicode="1f1f9-1f1e9" ctg="f" o="2408">🇹🇩 </li>
+  <li class="ctg_f" title="French Southern Territories" xhtml="&#127481;&#127467;" unicode="1f1f9-1f1eb" ctg="f" o="2409">🇹🇫 </li>
+  <li class="ctg_f" title="Togo" xhtml="&#127481;&#127468;" unicode="1f1f9-1f1ec" ctg="f" o="2410">🇹🇬 </li>
+  <li class="ctg_f" title="Thailand" xhtml="&#127481;&#127469;" unicode="1f1f9-1f1ed" ctg="f" o="2411">🇹🇭 </li>
+  <li class="ctg_f" title="Tajikistan" xhtml="&#127481;&#127471;" unicode="1f1f9-1f1ef" ctg="f" o="2412">🇹🇯 </li>
+  <li class="ctg_f" title="Tokelau" xhtml="&#127481;&#127472;" unicode="1f1f9-1f1f0" ctg="f" o="2413">🇹🇰 </li>
+  <li class="ctg_f" title="Timor-Leste" xhtml="&#127481;&#127473;" unicode="1f1f9-1f1f1" ctg="f" o="2414">🇹🇱 </li>
+  <li class="ctg_f" title="Turkmenistan" xhtml="&#127481;&#127474;" unicode="1f1f9-1f1f2" ctg="f" o="2415">🇹🇲 </li>
+  <li class="ctg_f" title="Tunisia" xhtml="&#127481;&#127475;" unicode="1f1f9-1f1f3" ctg="f" o="2416">🇹🇳 </li>
+  <li class="ctg_f" title="Tonga" xhtml="&#127481;&#127476;" unicode="1f1f9-1f1f4" ctg="f" o="2417">🇹🇴 </li>
+  <li class="ctg_f" title="Turkey" xhtml="&#127481;&#127479;" unicode="1f1f9-1f1f7" ctg="f" o="2418">🇹🇷 </li>
+  <li class="ctg_f" title="Trinidad and Tobago" xhtml="&#127481;&#127481;" unicode="1f1f9-1f1f9" ctg="f" o="2419">🇹🇹 </li>
+  <li class="ctg_f" title="Tuvalu" xhtml="&#127481;&#127483;" unicode="1f1f9-1f1fb" ctg="f" o="2420">🇹🇻 </li>
+  <li class="ctg_f" title="Taiwan" xhtml="&#127481;&#127484;" unicode="1f1f9-1f1fc" ctg="f" o="2421">🇹🇼 </li>
+  <li class="ctg_f" title="Tanzania" xhtml="&#127481;&#127487;" unicode="1f1f9-1f1ff" ctg="f" o="2422">🇹🇿 </li>
+  <li class="ctg_f" title="Ukraine" xhtml="&#127482;&#127462;" unicode="1f1fa-1f1e6" ctg="f" o="2423">🇺🇦 </li>
+  <li class="ctg_f" title="Uganda" xhtml="&#127482;&#127468;" unicode="1f1fa-1f1ec" ctg="f" o="2424">🇺🇬 </li>
+  <li class="ctg_f" title="U.S. Outlying Islands" xhtml="&#127482;&#127474;" unicode="1f1fa-1f1f2" ctg="f" o="2425">🇺🇲 </li>
+  <li class="ctg_f" title="United States" xhtml="&#127482;&#127480;" unicode="1f1fa-1f1f8" ctg="f" o="2427">🇺🇸 </li>
+  <li class="ctg_f" title="Uruguay" xhtml="&#127482;&#127486;" unicode="1f1fa-1f1fe" ctg="f" o="2428">🇺🇾 </li>
+  <li class="ctg_f" title="Uzbekistan" xhtml="&#127482;&#127487;" unicode="1f1fa-1f1ff" ctg="f" o="2429">🇺🇿 </li>
+  <li class="ctg_f" title="Vatican City" xhtml="&#127483;&#127462;" unicode="1f1fb-1f1e6" ctg="f" o="2430">🇻🇦 </li>
+  <li class="ctg_f" title="St. Vincent and Grenadines" xhtml="&#127483;&#127464;" unicode="1f1fb-1f1e8" ctg="f" o="2431">🇻🇨 </li>
+  <li class="ctg_f" title="Venezuela" xhtml="&#127483;&#127466;" unicode="1f1fb-1f1ea" ctg="f" o="2432">🇻🇪 </li>
+  <li class="ctg_f" title="British Virgin Islands" xhtml="&#127483;&#127468;" unicode="1f1fb-1f1ec" ctg="f" o="2433">🇻🇬 </li>
+  <li class="ctg_f" title="U.S. Virgin Islands" xhtml="&#127483;&#127470;" unicode="1f1fb-1f1ee" ctg="f" o="2434">🇻🇮 </li>
+  <li class="ctg_f" title="Vietnam" xhtml="&#127483;&#127475;" unicode="1f1fb-1f1f3" ctg="f" o="2435">🇻🇳 </li>
+  <li class="ctg_f" title="Vanuatu" xhtml="&#127483;&#127482;" unicode="1f1fb-1f1fa" ctg="f" o="2436">🇻🇺 </li>
+  <li class="ctg_f" title="Wallis and Futuna" xhtml="&#127484;&#127467;" unicode="1f1fc-1f1eb" ctg="f" o="2437">🇼🇫 </li>
+  <li class="ctg_f" title="Samoa" xhtml="&#127484;&#127480;" unicode="1f1fc-1f1f8" ctg="f" o="2438">🇼🇸 </li>
+  <li class="ctg_f" title="Kosovo" xhtml="&#127485;&#127472;" unicode="1f1fd-1f1f0" ctg="f" o="2439">🇽🇰 </li>
+  <li class="ctg_f" title="Yemen" xhtml="&#127486;&#127466;" unicode="1f1fe-1f1ea" ctg="f" o="2440">🇾🇪 </li>
+  <li class="ctg_f" title="Mayotte" xhtml="&#127486;&#127481;" unicode="1f1fe-1f1f9" ctg="f" o="2441">🇾🇹 </li>
+  <li class="ctg_f" title="South Africa" xhtml="&#127487;&#127462;" unicode="1f1ff-1f1e6" ctg="f" o="2442">🇿🇦 </li>
+  <li class="ctg_f" title="Zambia" xhtml="&#127487;&#127474;" unicode="1f1ff-1f1f2" ctg="f" o="2443">🇿🇲 </li>
+  <li class="ctg_f" title="Zimbabwe" xhtml="&#127487;&#127484;" unicode="1f1ff-1f1fc" ctg="f" o="2444">🇿🇼 </li>
+  <li class="ctg_s" title="nine xhtml="9&#8419;" unicode="0039-20e3" ctg="s" o="2117}">9⃣ </li>
+  <li class="ctg_none" xhtml="&trade;" ™️ </li>
+  <li class="ctg_none" xhtml="&spades;" ♠️ </li>
+  <li class="ctg_none" xhtml="&reg;" ®️ </li>
+  <li class="ctg_none" xhtml="&hearts;" ♥️ </li>
+  <li class="ctg_none" xhtml="&harr;" ↔️ </li>
+  <li class="ctg_none" xhtml="&diams;" ♦️ </li>
+  <li class="ctg_none" xhtml="&copy;" ©️ </li>
+  <li class="ctg_none" xhtml="&clubs;" ♣️ </li>
+  <li class="ctg_none" xhtml="&#9995;"> ✋ </li>
+  <li class="ctg_none" xhtml="&#9993;"> ✉️ </li>
+  <li class="ctg_none" title="basketballer" xhtml="&#9977;" unicode="p="a">⛹ </li>
+  <li class="ctg_none" xhtml="&#9973;"> ⛵ </li>
+  <li class="ctg_none" xhtml="&#9937;"> ⛑ </li>
+  <li class="ctg_none" xhtml="&#9928;"> ⛈ </li>
+  <li class="ctg_none" xhtml="&#9905;"> ⚱ </li>
+  <li class="ctg_none" xhtml="&#9874;"> ⚒ </li>
+  <li class="ctg_none" title="white smiling face" xhtml="&#9786;"> ☺️ </li>
+  <li class="ctg_none" xhtml="&#9785;"> ☹ </li>
+  <li class="ctg_none" xhtml="&#9731;"> ☃️ </li>
+  <li class="ctg_none" xhtml="&#9730;"> ☂️ </li>
+  <li class="ctg_none" xhtml="&#9210;"> ⏺ </li>
+  <li class="ctg_none" xhtml="&#9209;"> ⏹ </li>
+  <li class="ctg_none" xhtml="&#9208;"> ⏸ </li>
+  <li class="ctg_none" xhtml="&#9202;"> ⏲ </li>
+  <li class="ctg_none" title="9" xhtml="&#57;"> 9️⃣ </li>
+  <li class="ctg_none" title="8" xhtml="&#56;"> 8️⃣ </li>
+  <li class="ctg_none" title="7" xhtml="&#55;"> 7️⃣ </li>
+  <li class="ctg_none" title="6" xhtml="&#54;"> 6️⃣ </li>
+  <li class="ctg_none" title="5" xhtml="&#53;"> 5️⃣ </li>
+  <li class="ctg_none" title="4" xhtml="&#52;"> 4️⃣ </li>
+  <li class="ctg_none" title="3" xhtml="&#51;"> 3️⃣ </li>
+  <li class="ctg_none" title="2" xhtml="&#50;"> 2️⃣ </li>
+  <li class="ctg_none" title="1" xhtml="&#49;"> 1️⃣ </li>
+  <li class="ctg_none" title="0" xhtml="&#48;"> 0️⃣ </li>
+  <li class="ctg_none" xhtml="&#35;"> # </li>
+  <li class="ctg_none" xhtml="&#129472;"> 🧀 </li>
+  <li class="ctg_none" xhtml="&#129412;"> 🦄 </li>
+  <li class="ctg_none" xhtml="&#129304;"> 🤘 </li>
+  <li class="ctg_none" xhtml="&#129302;"> 🤖 </li>
+  <li class="ctg_none" xhtml="&#129301;"> 🤕 </li>
+  <li class="ctg_none" xhtml="&#129298;"> 🤒 </li>
+  <li class="ctg_none" xhtml="&#129297;"> 🤑 </li>
+  <li class="ctg_none" xhtml="&#128755;"> 🛳 </li>
+  <li class="ctg_none" xhtml="&#128752;"> 🛰 </li>
+  <li class="ctg_none" xhtml="&#128745;"> 🛩 </li>
+  <li class="ctg_none" xhtml="&#128741;"> 🛥 </li>
+  <li class="ctg_none" xhtml="&#128738;"> 🛢 </li>
+  <li class="ctg_none" xhtml="&#128736;"> 🛠 </li>
+  <li class="ctg_none" xhtml="&#128718;"> 🛎 </li>
+  <li class="ctg_none" xhtml="&#128715;"> 🛋 </li>
+  <li class="ctg_none" xhtml="&#128663;"> 🚗 </li>
+  <li class="ctg_none" xhtml="&#128577;"> 🙁 </li>
+  <li class="ctg_none" xhtml="&#128506;"> 🗺 </li>
+  <li class="ctg_none" xhtml="&#128483;"> 🗣 </li>
+  <li class="ctg_none" xhtml="&#128481;"> 🗡 </li>
+  <li class="ctg_none" xhtml="&#128478;"> 🗞 </li>
+  <li class="ctg_none" xhtml="&#128477;"> 🗝 </li>
+  <li class="ctg_none" xhtml="&#128467;"> 🗓 </li>
+  <li class="ctg_none" xhtml="&#128466;"> 🗒 </li>
+  <li class="ctg_none" xhtml="&#128451;"> 🗃 </li>
+  <li class="ctg_none" xhtml="&#128450;"> 🗂 </li>
+  <li class="ctg_none" xhtml="&#128444;"> 🖼 </li>
+  <li class="ctg_none" xhtml="&#128433;"> 🖱 </li>
+  <li class="ctg_none" xhtml="&#128421;"> 🖥 </li>
+  <li class="ctg_none" xhtml="&#128406;"> 🖖 </li>
+  <li class="ctg_none" xhtml="&#128400;"> 🖐 </li>
+  <li class="ctg_none" xhtml="&#128397;"> 🖍 </li>
+  <li class="ctg_none" xhtml="&#128396;"> 🖌 </li>
+  <li class="ctg_none" xhtml="&#128395;"> 🖋 </li>
+  <li class="ctg_none" xhtml="&#128394;"> 🖊 </li>
+  <li class="ctg_none" xhtml="&#128391;"> 🖇 </li>
+  <li class="ctg_none" xhtml="&#128373;"> 🕵 </li>
+  <li class="ctg_none" xhtml="&#128368;"> 🕰 </li>
+  <li class="ctg_none" xhtml="&#128330;"> 🕊 </li>
+  <li class="ctg_none" xhtml="&#128298;"> 🔪 </li>
+  <li class="ctg_none" title="1234" xhtml="&#128290;"> 🔢 </li>
+  <li class="ctg_none" xhtml="&#128253;"> 📽 </li>
+  <li class="ctg_none" xhtml="&#128221;"> 📝 </li>
+  <li class="ctg_none" title="100" xhtml="&#128175;"> 💯 </li>
+  <li class="ctg_none" xhtml="&#127877;&#127995;"> 🎅🏻 </li>
+  <li class="ctg_none" xhtml="&#127877;&#127996;"> 🎅🏼 </li>
+  <li class="ctg_none" xhtml="&#127877;&#127997;"> 🎅🏽 </li>
+  <li class="ctg_none" xhtml="&#127877;&#127998;"> 🎅🏾 </li>
+  <li class="ctg_none" xhtml="&#127877;&#127999;"> 🎅🏿 </li>
+  <li class="ctg_none" xhtml="&#127939;&#127995;"> 🏃🏻 </li>
+  <li class="ctg_none" xhtml="&#127939;&#127996;"> 🏃🏼 </li>
+  <li class="ctg_none" xhtml="&#127939;&#127997;"> 🏃🏽 </li>
+  <li class="ctg_none" xhtml="&#127939;&#127998;"> 🏃🏾 </li>
+  <li class="ctg_none" xhtml="&#127939;&#127999;"> 🏃🏿 </li>
+  <li class="ctg_none" xhtml="&#127940;&#127995;"> 🏄🏻 </li>
+  <li class="ctg_none" xhtml="&#127940;&#127996;"> 🏄🏼 </li>
+  <li class="ctg_none" xhtml="&#127940;&#127997;"> 🏄🏽 </li>
+  <li class="ctg_none" xhtml="&#127940;&#127998;"> 🏄🏾 </li>
+  <li class="ctg_none" xhtml="&#127940;&#127999;"> 🏄🏿 </li>
+  <li class="ctg_none" xhtml="&#127946;&#127995;"> 🏊🏻 </li>
+  <li class="ctg_none" xhtml="&#127946;&#127996;"> 🏊🏼 </li>
+  <li class="ctg_none" xhtml="&#127946;&#127997;"> 🏊🏽 </li>
+  <li class="ctg_none" xhtml="&#127946;&#127998;"> 🏊🏾 </li>
+  <li class="ctg_none" xhtml="&#127946;&#127999;"> 🏊🏿 </li>
+  <li class="ctg_none" title="weightlifter_lighttone" xhtml="&#127947;&#127995;" unicode="p="a">🏋🏻 </li>
+  <li class="ctg_none" title="weightlifter_mediumlighttone" xhtml="&#127947;&#127996;" unicode="p="a">🏋🏼 </li>
+  <li class="ctg_none" title="weightlifter_mediumtone" xhtml="&#127947;&#127997;" unicode="p="a">🏋🏽 </li>
+  <li class="ctg_none" title="weightlifter_mediumdarktone" xhtml="&#127947;&#127998;" unicode="p="a">🏋🏾 </li>
+  <li class="ctg_none" title="weightlifter_darktone" xhtml="&#127947;&#127999;" unicode="p="a">🏋🏿 </li>
+  <li class="ctg_none" xhtml="&#127987;&zwj;&#127752;"> 🏳‍🌈 </li>
+  <li class="ctg_none" title="eye_speachbubble" xhtml="&#128065;&zwj;&#128488;"> 👁‍🗨 </li>
+  <li class="ctg_none" xhtml="&#128066;&#127995;"> 👂🏻 </li>
+  <li class="ctg_none" xhtml="&#128066;&#127996;"> 👂🏼 </li>
+  <li class="ctg_none" xhtml="&#128066;&#127997;"> 👂🏽 </li>
+  <li class="ctg_none" xhtml="&#128066;&#127998;"> 👂🏾 </li>
+  <li class="ctg_none" xhtml="&#128066;&#127999;"> 👂🏿 </li>
+  <li class="ctg_none" xhtml="&#128067;&#127995;"> 👃🏻 </li>
+  <li class="ctg_none" xhtml="&#128067;&#127996;"> 👃🏼 </li>
+  <li class="ctg_none" xhtml="&#128067;&#127997;"> 👃🏽 </li>
+  <li class="ctg_none" xhtml="&#128067;&#127998;"> 👃🏾 </li>
+  <li class="ctg_none" xhtml="&#128067;&#127999;"> 👃🏿 </li>
+  <li class="ctg_none" xhtml="&#128070;&#127995;"> 👆🏻 </li>
+  <li class="ctg_none" xhtml="&#128070;&#127996;"> 👆🏼 </li>
+  <li class="ctg_none" xhtml="&#128070;&#127997;"> 👆🏽 </li>
+  <li class="ctg_none" xhtml="&#128070;&#127998;"> 👆🏾 </li>
+  <li class="ctg_none" xhtml="&#128070;&#127999;"> 👆🏿 </li>
+  <li class="ctg_none" xhtml="&#128071;&#127995;"> 👇🏻 </li>
+  <li class="ctg_none" xhtml="&#128071;&#127996;"> 👇🏼 </li>
+  <li class="ctg_none" xhtml="&#128071;&#127997;"> 👇🏽 </li>
+  <li class="ctg_none" xhtml="&#128071;&#127998;"> 👇🏾 </li>
+  <li class="ctg_none" xhtml="&#128071;&#127999;"> 👇🏿 </li>
+  <li class="ctg_none" xhtml="&#128072;&#127995;"> 👈🏻 </li>
+  <li class="ctg_none" xhtml="&#128072;&#127996;"> 👈🏼 </li>
+  <li class="ctg_none" xhtml="&#128072;&#127997;"> 👈🏽 </li>
+  <li class="ctg_none" xhtml="&#128072;&#127998;"> 👈🏾 </li>
+  <li class="ctg_none" xhtml="&#128072;&#127999;"> 👈🏿 </li>
+  <li class="ctg_none" xhtml="&#128073;&#127995;"> 👉🏻 </li>
+  <li class="ctg_none" xhtml="&#128073;&#127996;"> 👉🏼 </li>
+  <li class="ctg_none" xhtml="&#128073;&#127997;"> 👉🏽 </li>
+  <li class="ctg_none" xhtml="&#128073;&#127998;"> 👉🏾 </li>
+  <li class="ctg_none" xhtml="&#128073;&#127999;"> 👉🏿 </li>
+  <li class="ctg_none" xhtml="&#128074;&#127995;"> 👊🏻 </li>
+  <li class="ctg_none" xhtml="&#128074;&#127996;"> 👊🏼 </li>
+  <li class="ctg_none" xhtml="&#128074;&#127997;"> 👊🏽 </li>
+  <li class="ctg_none" xhtml="&#128074;&#127998;"> 👊🏾 </li>
+  <li class="ctg_none" xhtml="&#128074;&#127999;"> 👊🏿 </li>
+  <li class="ctg_none" xhtml="&#128075;&#127995;"> 👋🏻 </li>
+  <li class="ctg_none" xhtml="&#128075;&#127996;"> 👋🏼 </li>
+  <li class="ctg_none" xhtml="&#128075;&#127997;"> 👋🏽 </li>
+  <li class="ctg_none" xhtml="&#128075;&#127998;"> 👋🏾 </li>
+  <li class="ctg_none" xhtml="&#128075;&#127999;"> 👋🏿 </li>
+  <li class="ctg_none" xhtml="&#128076;&#127995;"> 👌🏻 </li>
+  <li class="ctg_none" xhtml="&#128076;&#127996;"> 👌🏼 </li>
+  <li class="ctg_none" xhtml="&#128076;&#127997;"> 👌🏽 </li>
+  <li class="ctg_none" xhtml="&#128076;&#127998;"> 👌🏾 </li>
+  <li class="ctg_none" xhtml="&#128076;&#127999;"> 👌🏿 </li>
+  <li class="ctg_none" xhtml="&#128077;&#127995;"> 👍🏻 </li>
+  <li class="ctg_none" xhtml="&#128077;&#127996;"> 👍🏼 </li>
+  <li class="ctg_none" xhtml="&#128077;&#127997;"> 👍🏽 </li>
+  <li class="ctg_none" xhtml="&#128077;&#127998;"> 👍🏾 </li>
+  <li class="ctg_none" xhtml="&#128077;&#127999;"> 👍🏿 </li>
+  <li class="ctg_none" xhtml="&#128078;&#127995;"> 👎🏻 </li>
+  <li class="ctg_none" xhtml="&#128078;&#127996;"> 👎🏼 </li>
+  <li class="ctg_none" xhtml="&#128078;&#127997;"> 👎🏽 </li>
+  <li class="ctg_none" xhtml="&#128078;&#127998;"> 👎🏾 </li>
+  <li class="ctg_none" xhtml="&#128078;&#127999;"> 👎🏿 </li>
+  <li class="ctg_none" xhtml="&#128079;&#127995;"> 👏🏻 </li>
+  <li class="ctg_none" xhtml="&#128079;&#127996;"> 👏🏼 </li>
+  <li class="ctg_none" xhtml="&#128079;&#127997;"> 👏🏽 </li>
+  <li class="ctg_none" xhtml="&#128079;&#127998;"> 👏🏾 </li>
+  <li class="ctg_none" xhtml="&#128079;&#127999;"> 👏🏿 </li>
+  <li class="ctg_none" xhtml="&#128080;&#127995;"> 👐🏻 </li>
+  <li class="ctg_none" xhtml="&#128080;&#127996;"> 👐🏼 </li>
+  <li class="ctg_none" xhtml="&#128080;&#127997;"> 👐🏽 </li>
+  <li class="ctg_none" xhtml="&#128080;&#127998;"> 👐🏾 </li>
+  <li class="ctg_none" xhtml="&#128080;&#127999;"> 👐🏿 </li>
+  <li class="ctg_none" xhtml="&#128102;&#127995;"> 👦🏻 </li>
+  <li class="ctg_none" xhtml="&#128102;&#127996;"> 👦🏼 </li>
+  <li class="ctg_none" xhtml="&#128102;&#127997;"> 👦🏽 </li>
+  <li class="ctg_none" xhtml="&#128102;&#127998;"> 👦🏾 </li>
+  <li class="ctg_none" xhtml="&#128102;&#127999;"> 👦🏿 </li>
+  <li class="ctg_none" xhtml="&#128100;"> 👤 </li>
+  <li class="ctg_none" xhtml="&#128103;&#127995;"> 👧🏻 </li>
+  <li class="ctg_none" xhtml="&#128103;&#127996;"> 👧🏼 </li>
+  <li class="ctg_none" xhtml="&#128103;&#127997;"> 👧🏽 </li>
+  <li class="ctg_none" xhtml="&#128103;&#127998;"> 👧🏾 </li>
+  <li class="ctg_none" xhtml="&#128103;&#127999;"> 👧🏿 </li>
+  <li class="ctg_none" xhtml="&#128104;&#127995;"> 👨🏻 </li>
+  <li class="ctg_none" xhtml="&#128104;&#127996;"> 👨🏼 </li>
+  <li class="ctg_none" xhtml="&#128104;&#127997;"> 👨🏽 </li>
+  <li class="ctg_none" xhtml="&#128104;&#127998;"> 👨🏾 </li>
+  <li class="ctg_none" xhtml="&#128104;&#127999;"> 👨🏿 </li>
+  <li class="ctg_none" xhtml="&#128105;&#127995;"> 👩🏻 </li>
+  <li class="ctg_none" xhtml="&#128105;&#127996;"> 👩🏼 </li>
+  <li class="ctg_none" xhtml="&#128105;&#127997;"> 👩🏽 </li>
+  <li class="ctg_none" xhtml="&#128105;&#127998;"> 👩🏾 </li>
+  <li class="ctg_none" xhtml="&#128105;&#127999;"> 👩🏿 </li>
+  <li class="ctg_none" xhtml="&#128074;"> 👊 </li>
+  <li class="ctg_none" xhtml="&#128110;&#127995;"> 👮🏻 </li>
+  <li class="ctg_none" xhtml="&#128110;&#127996;"> 👮🏼 </li>
+  <li class="ctg_none" xhtml="&#128110;&#127997;"> 👮🏽 </li>
+  <li class="ctg_none" xhtml="&#128110;&#127998;"> 👮🏾 </li>
+  <li class="ctg_none" xhtml="&#128110;&#127999;"> 👮🏿 </li>
+  <li class="ctg_none" xhtml="&#128112;&#127995;"> 👰🏻 </li>
+  <li class="ctg_none" xhtml="&#128112;&#127996;"> 👰🏼 </li>
+  <li class="ctg_none" xhtml="&#128112;&#127997;"> 👰🏽 </li>
+  <li class="ctg_none" xhtml="&#128112;&#127998;"> 👰🏾 </li>
+  <li class="ctg_none" xhtml="&#128112;&#127999;"> 👰🏿 </li>
+  <li class="ctg_none" xhtml="&#128113;&#127995;"> 👱🏻 </li>
+  <li class="ctg_none" xhtml="&#128113;&#127996;"> 👱🏼 </li>
+  <li class="ctg_none" xhtml="&#128113;&#127997;"> 👱🏽 </li>
+  <li class="ctg_none" xhtml="&#127992;"> 🏸 </li>
+  <li class="ctg_none" xhtml="&#128113;&#127998;"> 👱🏾 </li>
+  <li class="ctg_none" xhtml="&#127966;"> 🏞 </li>
+  <li class="ctg_none" xhtml="&#127965;"> 🏝 </li>
+  <li class="ctg_none" xhtml="&#127962;"> 🏚 </li>
+  <li class="ctg_none" xhtml="&#127960;"> 🏘 </li>
+  <li class="ctg_none" xhtml="&#127959;"> 🏗 </li>
+  <li class="ctg_none" xhtml="&#127958;"> 🏖 </li>
+  <li class="ctg_none" xhtml="&#127956;"> 🏔 </li>
+  <li class="ctg_none" xhtml="&#127955;"> 🏓 </li>
+  <li class="ctg_none" xhtml="&#127954;"> 🏒 </li>
+  <li class="ctg_none" xhtml="&#127953;"> 🏑 </li>
+  <li class="ctg_none" xhtml="&#127951;"> 🏏 </li>
+  <li class="ctg_none" xhtml="&#127950;"> 🏎 </li>
+  <li class="ctg_none" xhtml="&#127949;"> 🏍 </li>
+  <li class="ctg_none" xhtml="&#128113;&#127999;"> 👱🏿 </li>
+  <li class="ctg_none" xhtml="&#128114;&#127995;"> 👲🏻 </li>
+  <li class="ctg_none" xhtml="&#128114;&#127996;"> 👲🏼 </li>
+  <li class="ctg_none" xhtml="&#128114;&#127997;"> 👲🏽 </li>
+  <li class="ctg_none" xhtml="&#128114;&#127998;"> 👲🏾 </li>
+  <li class="ctg_none" xhtml="&#128114;&#127999;"> 👲🏿 </li>
+  <li class="ctg_none" xhtml="&#128115;&#127995;"> 👳🏻 </li>
+  <li class="ctg_none" xhtml="&#128115;&#127996;"> 👳🏼 </li>
+  <li class="ctg_none" title="weightlifter" xhtml="&#127947;" unicode="p="a">🏋 </li>
+  <li class="ctg_none" xhtml="&#128115;&#127997;"> 👳🏽 </li>
+  <li class="ctg_none" xhtml="&#128115;&#127998;"> 👳🏾 </li>
+  <li class="ctg_none" xhtml="&#128115;&#127999;"> 👳🏿 </li>
+  <li class="ctg_none" xhtml="&#128116;&#127995;"> 👴🏻 </li>
+  <li class="ctg_none" xhtml="&#128116;&#127996;"> 👴🏼 </li>
+  <li class="ctg_none" xhtml="&#128116;&#127997;"> 👴🏽 </li>
+  <li class="ctg_none" xhtml="&#128116;&#127998;"> 👴🏾 </li>
+  <li class="ctg_none" xhtml="&#128116;&#127999;"> 👴🏿 </li>
+  <li class="ctg_none" xhtml="&#128117;&#127995;"> 👵🏻 </li>
+  <li class="ctg_none" xhtml="&#128117;&#127996;"> 👵🏼 </li>
+  <li class="ctg_none" xhtml="&#128117;&#127997;"> 👵🏽 </li>
+  <li class="ctg_none" xhtml="&#128117;&#127998;"> 👵🏾 </li>
+  <li class="ctg_none" xhtml="&#128117;&#127999;"> 👵🏿 </li>
+  <li class="ctg_none" xhtml="&#128118;&#127995;"> 👶🏻 </li>
+  <li class="ctg_none" xhtml="&#128118;&#127996;"> 👶🏼 </li>
+  <li class="ctg_none" xhtml="&#128118;&#127997;"> 👶🏽 </li>
+  <li class="ctg_none" xhtml="&#128118;&#127998;"> 👶🏾 </li>
+  <li class="ctg_none" xhtml="&#128118;&#127999;"> 👶🏿 </li>
+  <li class="ctg_none" xhtml="&#128119;&#127995;"> 👷🏻 </li>
+  <li class="ctg_none" xhtml="&#128119;&#127996;"> 👷🏼 </li>
+  <li class="ctg_none" xhtml="&#128119;&#127997;"> 👷🏽 </li>
+  <li class="ctg_none" xhtml="&#128119;&#127998;"> 👷🏾 </li>
+  <li class="ctg_none" xhtml="&#128119;&#127999;"> 👷🏿 </li>
+  <li class="ctg_none" xhtml="&#127912;"> 🎨 </li>
+  <li class="ctg_none" xhtml="&#127903;"> 🎟 </li>
+  <li class="ctg_none" xhtml="&#127897;"> 🎙 </li>
+  <li class="ctg_none" xhtml="&#127894;"> 🎖 </li>
+  <li class="ctg_none" xhtml="&#127869;"> 🍽 </li>
+  <li class="ctg_none" xhtml="&#127859;"> 🍳 </li>
+  <li class="ctg_none" xhtml="&#127792;"> 🌰 </li>
+  <li class="ctg_none" xhtml="&#127786;"> 🌪 </li>
+  <li class="ctg_none" xhtml="&#127785;"> 🌩 </li>
+  <li class="ctg_none" xhtml="&#127784;"> 🌨 </li>
+  <li class="ctg_none" xhtml="&#127783;"> 🌧 </li>
+  <li class="ctg_none" xhtml="&#127782;"> 🌦 </li>
+  <li class="ctg_none" xhtml="&#127781;"> 🌥 </li>
+  <li class="ctg_none" xhtml="&#127780;"> 🌤 </li>
+  <li class="ctg_none" xhtml="&#127764;"> 🌔 </li>
+  <li class="ctg_none" xhtml="&#127750;"> 🌆 </li>
+  <li class="ctg_none" xhtml="&#128124;&#127995;"> 👼🏻 </li>
+  <li class="ctg_none" xhtml="&#128124;&#127996;"> 👼🏼 </li>
+  <li class="ctg_none" xhtml="&#128124;&#127997;"> 👼🏽 </li>
+  <li class="ctg_none" xhtml="&#128124;&#127998;"> 👼🏾 </li>
+  <li class="ctg_none" xhtml="&#128124;&#127999;"> 👼🏿 </li>
+  <li class="ctg_none" xhtml="&#128129;&#127995;"> 💁🏻 </li>
+  <li class="ctg_none" xhtml="&#128129;&#127996;"> 💁🏼 </li>
+  <li class="ctg_none" xhtml="&#128129;&#127997;"> 💁🏽 </li>
+  <li class="ctg_none" xhtml="&#128129;&#127998;"> 💁🏾 </li>
+  <li class="ctg_none" xhtml="&#128129;&#127999;"> 💁🏿 </li>
+  <li class="ctg_none" xhtml="&#128130;&#127995;"> 💂🏻 </li>
+  <li class="ctg_none" xhtml="&#128130;&#127996;"> 💂🏼 </li>
+  <li class="1f1fctg_a" title="United States of America" xhtml="&#127482;" unicode=""ctg="1f1fa" o="f">🇺🇸 </li>
+  <li class="ctg_none" xhtml="&#128130;&#127997;"> 💂🏽 </li>
+  <li class="ctg_none" xhtml="&#128130;&#127998;"> 💂🏾 </li>
+  <li class="ctg_none" xhtml="&#128130;&#127999;"> 💂🏿 </li>
+  <li class="ctg_none" xhtml="&#128131;&#127995;"> 💃🏻 </li>
+  <li class="ctg_none" xhtml="&#128131;&#127996;"> 💃🏼 </li>
+  <li class="ctg_none" xhtml="&#128131;&#127997;"> 💃🏽 </li>
+  <li class="ctg_none" xhtml="&#128131;&#127998;"> 💃🏾 </li>
+  <li class="ctg_none" xhtml="&#128131;&#127999;"> 💃🏿 </li>
+  <li class="ctg_none" xhtml="&#128133;&#127995;"> 💅🏻 </li>
+  <li class="ctg_none" xhtml="&#128133;&#127996;"> 💅🏼 </li>
+  <li class="ctg_none" xhtml="&#128133;&#127997;"> 💅🏽 </li>
+  <li class="ctg_none" xhtml="&#128133;&#127998;"> 💅🏾 </li>
+  <li class="ctg_none" xhtml="&#128133;&#127999;"> 💅🏿 </li>
+  <li class="ctg_none" xhtml="&#128135;&#127995;"> 💇🏻 </li>
+  <li class="ctg_none" xhtml="&#128135;&#127996;"> 💇🏼 </li>
+  <li class="ctg_none" xhtml="&#128135;&#127997;"> 💇🏽 </li>
+  <li class="ctg_none" xhtml="&#128135;&#127998;"> 💇🏾 </li>
+  <li class="ctg_none" xhtml="&#128135;&#127999;"> 💇🏿 </li>
+  <li class="ctg_none" xhtml="&#128170;&#127995;"> 💪🏻 </li>
+  <li class="ctg_none" xhtml="&#128170;&#127996;"> 💪🏼 </li>
+  <li class="ctg_none" xhtml="&#128170;&#127997;"> 💪🏽 </li>
+  <li class="ctg_none" xhtml="&#128170;&#127998;"> 💪🏾 </li>
+  <li class="ctg_none" title="Russia" xhtml="&#127479;"> 🇷🇺 </li>
+  <li class="ctg_none" xhtml="&#128170;&#127999;"> 💪🏿 </li>
+  <li class="ctg_none" xhtml="&#128373;&#127995;"> 🕵🏻 </li>
+  <li class="ctg_none" xhtml="&#128373;&#127996;"> 🕵🏼 </li>
+  <li class="ctg_none" xhtml="&#128373;&#127997;"> 🕵🏽 </li>
+  <li class="ctg_none" xhtml="&#128373;&#127998;"> 🕵🏾 </li>
+  <li class="ctg_none" xhtml="&#128373;&#127999;"> 🕵🏿 </li>
+  <li class="ctg_none" xhtml="&#128400;&#127995;"> 🖐🏻 </li>
+  <li class="ctg_none" xhtml="&#128400;&#127996;"> 🖐🏼 </li>
+  <li class="ctg_none" xhtml="&#128400;&#127997;"> 🖐🏽 </li>
+  <li class="ctg_none" xhtml="&#128400;&#127998;"> 🖐🏾 </li>
+  <li class="ctg_none" xhtml="&#128400;&#127999;"> 🖐🏿 </li>
+  <li class="ctg_none" xhtml="&#128405;&#127995;"> 🖕🏻 </li>
+  <li class="ctg_none" xhtml="&#128405;&#127996;"> 🖕🏼 </li>
+  <li class="ctg_none" xhtml="&#128405;&#127997;"> 🖕🏽 </li>
+  <li class="ctg_none" xhtml="&#128405;&#127998;"> 🖕🏾 </li>
+  <li class="ctg_none" xhtml="&#128405;&#127999;"> 🖕🏿 </li>
+  <li class="ctg_none" xhtml="&#128406;&#127995;"> 🖖🏻 </li>
+  <li class="ctg_none" xhtml="&#128406;&#127996;"> 🖖🏼 </li>
+  <li class="ctg_none" xhtml="&#128406;&#127997;"> 🖖🏽 </li>
+  <li class="ctg_none" xhtml="&#128406;&#127998;"> 🖖🏾 </li>
+  <li class="ctg_none" xhtml="&#128406;&#127999;"> 🖖🏿 </li>
+  <li class="ctg_none" xhtml="&#128581;&#127995;"> 🙅🏻 </li>
+  <li class="ctg_none" xhtml="&#128581;&#127996;"> 🙅🏼 </li>
+  <li class="ctg_none" xhtml="&#128581;&#127997;"> 🙅🏽 </li>
+  <li class="ctg_none" xhtml="&#128581;&#127998;"> 🙅🏾 </li>
+  <li class="ctg_none" xhtml="&#128581;&#127999;"> 🙅🏿 </li>
+  <li class="ctg_none" xhtml="&#128582;&#127995;"> 🙆🏻 </li>
+  <li class="ctg_none" xhtml="&#128582;&#127996;"> 🙆🏼 </li>
+  <li class="ctg_none" xhtml="&#128582;&#127997;"> 🙆🏽 </li>
+  <li class="ctg_none" xhtml="&#128582;&#127998;"> 🙆🏾 </li>
+  <li class="ctg_none" xhtml="&#128582;&#127999;"> 🙆🏿 </li>
+  <li class="ctg_none" xhtml="&#128583;&#127995;"> 🙇🏻 </li>
+  <li class="ctg_none" xhtml="&#128583;&#127996;"> 🙇🏼 </li>
+  <li class="ctg_none" xhtml="&#128583;&#127997;"> 🙇🏽 </li>
+  <li class="ctg_none" xhtml="&#128583;&#127998;"> 🙇🏾 </li>
+  <li class="ctg_none" xhtml="&#128583;&#127999;"> 🙇🏿 </li>
+  <li class="ctg_none" xhtml="&#128587;&#127995;"> 🙋🏻 </li>
+  <li class="ctg_none" xhtml="&#128587;&#127996;"> 🙋🏼 </li>
+  <li class="ctg_none" xhtml="&#128587;&#127997;"> 🙋🏽 </li>
+  <li class="ctg_none" xhtml="&#128587;&#127998;"> 🙋🏾 </li>
+  <li class="ctg_none" xhtml="&#128587;&#127999;"> 🙋🏿 </li>
+  <li class="ctg_none" xhtml="&#128588;&#127995;"> 🙌🏻 </li>
+  <li class="ctg_none" xhtml="&#128588;&#127996;"> 🙌🏼 </li>
+  <li class="ctg_none" title="korea" xhtml="&#127472;"> 🇰🇷 </li>
+  <li class="ctg_none" xhtml="&#128588;&#127997;"> 🙌🏽 </li>
+  <li class="ctg_none" xhtml="&#128588;&#127998;"> 🙌🏾 </li>
+  <li class="ctg_none" xhtml="&#128588;&#127999;"> 🙌🏿 </li>
+  <li class="ctg_none" xhtml="&#128589;&#127995;"> 🙍🏻 </li>
+  <li class="ctg_none" title="Japan" xhtml="&#127471;"> 🇯🇵 </li>
+  <li class="ctg_none" xhtml="&#128589;&#127996;"> 🙍🏼 </li>
+  <li class="ctg_none" xhtml="&#128589;&#127997;"> 🙍🏽 </li>
+  <li class="ctg_none" xhtml="&#128589;&#127998;"> 🙍🏾 </li>
+  <li class="ctg_none" xhtml="&#128589;&#127999;"> 🙍🏿 </li>
+  <li class="ctg_none" xhtml="&#128590;&#127995;"> 🙎🏻 </li>
+  <li class="ctg_none" title="Italy" xhtml="&#127470;" unicode="p="f">🇮🇹 </li>
+  <li class="ctg_none" xhtml="&#128590;&#127996;"> 🙎🏼 </li>
+  <li class="ctg_none" xhtml="&#128590;&#127997;"> 🙎🏽 </li>
+  <li class="ctg_none" xhtml="&#128590;&#127998;"> 🙎🏾 </li>
+  <li class="ctg_none" xhtml="&#128590;&#127999;"> 🙎🏿 </li>
+  <li class="ctg_none" xhtml="&#128591;&#127995;"> 🙏🏻 </li>
+  <li class="ctg_none" xhtml="&#128591;&#127996;"> 🙏🏼 </li>
+  <li class="ctg_none" xhtml="&#128591;&#127997;"> 🙏🏽 </li>
+  <li class="ctg_none" xhtml="&#128591;&#127998;"> 🙏🏾 </li>
+  <li class="ctg_none" xhtml="&#128591;&#127999;"> 🙏🏿 </li>
+  <li class="ctg_none" xhtml="&#128675;&#127995;"> 🚣🏻 </li>
+  <li class="ctg_none" xhtml="&#128675;&#127996;"> 🚣🏼 </li>
+  <li class="ctg_none" xhtml="&#128675;&#127997;"> 🚣🏽 </li>
+  <li class="ctg_none" xhtml="&#128675;&#127998;"> 🚣🏾 </li>
+  <li class="ctg_none" xhtml="&#128675;&#127999;"> 🚣🏿 </li>
+  <li class="ctg_none" title="Great Britain" xhtml="&#127468;" unicode="p="f">🇬🇧 </li>
+  <li class="ctg_none" xhtml="&#128692;&#127995;"> 🚴🏻 </li>
+  <li class="ctg_none" xhtml="&#128692;&#127996;"> 🚴🏼 </li>
+  <li class="ctg_none" xhtml="&#128692;&#127997;"> 🚴🏽 </li>
+  <li class="ctg_f" title="France" xhtml="&#127467;" unicode=""ctg="1f1eb" o="f">🇫🇷 </li>
+  <li class="ctg_none" xhtml="&#128692;&#127998;"> 🚴🏾 </li>
+  <li class="ctg_none" xhtml="&#128692;&#127999;"> 🚴🏿 </li>
+  <li class="ctg_none" xhtml="&#128693;&#127995;"> 🚵🏻 </li>
+  <li class="ctg_none" xhtml="&#128693;&#127996;"> 🚵🏼 </li>
+  <li class="ctg_none" xhtml="&#127466;"> 🇪 </li>
+  <li class="ctg_none" xhtml="&#128693;&#127997;"> 🚵🏽 </li>
+  <li class="ctg_none" xhtml="&#128693;&#127998;"> 🚵🏾 </li>
+  <li class="ctg_none" xhtml="&#128693;&#127999;"> 🚵🏿 </li>
+  <li class="ctg_none" title="Germany" xhtml="&#127465;"> 🇩🇪 </li>
+  <li class="ctg_none" xhtml="&#128694;&#127995;"> 🚶🏻 </li>
+  <li class="ctg_none" xhtml="&#128694;&#127996;"> 🚶🏼 </li>
+  <li class="ctg_none" xhtml="&#128694;&#127997;"> 🚶🏽 </li>
+  <li class="ctg_none" xhtml="&#128694;&#127998;"> 🚶🏾 </li>
+  <li class="ctg_none" xhtml="&#128694;&#127999;"> 🚶🏿 </li>
+  <li class="ctg_none" xhtml="&#128704;&#127995;"> 🛀🏻 </li>
+  <li class="ctg_none" xhtml="&#128704;&#127996;"> 🛀🏼 </li>
+  <li class="ctg_none" xhtml="&#128704;&#127997;"> 🛀🏽 </li>
+  <li class="ctg_none" xhtml="&#128704;&#127998;"> 🛀🏾 </li>
+  <li class="ctg_none" xhtml="&#128704;&#127999;"> 🛀🏿 </li>
+  <li class="ctg_none" xhtml="&#129304;&#127995;"> 🤘🏻 </li>
+  <li class="ctg_none" xhtml="&#129304;&#127996;"> 🤘🏼 </li>
+  <li class="ctg_none" xhtml="&#129304;&#127997;"> 🤘🏽 </li>
+  <li class="ctg_none" title="Chinea" xhtml="&#127464;"> 🇨🇳 </li>
+  <li class="ctg_none" xhtml="&#129304;&#127998;"> 🤘🏾 </li>
+  <li class="ctg_none" xhtml="&#129304;&#127999;"> 🤘🏿 </li>
+  <li class="ctg_none" xhtml="&#9757;&#127995;"> ☝🏻 </li>
+  <li class="ctg_none" xhtml="&#9757;&#127996;"> ☝🏼 </li>
+  <li class="ctg_none" xhtml="&#9757;&#127997;"> ☝🏽 </li>
+  <li class="ctg_none" xhtml="&#9757;&#127998;"> ☝🏾 </li>
+  <li class="ctg_none" xhtml="&#9757;&#127999;"> ☝🏿 </li>
+  <li class="ctg_none" xhtml="&#9994;&#127995;"> ✊🏻 </li>
+  <li class="ctg_none" xhtml="&#9994;&#127996;"> ✊🏼 </li>
+  <li class="ctg_none" xhtml="&#9994;&#127997;"> ✊🏽 </li>
+  <li class="ctg_none" xhtml="&#9994;&#127998;"> ✊🏾 </li>
+  <li class="ctg_none" xhtml="&#9994;&#127999;"> ✊🏿 </li>
+  <li class="ctg_none" xhtml="&#9995;&#127995;"> ✋🏻 </li>
+  <li class="ctg_none" xhtml="&#9995;&#127996;"> ✋🏼 </li>
+  <li class="ctg_none" xhtml="&#9995;&#127997;"> ✋🏽 </li>
+  <li class="ctg_none" xhtml="&#9995;&#127998;"> ✋🏾 </li>
+  <li class="ctg_none" xhtml="&#9995;&#127999;"> ✋🏿 </li>
+  <li class="ctg_none" xhtml="&#9996;&#127995;"> ✌🏻 </li>
+  <li class="ctg_none" xhtml="&#9996;&#127996;"> ✌🏼 </li>
+  <li class="ctg_none" xhtml="&#9996;&#127997;"> ✌🏽 </li>
+  <li class="ctg_none" xhtml="&#9996;&#127998;"> ✌🏾 </li>
+  <li class="ctg_none" xhtml="&#9996;&#127999;"> ✌🏿 </li>
+  <li class="ctg_none" xhtml="&#9997;&#127995;"> ✍🏻 </li>
+  <li class="ctg_none" xhtml="&#9997;&#127996;"> ✍🏼 </li>
+  <li class="ctg_none" xhtml="&#9997;&#127997;"> ✍🏽 </li>
+  <li class="ctg_none" xhtml="&#9997;&#127998;"> ✍🏾 </li>
+  <li class="ctg_none" xhtml="&#9997;&#127999;"> ✍🏿 </li>
+  <li class="ctg_none" title="man_man_love" xhtml="&#128104;&zwj;&#10084;&zwj;&#128104;" unicode="p="p">👨‍❤️‍👨 </li>
+  <li class="ctg_none" title="couple_man_kiss" xhtml="&#128104;&zwj;&#10084;&zwj;&#128139;&zwj;&#128104;" unicode="p="p">👨‍❤️‍💋‍👨 </li>
+  <li class="ctg_none" title="family_fathers_one_boy" xhtml="&#128104;&zwj;&#128104;&zwj;&#128102;" unicode="p="p">👨‍👨‍👦 </li>
+  <li class="ctg_none" title="family_fathers_two_boys" xhtml="&#128104;&zwj;&#128104;&zwj;&#128102;&zwj;&#128102;" unicode="p="p">👨‍👨‍👦‍👦 </li>
+  <li class="ctg_none" title="family_fathers_one_girl" xhtml="&#128104;&zwj;&#128104;&zwj;&#128103;" unicode="p="p">👨‍👨‍👧 </li>
+  <li class="ctg_none" title="family_fathers_children" xhtml="&#128104;&zwj;&#128104;&zwj;&#128103;&zwj;&#128102;" unicode="p="p">👨‍👨‍👧‍👦 </li>
+  <li class="ctg_none" title="family_fathers_two_girls" xhtml="&#128104;&zwj;&#128104;&zwj;&#128103;&zwj;&#128103;" unicode="p="p">👨‍👨‍👧‍👧 </li>
+  <li class="ctg_none" title="family_two_boys" xhtml="&#128104;&zwj;&#128105;&zwj;&#128102;&zwj;&#128102;" unicode="p="p">👨‍👩‍👦‍👦 </li>
+  <li class="ctg_none" title="family_one_girl" xhtml="&#128104;&zwj;&#128105;&zwj;&#128103;" unicode="p="p">👨‍👩‍👧 </li>
+  <li class="ctg_none" title="family_children" xhtml="&#128104;&zwj;&#128105;&zwj;&#128103;&zwj;&#128102;" unicode="p="p">👨‍👩‍👧‍👦 </li>
+  <li class="ctg_none" title="family_two_girls" xhtml="&#128104;&zwj;&#128105;&zwj;&#128103;&zwj;&#128103;" unicode="p="p">👨‍👩‍👧‍👧 </li>
+  <li class="ctg_none" title="girl_girl_love" xhtml="&#128105;&zwj;&#10084;&zwj;&#128105;" unicode="p="p">👩‍❤️‍👩 </li>
+  <li class="ctg_none" title="couple_woman_kiss" xhtml="&#128105;&zwj;&#10084;&zwj;&#128139;&zwj;&#128105;" unicode="p="p">👩‍❤️‍💋‍👩 </li>
+  <li class="ctg_none" title="family_mothers_one_boy" xhtml="&#128105;&zwj;&#128105;&zwj;&#128102;" unicode="p="p">👩‍👩‍👦 </li>
+  <li class="ctg_none" title="family_mothers_two_boys" xhtml="&#128105;&zwj;&#128105;&zwj;&#128102;&zwj;&#128102;" unicode="p="p">👩‍👩‍👦‍👦 </li>
+  <li class="ctg_none" title="family_mothers_one_girl" xhtml="&#128105;&zwj;&#128105;&zwj;&#128103;" unicode="p="p">👩‍👩‍👧 </li>
+  <li class="ctg_none" title="family_mothers_children" xhtml="&#128105;&zwj;&#128105;&zwj;&#128103;&zwj;&#128102;" unicode="p="p">👩‍👩‍👧‍👦 </li>
+  <li class="ctg_none" title="family_mothers_two_girls" xhtml="&#128105;&zwj;&#128105;&zwj;&#128103;&zwj;&#128103;" unicode="p="p">👩‍👩‍👧‍👧 </li>
+  <li class="ctg_none" xhtml="&#128120;&#127995;" unicode="p="p">👸🏻 </li>
+  <li class="ctg_none" xhtml="&#128120;&#127996;" unicode="p="p">👸🏼 </li>
+  <li class="ctg_none" xhtml="&#128120;&#127997;" unicode="p="p">👸🏽 </li>
+  <li class="ctg_none" xhtml="&#128120;&#127998;" unicode="p="p">👸🏾 </li>
+  <li class="ctg_none" xhtml="&#128120;&#127999;" unicode="p="p">👸🏿 </li>
+  <li class="ctg_none" xhtml="&#128134;&#127995;" unicode="p="p">💆🏻 </li>
+  <li class="ctg_none" xhtml="&#128134;&#127996;" unicode="p="p">💆🏼 </li>
+  <li class="ctg_none" xhtml="&#128134;&#127997;" unicode="p="p">💆🏽 </li>
+  <li class="ctg_none" xhtml="&#128134;&#127998;" unicode="p="p">💆🏾 </li>
+  <li class="ctg_none" xhtml="&#128134;&#127999;" unicode="p="p">💆🏿 </li>
+</ul>
+
+ </body>
+</html>
