@@ -69,7 +69,16 @@
     font-size: 160px;
     width: 1.25em;
     padding: 0;
-
+  }
+  #status span.emoji:before{
+    content: 'click to copy';
+    font-size: 16px;
+    padding: .5ex;
+    position: absolute;
+    margin-left: -2em;
+    display: inline-block;
+    /*margin-top: .5em;*/
+    background-color: rgba(255,0,0,.5); color: yellow;
   }
   #status span.html input,
   #status span.unicode input,
@@ -116,7 +125,6 @@
       #status span.emoji {
         float: left;
         margin-top: -20px;
-        
       }
       #status span.emoji input {
         font-size: 80px;
@@ -128,7 +136,7 @@
       left: 0;
       bottom: 0;
       /*margin-top: 56vh;*/
-      height: 43vh;
+      max-height: 43vh;
       overflow: hidden;
       width: 100%;
     }
