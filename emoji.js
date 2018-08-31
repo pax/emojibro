@@ -5,7 +5,6 @@
 */
 
 
-
 // https://ourcodeworld.com/articles/read/188/encode-and-decode-html-entities-using-pure-javascript
 function encode (str) {
   if (str ){
