@@ -18,7 +18,7 @@ if (localStorage.getItem("activity")) {
   // console.log(sortable)
   for (var element in sortable) {
     // zx+='x' + element;
-    console.log(sortable[element][0])
+    // console.log(sortable[element][0])
     display += '<span>' + sortable[element][0] + '<sub> '  + sortable[element][1] +  '</sub></span>';
   }
 
@@ -91,11 +91,11 @@ document.getElementById("msg").classList.toggle('hide');
 var storedActivity = localStorage.getItem("activity") ? JSON.parse(localStorage.getItem("activity")) : {};
 storedActivity[target.value] = storedActivity[target.value] ? storedActivity[target.value] + 1 : 1;
 // storedActivity['this']=storedActivity[target.value];
-console.log(storedActivity);
+// console.log(storedActivity);
 localStorage.setItem("activity", JSON.stringify(storedActivity));
 // localStorage.clear();
 // console.log(storedActivity);
-// console.log(target.value + ' → localStorage');
+console.log(target.value + ' → localStorage');
 }
 
 
@@ -108,4 +108,24 @@ function filter(className){
   document.getElementById("them_all").className=className;
   document.getElementById("panel-wrapper").className=className;
 
+}
+
+// https://www.w3schools.com/howto/howto_js_filter_lists.asp
+function emojyTitleSearch(inputID, targetID) {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById(inputID);
+    // console.log(input.value)
+    filter = input.value.toUpperCase();
+    ul = document.getElementById(targetID);
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        // a = li[i].getElementsByTagName("a")[0];
+        a = li[i];
+        // console.log(a);
+        if (a.title.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
 }
