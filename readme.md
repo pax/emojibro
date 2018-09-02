@@ -1,4 +1,4 @@
- ✋ lazy emoji copy/paste
+ ✋ lazy emoji copy/paste → [github.io/emojibro](https://pax.github.io/emojibro/)
 
 _Where I learn how to set-up a simple [PWA](https://en.wikipedia.org/wiki/Progressive_Web_Apps)_
 
@@ -14,6 +14,7 @@ _Where I learn how to set-up a simple [PWA](https://en.wikipedia.org/wiki/Progre
 - fix list
     + remove duplicates – add parent emoji? to 
     + group color versions of same emoji
+- move to `emojibro.github.io`
 
 
 ### Alternatives
