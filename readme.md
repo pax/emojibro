@@ -12,6 +12,7 @@ _Where I learn how to set-up a simple [PWA](https://en.wikipedia.org/wiki/Progre
 - PWA – figure out service workers
 - analytics? log interaction → most popular (list)
 - search emoji
+    + ~~search in titles~~
     + add keyword field to emoji list
 - fix list
     + remove duplicates – add parent emoji? to
