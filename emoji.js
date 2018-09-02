@@ -79,6 +79,8 @@ var target= document.getElementById(targetID);
   target.select();
   /* Copy the text inside the text field */
   document.execCommand("copy");
+target.blur();
+
   // target.focus();
 document.getElementById("msg").innerHTML='copied';
 document.getElementById("msg").classList.toggle('show');
