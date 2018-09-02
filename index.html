@@ -205,6 +205,28 @@
   #msg:empty{
     display: none;
   }
+  #activity {
+    font-size: 18px;
+    border-top: 1px dashed #CCC;
+    margin-top: 1em;
+    padding-top: 1em;
+  }
+  #activity sub {
+    font-size: 11px;
+    position: absolute;
+    margin-top: 1.66em;
+    display: inline-block;
+    width: 1em;
+    text-align: center;
+    border-radius: 50%;
+    margin-left: -1.25em;
+    opacity: .85;
+    background-color: #fff;
+  }
+  #activity span {
+    text-align: center;
+    margin-left: .5ex;
+  }
 
   @keyframes pulsex {
     0% {
@@ -232,11 +254,11 @@
   }
 </style>
 
-<script src="emoji.js" ></script>
+
 </head>
 
 <body class="all">
-  
+
 <div id="panel-wrapper" class="showall"><span class="panel">
   <div class="collections">
   <a href="#" class="xshowall" onclick="filter('showall')" > 💯 ALL</a>
@@ -251,6 +273,7 @@
   <a href="#" class="ctg_none" onclick="filter('ctg_none')" > 🤖 misc</a>
  </div>
   <span  id="status"><span style="font-size: 14px;">&lt;- Click something</span></span>
+  <div id="activity">_</div>
   <br><span class="todo">TODO: Show History  / delete all / edit list</span>
 </span></div>
 
@@ -1903,6 +1926,6 @@
   <li class="ctg_none" xhtml="&#128134;&#127998;" unicode="p="p">💆🏾 </li>
   <li class="ctg_none" xhtml="&#128134;&#127999;" unicode="p="p">💆🏿 </li>
 </ul>
-
+<script src="emoji.js" ></script>
  </body>
 </html>
