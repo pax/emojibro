@@ -159,7 +159,7 @@ color: #333;
 @media screen and (max-width: 800px) {
 
   #them_all{
-  padding: 6em 0;
+  padding: 6em 0 9em 0;
   }
       /*#status span.emoji input*/
     #status span.emoji {
