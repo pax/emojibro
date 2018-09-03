@@ -1,8 +1,12 @@
+/*@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');*/
+
 * {
   box-sizing: border-box;
+  font-weight: 300;
 }
 body {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
   background-color: LavenderBlush;
   margin: 0;
 /*  background:
@@ -62,8 +66,9 @@ ul#them_all li{
 
 #status span.html input,
 #status span.unicode input {
-  width: 5em;
+  /*width: 5em;*/
   /*border:1px dotted #999; */
+  font-weight: 400;
 }
 #status span.html input,
 #status span.unicode input,
@@ -72,6 +77,7 @@ ul#them_all li{
   font-size: 14px;
   text-transform: uppercase;
   margin-top: 3px;
+  font-weight: 400;
 
 }
 #status a.ctg,
@@ -83,11 +89,13 @@ ul#them_all li{
 #status a.ctg:before {
   content: 'Collections: ';
   color: #333;
+  font-weight: 300;
   text-transform: none;
 }
 
 #status span.title {
   font-size: 24px;
+  font-weight: 400;
 }
 #status span.unicode:before{
   content: 'Unicode: ';
@@ -119,7 +127,7 @@ ul#them_all li{
     /*background-color: #FCFCFC;*/
     background-color: #FFF5EE;
     font-size: 72px;
-    border-radius: 12px;;
+    border-radius: 4px;
     border: 6px solid Azure;
     padding:  .5ex;
     box-shadow:  1px 1px 1ex rgba(0,0,0,.05);
@@ -151,7 +159,7 @@ ul#them_all li{
     text-shadow: 1px 1px 0 White;
   }
   #activity {
-    border-top: 2px solid Gainsboro;
+    border-top: 2px dashed Gainsboro;
     margin-top: 1em;
     padding-top: 1em;
   }
