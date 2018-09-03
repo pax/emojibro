@@ -1,4 +1,6 @@
+showActivity();
 
+function showActivity(){
 if (localStorage.getItem("activity")) {
   // console.log('has storage');
   zz=JSON.parse(localStorage.getItem("activity"));
@@ -24,7 +26,7 @@ if (localStorage.getItem("activity")) {
 else {
   console.log('localStorage.getItem("activity") = null' );
 }
-
+}
 
 // https://ourcodeworld.com/articles/read/188/encode-and-decode-html-entities-using-pure-javascript
 function encode (str) {
