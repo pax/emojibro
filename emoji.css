@@ -2,15 +2,20 @@
 body {
   font-family: sans-serif;
   background-color: LavenderBlush;
+  margin: 0;
+
+
 }
 ul#them_all{
   list-style: none;
   padding-left:0;
   font-size: 48px;
+  padding: 5px;
+    /*-webkit-padding-start: 0;*/
 }
 ul#them_all li{
   display: none;
-  padding: 2px;
+  margin: 2px;
   cursor: hand;
 }
 
@@ -30,25 +35,36 @@ ul#them_all li{
   font-size: 13px;
   margin-bottom: 2em;
 }
-.collections a {
-  text-decoration: none;
-  display: inline-block;
-  margin: 2px 5px;
-  padding: 2px 1px;
-  text-transform: uppercase;
+.collections select{
+  /*font-size: 16px;*/
+  border-radius: 0;
   border: none;
-  font-size: 15px;
-  background-color: transparent;
-  border-bottom: 1px solid #999;
-  color: #666;
+  background-color: White;
+    outline-color: transparent;
+  outline-style: none;
 }
-.collections a.subctg {
-  display: none;
-}
-.collections a:active {
- /*background-color: Black;*/
-color: #333;
-}
+
+
+/*
+  .collections a {
+    text-decoration: none;
+    display: inline-block;
+    margin: 2px 5px;
+    padding: 2px 1px;
+    text-transform: uppercase;
+    border: none;
+    font-size: 15px;
+    background-color: transparent;
+    border-bottom: 1px solid #999;
+    color: #666;
+  }
+  .collections a.subctg {
+    display: none;
+  }
+  .collections a:active {
+    color: #333;
+  }
+*/
 #status span {
   display: block;
 }
@@ -125,7 +141,7 @@ color: #333;
     position: fixed;
     top: .66ex;
     left: 68vw;
-    max-width: 4em;
+    max-width: 5em;
     height: 460px;
 
   }
@@ -159,7 +175,7 @@ color: #333;
 @media screen and (max-width: 800px) {
 
   #them_all{
-  padding: 6em 0 9em 0;
+  padding: 2em 0 3em 0;
   }
       /*#status span.emoji input*/
     #status span.emoji {
@@ -382,18 +398,28 @@ color: #333;
   text-align: center;
   margin-left: .5ex;
 }
-
+.collections select#nav_selector, .collections .search-wrapper input#emoji-search{
+  width: 90%;
+  margin: .5ex auto;
+  padding: 1ex;
+  font-size: 14px;
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+  background-color: White;
+  border: 1px solid #DDD;
+}
 
 .search-wrapper {
   /*border-bottom: 1px dashed #999;*/
   /*padding: .25ex 0 .6ex 0;*/
-  margin-top: 1em;
-  text-align: center;
+  /*margin-top: 1em;*/
+  /*text-align: center;*/
 }
 .search-wrapper .clear {
   position: absolute;
-  margin-left: -2em;
-  margin-top: .75ex;
+  margin-left: -1.75em;
+  margin-top: 2ex;
   font-size: 12px;
   text-decoration: none;
   border: none;
@@ -408,9 +434,9 @@ color: #333;
 }
 
 input#emoji-search{
-  font-size: 16px;
-  width: 100%;
-  padding: .5ex .75ex;
+  /*font-size: 16px;*/
+  /*width: 100%;*/
+  /*padding: .5ex .75ex;*/
 }
 
 /*

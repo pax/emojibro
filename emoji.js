@@ -94,6 +94,7 @@ function sleep(ms) {
 }
 
 function filter(className){
+
 // ckear searchbox
   document.getElementById('emoji-search').value = ''
   emojyTitleSearch('emoji-search','them_all');
@@ -101,6 +102,21 @@ function filter(className){
   document.getElementById("them_all").className="";
   document.getElementById("them_all").className=className;
   document.getElementById("panel-wrapper").className=className;
+
+}
+
+function selectFilter(){
+  // alert ('x');
+  var selected_val=document.getElementById("nav_selector").value;
+
+  // console.log(selected_val);
+// ckear searchbox
+  document.getElementById('emoji-search').value = ''
+  emojyTitleSearch('emoji-search','them_all');
+
+  document.getElementById("them_all").className="";
+  document.getElementById("them_all").className=selected_val;
+  document.getElementById("panel-wrapper").className=selected_val;
 
 }
 
