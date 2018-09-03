@@ -12,10 +12,19 @@ if (localStorage.getItem("activity")) {
     return b[1] - a[1];
   });
 
-// show only top 20 most used
+  // show top 20 most used
   sortable=sortable.slice(0, 20);
+// if (sortable.length >> 20){
+//   sortable.splice(Math.round(sortable.length/2)-2,2);
+// }
+// TODO show at most top 10 most used and last 10 clicked
+  // xtop=sortable.slice(0, Math.round(sortable.length/2));
+  // ztop=xtop.slice(0, 10);
+  // last=sortable.slice(Math.round(sortable.length/2) -1, Math.round(sortable.length/2) + 9);
+// console.log(sortable)
+  // sortable=ztop.concat(last);
 
-  var display=''
+  var display='';
   // console.log(sortable)
   for (var element in sortable) {
     // zx+='x' + element;
