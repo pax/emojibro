@@ -133,6 +133,8 @@ ul#them_all li{
     box-shadow:  1px 1px 1ex rgba(0,0,0,.05);
     display: inline-block;
     text-align: center;
+    min-width: 340px;
+    max-width: 24vw;
     height: 480px;
   }
   ul#them_all{
@@ -145,6 +147,7 @@ ul#them_all li{
     font-size: 24px;
     margin-top: -2ex;
   }
+
   #status span.emoji:before{
     content: '[click to copy]';
     writing-mode: vertical-rl;
