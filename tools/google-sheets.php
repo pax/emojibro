@@ -139,7 +139,7 @@ function createSlug($str, $delimiter = '-'){
 <div id="wrapper"><h1>📊 get emoji from gSheets</h1>
 <div id="nav">
   <select id="nav_selector" onchange="selectFilter()">
-    <option class="xshowall" onchange="filter('showall')" value="showall" selected="">💯 ALL CATEGORIES &rarr;</option>
+    <option class="xshowall" onchange="filter('showall')" value="showall" selected="">ALL CATEGORIES ⬇</option>
     <?=$nav;?>
     </select>
 </div>
