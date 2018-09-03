@@ -80,7 +80,7 @@ $nav='';
 
 // SELECT
 foreach ($navArray as $ctg_slug => $one_ctg) {
-  $nav.='<option></option>'."\n\t\t\t\t".'<option class="ctg ctg_'.$ctg_slug.'"  value="ctg_'.$ctg_slug.'">'.$one_ctg['icon'].strtoupper($one_ctg['name']).' '.$one_ctg['icon'].'</option>';
+  $nav.="\n\t\t\t\t".'<option></option>'."\n\t\t\t\t".'<option class="ctg ctg_'.$ctg_slug.'"  value="ctg_'.$ctg_slug.'">'.$one_ctg['icon'].strtoupper($one_ctg['name']).' '.$one_ctg['icon'].'</option>';
   foreach ($one_ctg['subctgs'] as $subctg_slug => $one_subctg) {
     // print_r($one_subctg);
     $nav.="\n\t\t\t\t".'<option class="subctg sub_'.$one_subctg['slug'].'"  value="sub_'.$one_subctg['slug'].'"> &nbsp; &nbsp; '.$one_subctg['name'].'</option>';
@@ -139,7 +139,7 @@ function createSlug($str, $delimiter = '-'){
 <div id="wrapper"><h1>📊 get emoji from gSheets</h1>
 <div id="nav">
   <select id="nav_selector" onchange="selectFilter()">
-    <option class="xshowall" onchange="filter('showall')" value="showall" selected="">💯 ALL CATEGORIES</option>
+    <option class="xshowall" onchange="filter('showall')" value="showall" selected="">💯 ALL CATEGORIES &rarr;</option>
     <?=$nav;?>
     </select>
 </div>
