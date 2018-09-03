@@ -1,6 +1,6 @@
- ✋ lazy emoji copy/paste → [github.io/emojibro](https://pax.github.io/emojibro/)
+ ✋ lazy emoji copy/paste → [pax.github.io/emojibro](https://pax.github.io/emojibro/)
 
-_Where I learn how to set-up a simple [PWA](https://en.wikipedia.org/wiki/Progressive_Web_Apps)_
+_Where I learn how to set-up a simple [PWA](https://notes.pinboard.in/u:pax/notes/81ded6e4a4013ca0ab4c)_
 
 ![screenshot: desktop](assets/screenshot-desktop.png)
 ![screenshot: mobile](assets/screenshot-mobile.png)
@@ -32,6 +32,7 @@ _Where I learn how to set-up a simple [PWA](https://en.wikipedia.org/wiki/Progre
 - add common phrases
 - ~~optimize for mobile - search and categories menus hidden~~ 
 - move to `emojibro.github.io`
+- create permalinks
 
 
 ### Alternatives / See also
