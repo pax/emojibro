@@ -182,7 +182,7 @@ ul#them_all li{
 @media screen and (max-width: 800px) {
 
   #them_all{
-  margin: 1.5em 0 4em 0;
+  margin: 3em 0 4em 0;
   }
       /*#status span.emoji input*/
     #status span.emoji {
