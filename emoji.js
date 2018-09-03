@@ -85,6 +85,7 @@ function copyToClipboard(targetID) {
   localStorage.setItem("activity", JSON.stringify(storedActivity));
   // localStorage.clear();
   console.log(target.value + ' → localStorage');
+  showActivity(); // update
 }
 
 
