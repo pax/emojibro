@@ -203,6 +203,7 @@ ul#them_all li{
     padding: 1em;
     background-color: #DDD;
     box-shadow: 0 1px 1ex rgba(0,0,0,.3); 
+    transition: all 0.5s ease-in-out;
   }
   .panel #secondary-wrapper{
     position: fixed;
@@ -213,6 +214,10 @@ ul#them_all li{
     width: 100%;
     height: 140px;
     box-shadow: 0 -1px 1ex rgba(0,0,0,.3); 
+  }
+  .collections input:hover{
+    font-size: 1.5em !important;
+    transform: scale(1, 1.1);
   }
 }
 
