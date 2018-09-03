@@ -70,14 +70,18 @@ color: #333;
   padding: 0;
 }
 #status span.emoji:before{
-  content: 'click to copy';
-  font-size: 16px;
+  content: '[click to copy]';
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 14px;
   padding: .5ex;
   position: absolute;
-  margin-left: -2em;
+  margin-top: 14em;
+  left: 2em;
   display: inline-block;
+  color: #AAA;
   /*margin-top: .5em;*/
-  background-color: rgba(255,0,0,.5); color: yellow;
+  /*background-color: rgba(255,0,0,.5); color: yellow;*/
 }
 #status span.html input,
 #status span.unicode input {
@@ -111,6 +115,7 @@ color: #333;
 }*/
 #status span.title {
   font-size: 24px;
+  margin-top: -2ex;
   /*text-align: left;*/
 }
 #status span.unicode:before{
@@ -351,10 +356,7 @@ color: #333;
   margin-left: .5ex;
 }
 
-input#emoji-search{
-  font-size: 18px;
 
-}
 .search-wrapper {
   /*border-bottom: 1px dashed #999;*/
   /*padding: .25ex 0 .6ex 0;*/
@@ -364,9 +366,24 @@ input#emoji-search{
 .search-wrapper .clear {
   position: absolute;
   margin-left: -2em;
+  margin-top: .75ex;
   font-size: 12px;
   text-decoration: none;
   border: none;
+  opacity: .5;
+}
+
+.search-wrapper:hover .clear {
+  opacity: .75;
+}
+.search-wrapper:hover .clear:hover {
+  opacity: 1;
+}
+
+input#emoji-search{
+  font-size: 16px;
+  width: 100%;
+  padding: .5ex .75ex;
 }
 
 /*
