@@ -7,7 +7,7 @@ _Where I learn how to set-up a simple [PWA](https://en.wikipedia.org/wiki/Progre
 - ~~record history to localStorage~~
 - ~~replace copy function, ditch input select?~~
 - ~~refresh history on copy element~~
-- ~~activity: show only last 20 most used~~
+- ~~activity: show only last 20 most used~~ and the last used
 - size in history based on usage
 - delete favorites: all / element
 - PWA – figure out service workers
