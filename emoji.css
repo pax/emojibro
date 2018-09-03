@@ -1,10 +1,10 @@
-
+* {
+  box-sizing: border-box;
+}
 body {
   font-family: sans-serif;
   background-color: LavenderBlush;
   margin: 0;
-
-
 }
 ul#them_all{
   list-style: none;
@@ -126,7 +126,10 @@ ul#them_all li{
 @media screen and (min-width: 801px) {
   #panel-wrapper {
     display: inline-block;vertical-align: top;
-    max-width: 32vw;
+    min-width: 340px;
+    max-width: 24vw;
+    position: fixed; top: 0;
+    left: 71vw;
   }
 
   .panel {
@@ -135,19 +138,13 @@ ul#them_all li{
     font-size: 72px;
     border-radius: 2px;
     padding:  .3ex;
-    /*border:1px solid #D0D0D0; */
     box-shadow:  1px 1px 1ex rgba(0,0,0,.05);
     display: inline-block;
     text-align: center;
-    position: fixed;
-    top: .66ex;
-    left: 68vw;
-    max-width: 5em;
     height: 440px;
-
   }
   ul#them_all{
-    max-width: 63vw;
+    max-width: 66vw;
     display: inline-block;
     vertical-align: top;
     margin: .5em 1em;
@@ -155,7 +152,6 @@ ul#them_all li{
   #status span.title {
     font-size: 24px;
     margin-top: -2ex;
-    /*text-align: left;*/
   }
   #status span.emoji:before{
     content: '[click to copy]';
@@ -168,8 +164,6 @@ ul#them_all li{
     left: 4em;
     display: inline-block;
     color: #AAA;
-    /*margin-top: .5em;*/
-    /*background-color: rgba(255,0,0,.5); color: yellow;*/
   }
   #activity {
     border-top: 1px dashed #CCC;
@@ -177,7 +171,17 @@ ul#them_all li{
     padding-top: 1em;
   }
 }
-
+@media screen and (min-width: 801px) and (max-width: 1200px) {
+  .panel {
+    padding: 0; 
+  }
+  #panel-wrapper {
+    left: 64vw;
+  }
+  #them_all {
+    margin: 0 !important;
+  }
+}
 @media screen and (max-width: 800px) {
 
   #them_all{
@@ -186,7 +190,6 @@ ul#them_all li{
       /*#status span.emoji input*/
     #status span.emoji {
       float: left;
-      /*margin-top: -20px;*/
     }
     #status span.emoji input {
       font-size: 80px;
@@ -197,7 +200,6 @@ ul#them_all li{
   .panel{
     left: 0;
     bottom: 0;
-    /*margin-top: 56vh;*/
     max-height: 43vh;
     overflow: hidden;
     width: 100%;
@@ -218,9 +220,6 @@ ul#them_all li{
     width: 100%;
     height: 140px;
     box-shadow: 0 -1px 1ex rgba(0,0,0,.3); 
-  }
-  .search-wrapper  {
-    /*padding-right: 2em;*/
   }
 }
 
