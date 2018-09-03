@@ -69,6 +69,7 @@ foreach ($spreadsheet_data['ctgs'] as $ctg) {
   // print_r($ctg);
   // echo $ctg['Ctg'].' - '.$ctg['Subctg'].'<br>';
   $navArray[createSlug($ctg['Ctg'])]['name']=$ctg['Ctg'];
+  $navArray[createSlug($ctg['Ctg'])]['icon']  = $ctg['icon'] ? $ctg['icon'] : 'x';
   $navArray[createSlug($ctg['Ctg'])]['subctgs'][]  = array(
     'slug' => createSlug($ctg['Subctg']), 
     'name' => $ctg['Subctg']
@@ -77,14 +78,23 @@ foreach ($spreadsheet_data['ctgs'] as $ctg) {
 // print_r($navArray);
 $nav='';
 
+// SELECT
 foreach ($navArray as $ctg_slug => $one_ctg) {
- // echo '<pre>';  print_r($one_ctg); echo '</pre>';
+  $nav.='<option></option>'."\n\t\t\t\t".'<option class="ctg ctg_'.$ctg_slug.'"  value="ctg_'.$ctg_slug.'">'.$one_ctg['icon'].strtoupper($one_ctg['name']).' '.$one_ctg['icon'].'</option>';
+  foreach ($one_ctg['subctgs'] as $subctg_slug => $one_subctg) {
+    // print_r($one_subctg);
+    $nav.="\n\t\t\t\t".'<option class="subctg sub_'.$one_subctg['slug'].'"  value="sub_'.$one_subctg['slug'].'"> &nbsp; &nbsp; '.$one_subctg['name'].'</option>';
+  }
+}
+/*
+  // a list
+ foreach ($navArray as $ctg_slug => $one_ctg) {
   $nav.='<a href="#" class="ctg ctg_'.$ctg_slug.'"  onclick="filter(\'ctg_'.$ctg_slug.'\')" >'.$one_ctg['name'].'</a>';
   foreach ($one_ctg['subctgs'] as $subctg_slug => $one_subctg) {
     // print_r($one_subctg);
     $nav.='<a href="#" class="subctg sub_'.$one_subctg['slug'].'" onclick="filter(\'sub_'.$one_subctg['slug'].'\')">'.$one_subctg['name'].'</a>';
   }
-}
+}*/
 
 /*
    - - - - - - - - - FUNCTIONS - - - - - - - - -
@@ -127,5 +137,10 @@ function createSlug($str, $delimiter = '-'){
 // echo '<pre>'; print_r($navArray); echo '</pre>';
 ?>
 <div id="wrapper"><h1>📊 get emoji from gSheets</h1>
-<div id="nav"><?=$nav;?></div>
+<div id="nav">
+  <select id="nav_selector" onchange="selectFilter()">
+    <option class="xshowall" onchange="filter('showall')" value="showall" selected="">💯 ALL CATEGORIES</option>
+    <?=$nav;?>
+    </select>
+</div>
 <ul class="list-unstyled"><?=$out;?></ul></div>
