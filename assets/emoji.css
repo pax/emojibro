@@ -485,3 +485,9 @@ input#emoji-search{
   padding-bottom: 1px;
   box-shadow: 0 1px 0 black;
 }
+
+#github {
+  position: fixed;
+  right: 1ex;
+  bottom: 1ex;
+}
