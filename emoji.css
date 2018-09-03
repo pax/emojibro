@@ -7,7 +7,7 @@
 body {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
-  background-color: LavenderBlush;
+  /*background-color: LavenderBlush;*/
   margin: 0;
 /*  background:
   radial-gradient(Gainsboro 15%, transparent 16%) 0 0,
@@ -16,10 +16,8 @@ body {
   radial-gradient(rgba(255,255,255,.85) 15%, transparent 20%) 8px 9px;
   background-color:WhiteSmoke;*/
   /*background-size:16px 16px;*/
-  background-color: #fffcfc;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cg fill='%23FFE4E1' fill-opacity='0.4'%3E%3Cpath fill-rule='evenodd' d='M0 0h4v4H0V0zm4 4h4v4H4V4z'/%3E%3C/g%3E%3C/svg%3E");
-  background-color: #fff5ee;
-  background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d3d3d3' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+  /*background-color: #fffcfc;  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cg fill='%23FFE4E1' fill-opacity='0.4'%3E%3Cpath fill-rule='evenodd' d='M0 0h4v4H0V0zm4 4h4v4H4V4z'/%3E%3C/g%3E%3C/svg%3E");*/
+  /*background-color: #fff5ee;   background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d3d3d3' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");*/
   /*background-attachment: fixed;*/
 }
 ul#them_all{
@@ -125,12 +123,15 @@ ul#them_all li{
   .panel {
     /*transition: all 0.5s ease-in-out;*/
     /*background-color: #FCFCFC;*/
-    background-color: #FFF5EE;
+    /*background-color: #FFF5EE;*/
     font-size: 72px;
-    border-radius: 4px;
-    border: 6px solid Azure;
+    /*border-radius: 4px;*/
+    /*border: 6px solid Azure;*/
     padding:  .5ex;
-    box-shadow:  1px 1px 1ex rgba(0,0,0,.05);
+    /*box-shadow:  1px 1px 1ex rgba(0,0,0,.05);*/
+    background-color: LavenderBlush;
+    border: 1px solid Gainsboro;
+    border-radius: 3px;
     display: inline-block;
     text-align: center;
     min-width: 340px;
@@ -204,19 +205,21 @@ ul#them_all li{
   .panel .collections{
     position: fixed; top: 0; left: 0; width: 100%;
     padding: 1em;
-    background-color: #DDD;
-    box-shadow: 0 1px 1ex rgba(0,0,0,.3); 
+    background-color: Gainsboro;
+    box-shadow: 0 1px 1ex rgba(0,0,0,.1);
+    border-bottom: 1px solid Snow;
     transition: all 0.5s ease-in-out;
   }
   .panel #secondary-wrapper{
     position: fixed;
     bottom: 0;
     padding: 1em 0 0 1ex;
-    background-color: #FCFCF0;
+    background-color: LavenderBlush;
+    border-top: 1px solid Snow;
     left: 0;
     width: 100%;
     height: 140px;
-    box-shadow: 0 -1px 1ex rgba(0,0,0,.3); 
+    box-shadow: 0 -1px 1ex rgba(0,0,0,.1);
   }
   .collections input:hover{
     font-size: 1.5em !important;
