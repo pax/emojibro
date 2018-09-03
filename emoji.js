@@ -91,9 +91,14 @@ function sleep(ms) {
 }
 
 function filter(className){
+// ckear searchbox
+  document.getElementById('emoji-search').value = ''
+  emojyTitleSearch('emoji-search','them_all');
+
   document.getElementById("them_all").className="";
   document.getElementById("them_all").className=className;
   document.getElementById("panel-wrapper").className=className;
+
 }
 
 // https://www.w3schools.com/howto/howto_js_filter_lists.asp
