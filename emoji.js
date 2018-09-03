@@ -110,7 +110,7 @@ function filter(className){
 
 // ckear searchbox
   document.getElementById('emoji-search').value = ''
-  emojyTitleSearch('emoji-search','them_all');
+  emojiTitleSearch('emoji-search','them_all');
 
   document.getElementById("them_all").className="";
   document.getElementById("them_all").className=className;
@@ -125,7 +125,7 @@ function selectFilter(){
   // console.log(selected_val);
 // ckear searchbox
   document.getElementById('emoji-search').value = ''
-  emojyTitleSearch('emoji-search','them_all');
+  emojiTitleSearch('emoji-search','them_all');
 
   document.getElementById("them_all").className="";
   document.getElementById("them_all").className=selected_val;
@@ -134,7 +134,7 @@ function selectFilter(){
 }
 
 // https://www.w3schools.com/howto/howto_js_filter_lists.asp
-function emojyTitleSearch(inputID, targetID) {
+function emojiTitleSearch(inputID, targetID) {
   // show all emoji
   document.getElementById("them_all").className="showall";
   document.getElementById("panel-wrapper").className='showall';
