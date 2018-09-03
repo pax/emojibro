@@ -11,115 +11,126 @@
     <div id="panel-wrapper" class="showall">
         <span class="panel">
             <div class="collections">
-                <div class="search-wrapper"><input type="text" id="emoji-search" onkeyup="emojiTitleSearch('emoji-search','them_all')" placeholder=" SEARCH by Title"><a href="#" class="clear" onclick="document.getElementById('emoji-search').value = ''; emojiTitleSearch('emoji-search','them_all')">&#10060;</a>
+                <div class="search-wrapper"><input type="text" id="emoji-search" onkeyup="emojiTitleSearch('emoji-search','them_all')" placeholder=" SEARCH by title / category"><a href="#" class="clear" onclick="document.getElementById('emoji-search').value = ''; emojiTitleSearch('emoji-search','them_all')">&#10060;</a>
                 </div>
                 <select id="nav_selector" onblur="selectFilter()" onchange="selectFilter()">
                     <option class="xshowall" onchange="filter('showall')" value="showall" selected=""> ALL CATEGORIES ⬇</option>
                     <option></option>
-                    <option class="ctg ctg_activities" value="ctg_activities">🎉ACTIVITIES 🎉</option>
-                    <option class="subctg sub_arts-and-crafts" value="sub_arts-and-crafts"> &nbsp; &nbsp; arts &amp; crafts</option>
-                    <option class="subctg sub_award-medal" value="sub_award-medal"> &nbsp; &nbsp; award-medal</option>
-                    <option class="subctg sub_event" value="sub_event"> &nbsp; &nbsp; event</option>
-                    <option class="subctg sub_game" value="sub_game"> &nbsp; &nbsp; game</option>
-                    <option class="subctg sub_sport" value="sub_sport"> &nbsp; &nbsp; sport</option><option></option>
-                    <option class="ctg ctg_animals-and-nature" value="ctg_animals-and-nature">🐌ANIMALS &amp; NATURE 🐌</option>
-                    <option class="subctg sub_animal-amphibian" value="sub_animal-amphibian"> &nbsp; &nbsp; animal-amphibian</option>
-                    <option class="subctg sub_animal-bird" value="sub_animal-bird"> &nbsp; &nbsp; animal-bird</option>
-                    <option class="subctg sub_animal-bug" value="sub_animal-bug"> &nbsp; &nbsp; animal-bug</option>
-                    <option class="subctg sub_animal-mammal" value="sub_animal-mammal"> &nbsp; &nbsp; animal-mammal</option>
-                    <option class="subctg sub_animal-marine" value="sub_animal-marine"> &nbsp; &nbsp; animal-marine</option>
-                    <option class="subctg sub_animal-reptile" value="sub_animal-reptile"> &nbsp; &nbsp; animal-reptile</option>
-                    <option class="subctg sub_plant-flower" value="sub_plant-flower"> &nbsp; &nbsp; plant-flower</option>
-                    <option class="subctg sub_plant-other" value="sub_plant-other"> &nbsp; &nbsp; plant-other</option><option></option>
-                    <option class="ctg ctg_symbols" value="ctg_symbols">➰SYMBOLS ➰</option>
-                    <option class="subctg sub_gender" value="sub_gender"> &nbsp; &nbsp; gender</option>
-                    <option class="subctg sub_hair-style" value="sub_hair-style"> &nbsp; &nbsp; hair-style</option>
-                    <option class="subctg sub_alphanum" value="sub_alphanum"> &nbsp; &nbsp; alphanum</option>
-                    <option class="subctg sub_arrow" value="sub_arrow"> &nbsp; &nbsp; arrow</option>
-                    <option class="subctg sub_av-symbol" value="sub_av-symbol"> &nbsp; &nbsp; av-symbol</option>
-                    <option class="subctg sub_geometric" value="sub_geometric"> &nbsp; &nbsp; geometric</option>
-                    <option class="subctg sub_keycap" value="sub_keycap"> &nbsp; &nbsp; keycap</option>
-                    <option class="subctg sub_other-symbol" value="sub_other-symbol"> &nbsp; &nbsp; other-symbol</option>
-                    <option class="subctg sub_religion" value="sub_religion"> &nbsp; &nbsp; religion</option>
-                    <option class="subctg sub_transport-sign" value="sub_transport-sign"> &nbsp; &nbsp; transport-sign</option>
-                    <option class="subctg sub_warning" value="sub_warning"> &nbsp; &nbsp; warning</option>
-                    <option class="subctg sub_zodiac" value="sub_zodiac"> &nbsp; &nbsp; zodiac</option><option></option>
-                    <option class="ctg ctg_flags" value="ctg_flags">🇪🇺FLAGS 🇪🇺</option>
-                    <option class="subctg sub_country-flag" value="sub_country-flag"> &nbsp; &nbsp; country-flag</option>
-                    <option class="subctg sub_flag" value="sub_flag"> &nbsp; &nbsp; flag</option><option></option>
-                    <option class="ctg ctg_food-and-drink" value="ctg_food-and-drink">🍕FOOD &amp; DRINK 🍕</option>
-                    <option class="subctg sub_dishware" value="sub_dishware"> &nbsp; &nbsp; dishware</option>
-                    <option class="subctg sub_drink" value="sub_drink"> &nbsp; &nbsp; drink</option>
-                    <option class="subctg sub_food-asian" value="sub_food-asian"> &nbsp; &nbsp; food-asian</option>
-                    <option class="subctg sub_food-fruit" value="sub_food-fruit"> &nbsp; &nbsp; food-fruit</option>
-                    <option class="subctg sub_food-marine" value="sub_food-marine"> &nbsp; &nbsp; food-marine</option>
-                    <option class="subctg sub_food-prepared" value="sub_food-prepared"> &nbsp; &nbsp; food-prepared</option>
-                    <option class="subctg sub_food-sweet" value="sub_food-sweet"> &nbsp; &nbsp; food-sweet</option>
-                    <option class="subctg sub_food-vegetable" value="sub_food-vegetable"> &nbsp; &nbsp; food-vegetable</option><option></option>
-                    <option class="ctg ctg_objects" value="ctg_objects">📟OBJECTS 📟</option>
-                    <option class="subctg sub_book-paper" value="sub_book-paper"> &nbsp; &nbsp; book-paper</option>
-                    <option class="subctg sub_clothing" value="sub_clothing"> &nbsp; &nbsp; clothing</option>
-                    <option class="subctg sub_computer" value="sub_computer"> &nbsp; &nbsp; computer</option>
-                    <option class="subctg sub_household" value="sub_household"> &nbsp; &nbsp; household</option>
-                    <option class="subctg sub_light-and-video" value="sub_light-and-video"> &nbsp; &nbsp; light &amp; video</option>
-                    <option class="subctg sub_lock" value="sub_lock"> &nbsp; &nbsp; lock</option>
-                    <option class="subctg sub_mail" value="sub_mail"> &nbsp; &nbsp; mail</option>
-                    <option class="subctg sub_medical" value="sub_medical"> &nbsp; &nbsp; medical</option>
-                    <option class="subctg sub_money" value="sub_money"> &nbsp; &nbsp; money</option>
-                    <option class="subctg sub_music" value="sub_music"> &nbsp; &nbsp; music</option>
-                    <option class="subctg sub_musical-instrument" value="sub_musical-instrument"> &nbsp; &nbsp; musical-instrument</option>
-                    <option class="subctg sub_office" value="sub_office"> &nbsp; &nbsp; office</option>
-                    <option class="subctg sub_other-object" value="sub_other-object"> &nbsp; &nbsp; other-object</option>
-                    <option class="subctg sub_phone" value="sub_phone"> &nbsp; &nbsp; phone</option>
-                    <option class="subctg sub_science" value="sub_science"> &nbsp; &nbsp; science</option>
-                    <option class="subctg sub_sound" value="sub_sound"> &nbsp; &nbsp; sound</option>
-                    <option class="subctg sub_tool" value="sub_tool"> &nbsp; &nbsp; tool</option>
-                    <option class="subctg sub_writing" value="sub_writing"> &nbsp; &nbsp; writing</option><option></option>
-                    <option class="ctg ctg_people" value="ctg_people">👩PEOPLE 👩</option>
-                    <option class="subctg sub_body-parts" value="sub_body-parts"> &nbsp; &nbsp; body-parts</option>
-                    <option class="subctg sub_family" value="sub_family"> &nbsp; &nbsp; family</option>
-                    <option class="subctg sub_hand-fingers-closed" value="sub_hand-fingers-closed"> &nbsp; &nbsp; hand-fingers-closed</option>
-                    <option class="subctg sub_hand-fingers-open" value="sub_hand-fingers-open"> &nbsp; &nbsp; hand-fingers-open</option>
-                    <option class="subctg sub_hand-fingers-partial" value="sub_hand-fingers-partial"> &nbsp; &nbsp; hand-fingers-partial</option>
-                    <option class="subctg sub_hand-prop" value="sub_hand-prop"> &nbsp; &nbsp; hand-prop</option>
-                    <option class="subctg sub_hand-single-finger" value="sub_hand-single-finger"> &nbsp; &nbsp; hand-single-finger</option>
-                    <option class="subctg sub_hands" value="sub_hands"> &nbsp; &nbsp; hands</option>
-                    <option class="subctg sub_person" value="sub_person"> &nbsp; &nbsp; person</option>
-                    <option class="subctg sub_person-activity" value="sub_person-activity"> &nbsp; &nbsp; person-activity</option>
-                    <option class="subctg sub_person-fantasy" value="sub_person-fantasy"> &nbsp; &nbsp; person-fantasy</option>
-                    <option class="subctg sub_person-gesture" value="sub_person-gesture"> &nbsp; &nbsp; person-gesture</option>
-                    <option class="subctg sub_person-resting" value="sub_person-resting"> &nbsp; &nbsp; person-resting</option>
-                    <option class="subctg sub_person-role" value="sub_person-role"> &nbsp; &nbsp; person-role</option>
-                    <option class="subctg sub_person-sport" value="sub_person-sport"> &nbsp; &nbsp; person-sport</option>
-                    <option class="subctg sub_person-symbol" value="sub_person-symbol"> &nbsp; &nbsp; person-symbol</option><option></option>
-                    <option class="ctg ctg_smileys" value="ctg_smileys">😘SMILEYS 😘</option>
-                    <option class="subctg sub_cat-face" value="sub_cat-face"> &nbsp; &nbsp; cat-face</option>
-                    <option class="subctg sub_emotion" value="sub_emotion"> &nbsp; &nbsp; emotion</option>
-                    <option class="subctg sub_face-affection" value="sub_face-affection"> &nbsp; &nbsp; face-affection</option>
-                    <option class="subctg sub_face-concerned" value="sub_face-concerned"> &nbsp; &nbsp; face-concerned</option>
-                    <option class="subctg sub_face-costume" value="sub_face-costume"> &nbsp; &nbsp; face-costume</option>
-                    <option class="subctg sub_face-glasses" value="sub_face-glasses"> &nbsp; &nbsp; face-glasses</option>
-                    <option class="subctg sub_face-hand" value="sub_face-hand"> &nbsp; &nbsp; face-hand</option>
-                    <option class="subctg sub_face-hat" value="sub_face-hat"> &nbsp; &nbsp; face-hat</option>
-                    <option class="subctg sub_face-negative" value="sub_face-negative"> &nbsp; &nbsp; face-negative</option>
-                    <option class="subctg sub_face-neutral-skeptical" value="sub_face-neutral-skeptical"> &nbsp; &nbsp; face-neutral-skeptical</option>
-                    <option class="subctg sub_face-sleepy" value="sub_face-sleepy"> &nbsp; &nbsp; face-sleepy</option>
-                    <option class="subctg sub_face-smiling" value="sub_face-smiling"> &nbsp; &nbsp; face-smiling</option>
-                    <option class="subctg sub_face-tongue" value="sub_face-tongue"> &nbsp; &nbsp; face-tongue</option>
-                    <option class="subctg sub_face-unwell" value="sub_face-unwell"> &nbsp; &nbsp; face-unwell</option>
-                    <option class="subctg sub_monkey-face" value="sub_monkey-face"> &nbsp; &nbsp; monkey-face</option><option></option>
-                    <option class="ctg ctg_travel-and-places" value="ctg_travel-and-places">⛴TRAVEL &amp; PLACES ⛴</option>
-                    <option class="subctg sub_hotel" value="sub_hotel"> &nbsp; &nbsp; hotel</option>
-                    <option class="subctg sub_place-building" value="sub_place-building"> &nbsp; &nbsp; place-building</option>
-                    <option class="subctg sub_place-geographic" value="sub_place-geographic"> &nbsp; &nbsp; place-geographic</option>
-                    <option class="subctg sub_place-map" value="sub_place-map"> &nbsp; &nbsp; place-map</option>
-                    <option class="subctg sub_place-other" value="sub_place-other"> &nbsp; &nbsp; place-other</option>
-                    <option class="subctg sub_place-religious" value="sub_place-religious"> &nbsp; &nbsp; place-religious</option>
-                    <option class="subctg sub_sky-and-weather" value="sub_sky-and-weather"> &nbsp; &nbsp; sky &amp; weather</option>
-                    <option class="subctg sub_time" value="sub_time"> &nbsp; &nbsp; time</option>
-                    <option class="subctg sub_transport-air" value="sub_transport-air"> &nbsp; &nbsp; transport-air</option>
-                    <option class="subctg sub_transport-ground" value="sub_transport-ground"> &nbsp; &nbsp; transport-ground</option>
-                    <option class="subctg sub_transport-water" value="sub_transport-water"> &nbsp; &nbsp; transport-water</option>
+                    <option class="ctg ctg_activities" value="ctg_activities">🎉ACTIVITIES</option>
+                    <option class="ctg ctg_animals-and-nature" value="ctg_animals-and-nature">🐌ANIMALS &amp; NATURE</option>
+                    <option class="ctg ctg_symbols" value="ctg_symbols">➰SYMBOLS</option>
+                    <option class="ctg ctg_flags" value="ctg_flags">🇪🇺FLAGS </option>
+                    <option class="ctg ctg_food-and-drink" value="ctg_food-and-drink">🍕FOOD &amp; DRINK</option>
+                    <option class="ctg ctg_objects" value="ctg_objects">📟OBJECTS</option>
+                    <option class="ctg ctg_people" value="ctg_people">👩PEOPLE</option>
+                    <option class="ctg ctg_smileys" value="ctg_smileys">😘SMILEYS</option>
+                    <option class="ctg ctg_travel-and-places" value="ctg_travel-and-places">⛴TRAVEL &amp; PLACES</option>
+                    <option></option>
+                    <optgroup label="🎉ACTIVITIES 🎉">
+                    <option class="subctg sub_arts-and-crafts" value="sub_arts-and-crafts"> &nbsp;arts &amp; crafts</option>
+                    <option class="subctg sub_award-medal" value="sub_award-medal"> &nbsp;award-medal</option>
+                    <option class="subctg sub_event" value="sub_event"> &nbsp;event</option>
+                    <option class="subctg sub_game" value="sub_game"> &nbsp;game</option>
+                    <option class="subctg sub_sport" value="sub_sport"> &nbsp;sport</option>
+                    </optgroup><optgroup label="🐌ANIMALS &amp; NATURE 🐌">
+                    <option class="subctg sub_animal-amphibian" value="sub_animal-amphibian"> &nbsp;animal-amphibian</option>
+                    <option class="subctg sub_animal-bird" value="sub_animal-bird"> &nbsp;animal-bird</option>
+                    <option class="subctg sub_animal-bug" value="sub_animal-bug"> &nbsp;animal-bug</option>
+                    <option class="subctg sub_animal-mammal" value="sub_animal-mammal"> &nbsp;animal-mammal</option>
+                    <option class="subctg sub_animal-marine" value="sub_animal-marine"> &nbsp;animal-marine</option>
+                    <option class="subctg sub_animal-reptile" value="sub_animal-reptile"> &nbsp;animal-reptile</option>
+                    <option class="subctg sub_plant-flower" value="sub_plant-flower"> &nbsp;plant-flower</option>
+                    <option class="subctg sub_plant-other" value="sub_plant-other"> &nbsp;plant-other</option>
+                    </optgroup><optgroup label="➰SYMBOLS ➰">
+                    <option class="subctg sub_gender" value="sub_gender"> &nbsp;gender</option>
+                    <option class="subctg sub_hair-style" value="sub_hair-style"> &nbsp;hair-style</option>
+                    <option class="subctg sub_alphanum" value="sub_alphanum"> &nbsp;alphanum</option>
+                    <option class="subctg sub_arrow" value="sub_arrow"> &nbsp;arrow</option>
+                    <option class="subctg sub_av-symbol" value="sub_av-symbol"> &nbsp;av-symbol</option>
+                    <option class="subctg sub_geometric" value="sub_geometric"> &nbsp;geometric</option>
+                    <option class="subctg sub_keycap" value="sub_keycap"> &nbsp;keycap</option>
+                    <option class="subctg sub_other-symbol" value="sub_other-symbol"> &nbsp;other-symbol</option>
+                    <option class="subctg sub_religion" value="sub_religion"> &nbsp;religion</option>
+                    <option class="subctg sub_transport-sign" value="sub_transport-sign"> &nbsp;transport-sign</option>
+                    <option class="subctg sub_warning" value="sub_warning"> &nbsp;warning</option>
+                    <option class="subctg sub_zodiac" value="sub_zodiac"> &nbsp;zodiac</option>
+                    </optgroup><optgroup clabel="🇪🇺FLAGS 🇪🇺">
+                    <option class="subctg sub_country-flag" value="sub_country-flag"> &nbsp;country-flag</option>
+                    <option class="subctg sub_flag" value="sub_flag"> &nbsp;flag</option>
+                    </optgroup><optgroup label="🍕FOOD &amp; DRINK 🍕">
+                    <option class="subctg sub_dishware" value="sub_dishware"> &nbsp;dishware</option>
+                    <option class="subctg sub_drink" value="sub_drink"> &nbsp;drink</option>
+                    <option class="subctg sub_food-asian" value="sub_food-asian"> &nbsp;food-asian</option>
+                    <option class="subctg sub_food-fruit" value="sub_food-fruit"> &nbsp;food-fruit</option>
+                    <option class="subctg sub_food-marine" value="sub_food-marine"> &nbsp;food-marine</option>
+                    <option class="subctg sub_food-prepared" value="sub_food-prepared"> &nbsp;food-prepared</option>
+                    <option class="subctg sub_food-sweet" value="sub_food-sweet"> &nbsp;food-sweet</option>
+                    <option class="subctg sub_food-vegetable" value="sub_food-vegetable"> &nbsp;food-vegetable</option>
+                    </optgroup><optgroup label="📟OBJECTS 📟">
+                    <option class="subctg sub_book-paper" value="sub_book-paper"> &nbsp;book-paper</option>
+                    <option class="subctg sub_clothing" value="sub_clothing"> &nbsp;clothing</option>
+                    <option class="subctg sub_computer" value="sub_computer"> &nbsp;computer</option>
+                    <option class="subctg sub_household" value="sub_household"> &nbsp;household</option>
+                    <option class="subctg sub_light-and-video" value="sub_light-and-video"> &nbsp;light &amp; video</option>
+                    <option class="subctg sub_lock" value="sub_lock"> &nbsp;lock</option>
+                    <option class="subctg sub_mail" value="sub_mail"> &nbsp;mail</option>
+                    <option class="subctg sub_medical" value="sub_medical"> &nbsp;medical</option>
+                    <option class="subctg sub_money" value="sub_money"> &nbsp;money</option>
+                    <option class="subctg sub_music" value="sub_music"> &nbsp;music</option>
+                    <option class="subctg sub_musical-instrument" value="sub_musical-instrument"> &nbsp;musical-instrument</option>
+                    <option class="subctg sub_office" value="sub_office"> &nbsp;office</option>
+                    <option class="subctg sub_other-object" value="sub_other-object"> &nbsp;other-object</option>
+                    <option class="subctg sub_phone" value="sub_phone"> &nbsp;phone</option>
+                    <option class="subctg sub_science" value="sub_science"> &nbsp;science</option>
+                    <option class="subctg sub_sound" value="sub_sound"> &nbsp;sound</option>
+                    <option class="subctg sub_tool" value="sub_tool"> &nbsp;tool</option>
+                    <option class="subctg sub_writing" value="sub_writing"> &nbsp;writing</option>
+                    </optgroup><optgroup label="👩PEOPLE 👩">
+                    <option class="subctg sub_body-parts" value="sub_body-parts"> &nbsp;body-parts</option>
+                    <option class="subctg sub_family" value="sub_family"> &nbsp;family</option>
+                    <option class="subctg sub_hand-fingers-closed" value="sub_hand-fingers-closed"> &nbsp;hand-fingers-closed</option>
+                    <option class="subctg sub_hand-fingers-open" value="sub_hand-fingers-open"> &nbsp;hand-fingers-open</option>
+                    <option class="subctg sub_hand-fingers-partial" value="sub_hand-fingers-partial"> &nbsp;hand-fingers-partial</option>
+                    <option class="subctg sub_hand-prop" value="sub_hand-prop"> &nbsp;hand-prop</option>
+                    <option class="subctg sub_hand-single-finger" value="sub_hand-single-finger"> &nbsp;hand-single-finger</option>
+                    <option class="subctg sub_hands" value="sub_hands"> &nbsp;hands</option>
+                    <option class="subctg sub_person" value="sub_person"> &nbsp;person</option>
+                    <option class="subctg sub_person-activity" value="sub_person-activity"> &nbsp;person-activity</option>
+                    <option class="subctg sub_person-fantasy" value="sub_person-fantasy"> &nbsp;person-fantasy</option>
+                    <option class="subctg sub_person-gesture" value="sub_person-gesture"> &nbsp;person-gesture</option>
+                    <option class="subctg sub_person-resting" value="sub_person-resting"> &nbsp;person-resting</option>
+                    <option class="subctg sub_person-role" value="sub_person-role"> &nbsp;person-role</option>
+                    <option class="subctg sub_person-sport" value="sub_person-sport"> &nbsp;person-sport</option>
+                    <option class="subctg sub_person-symbol" value="sub_person-symbol"> &nbsp;person-symbol</option>
+                    </optgroup><optgroup label="😘SMILEYS 😘">
+                    <option class="subctg sub_cat-face" value="sub_cat-face"> &nbsp;cat-face</option>
+                    <option class="subctg sub_emotion" value="sub_emotion"> &nbsp;emotion</option>
+                    <option class="subctg sub_face-affection" value="sub_face-affection"> &nbsp;face-affection</option>
+                    <option class="subctg sub_face-concerned" value="sub_face-concerned"> &nbsp;face-concerned</option>
+                    <option class="subctg sub_face-costume" value="sub_face-costume"> &nbsp;face-costume</option>
+                    <option class="subctg sub_face-glasses" value="sub_face-glasses"> &nbsp;face-glasses</option>
+                    <option class="subctg sub_face-hand" value="sub_face-hand"> &nbsp;face-hand</option>
+                    <option class="subctg sub_face-hat" value="sub_face-hat"> &nbsp;face-hat</option>
+                    <option class="subctg sub_face-negative" value="sub_face-negative"> &nbsp;face-negative</option>
+                    <option class="subctg sub_face-neutral-skeptical" value="sub_face-neutral-skeptical"> &nbsp;face-neutral-skeptical</option>
+                    <option class="subctg sub_face-sleepy" value="sub_face-sleepy"> &nbsp;face-sleepy</option>
+                    <option class="subctg sub_face-smiling" value="sub_face-smiling"> &nbsp;face-smiling</option>
+                    <option class="subctg sub_face-tongue" value="sub_face-tongue"> &nbsp;face-tongue</option>
+                    <option class="subctg sub_face-unwell" value="sub_face-unwell"> &nbsp;face-unwell</option>
+                    <option class="subctg sub_monkey-face" value="sub_monkey-face"> &nbsp;monkey-face</option>
+                    </optgroup><optgroup label="⛴TRAVEL &amp; PLACES ⛴">
+                    <option class="subctg sub_hotel" value="sub_hotel"> &nbsp;hotel</option>
+                    <option class="subctg sub_place-building" value="sub_place-building"> &nbsp;place-building</option>
+                    <option class="subctg sub_place-geographic" value="sub_place-geographic"> &nbsp;place-geographic</option>
+                    <option class="subctg sub_place-map" value="sub_place-map"> &nbsp;place-map</option>
+                    <option class="subctg sub_place-other" value="sub_place-other"> &nbsp;place-other</option>
+                    <option class="subctg sub_place-religious" value="sub_place-religious"> &nbsp;place-religious</option>
+                    <option class="subctg sub_sky-and-weather" value="sub_sky-and-weather"> &nbsp;sky &amp; weather</option>
+                    <option class="subctg sub_time" value="sub_time"> &nbsp;time</option>
+                    <option class="subctg sub_transport-air" value="sub_transport-air"> &nbsp;transport-air</option>
+                    <option class="subctg sub_transport-ground" value="sub_transport-ground"> &nbsp;transport-ground</option>
+                    <option class="subctg sub_transport-water" value="sub_transport-water"> &nbsp;transport-water</option>
+                </optgroup>
                 </select>
             </div>
             <div id="secondary-wrapper">

@@ -139,17 +139,23 @@ function emojiTitleSearch(inputID, targetID) {
   document.getElementById("them_all").className="showall";
   document.getElementById("panel-wrapper").className='showall';
 
+
   var input, filter, ul, li, a, i;
   input = document.getElementById(inputID);
   // console.log(input.value)
   filter = input.value.toUpperCase();
+
+  // change selected option to show all
+  if (filter && filter !='') {
+    document.getElementById('nav_selector').getElementsByTagName('option')[0].selected = 'selected'
+  }
   ul = document.getElementById(targetID);
   li = ul.getElementsByTagName("li");
   for (i = 0; i < li.length; i++) {
     // a = li[i].getElementsByTagName("a")[0];
     a = li[i];
-    // console.log(a);
-    if (a.title.toUpperCase().indexOf(filter) > -1) {
+    // search by title, ctg, subctg TODO: add search by keywords
+    if (a.title.toUpperCase().indexOf(filter) > -1 || a.getAttribute("subctg").toUpperCase().indexOf(filter) > -1 || a.getAttribute("ctg").toUpperCase().indexOf(filter) > -1) {
       li[i].style.display = "";
     } else {
       li[i].style.display = "none";
