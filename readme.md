@@ -8,7 +8,10 @@ _Where I learn how to set-up a simple [PWA](https://en.wikipedia.org/wiki/Progre
 - ~~replace copy function, ditch input select?~~
 - ~~refresh history on copy element~~
 - ~~activity: show only last 20 most used~~ and the last used
+- make bookmarks interactive
 - size in history based on usage
+- dispay last copied charcter on load 
+- display random character on load
 - delete favorites: all / element
 - PWA – figure out service workers
 - analytics? log interaction → most popular (list)
