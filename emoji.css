@@ -158,7 +158,9 @@ color: #333;
 
 @media screen and (max-width: 800px) {
 
-  #them_all{}
+  #them_all{
+  margin-top:3em;
+  }
       /*#status span.emoji input*/
     #status span.emoji {
       float: left;
