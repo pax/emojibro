@@ -22,7 +22,7 @@ _Where I learn how to set-up a simple [PWA](https://en.wikipedia.org/wiki/Progre
 - add settings
     + default color
 - add common phrases
-- optimize for mobile - search and categories menus hidden 
+- ~~optimize for mobile - search and categories menus hidden~~ 
 - move to `emojibro.github.io`
 
 
