@@ -38,9 +38,9 @@ ul#them_all li{
 .collections select{
   /*font-size: 16px;*/
   border-radius: 0;
-  border: none;
-  background-color: White;
-    outline-color: transparent;
+  /*border: none;*/
+  /*background-color: White;*/
+  outline-color: transparent;
   outline-style: none;
 }
 
@@ -131,7 +131,7 @@ ul#them_all li{
 
   .panel {
     /*transition: all 0.5s ease-in-out;*/
-      background-color: LightYellow;
+    background-color: LightYellow;
     font-size: 72px;
     border-radius: 8px;
     padding:  .3ex;
@@ -163,19 +163,24 @@ ul#them_all li{
     font-size: 14px;
     padding: .5ex;
     position: absolute;
-    margin-top: 14em;
-    left: 2em;
+    margin-top: 6em;
+    left: 4em;
     display: inline-block;
     color: #AAA;
     /*margin-top: .5em;*/
     /*background-color: rgba(255,0,0,.5); color: yellow;*/
+  }
+  #activity {
+    border-top: 1px dashed #CCC;
+    margin-top: 1em;
+    padding-top: 1em;
   }
 }
 
 @media screen and (max-width: 800px) {
 
   #them_all{
-  padding: 2em 0 3em 0;
+  margin: 1.5em 0 4em 0;
   }
       /*#status span.emoji input*/
     #status span.emoji {
@@ -210,11 +215,11 @@ ul#them_all li{
     background-color: White;
     left: 0;
     width: 100%;
-    height: 180px;
+    height: 140px;
     box-shadow: 0 -1px 1ex rgba(0,0,0,.3); 
   }
   .search-wrapper  {
-    padding-right: 2em;
+    /*padding-right: 2em;*/
   }
 }
 
@@ -378,9 +383,7 @@ ul#them_all li{
 }
 #activity {
   font-size: 18px;
-  border-top: 1px dashed #CCC;
-  margin-top: 1em;
-  padding-top: 1em;
+  padding: 1ex 1ex 0 1ex;
 }
 #activity sub {
   font-size: 11px;
@@ -398,7 +401,8 @@ ul#them_all li{
   text-align: center;
   margin-left: .5ex;
 }
-.collections select#nav_selector, .collections .search-wrapper input#emoji-search{
+.collections select#nav_selector, 
+.collections .search-wrapper input#emoji-search{
   width: 90%;
   margin: .5ex auto;
   padding: 1ex;
