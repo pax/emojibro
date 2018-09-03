@@ -1,8 +1,3 @@
-/*
-
-    TODO save to LocalStorage
-
-*/
 
 if (localStorage.getItem("activity")) {
   // console.log('has storage');
@@ -29,8 +24,6 @@ if (localStorage.getItem("activity")) {
 else {
   console.log('localStorage.getItem("activity") = null' );
 }
-
-
 
 
 // https://ourcodeworld.com/articles/read/188/encode-and-decode-html-entities-using-pure-javascript
@@ -68,34 +61,28 @@ function showinfo(){
   var name = this.title ? '<span class="title">' + this.title + '</span>' : '';
   var unicode = this.getAttribute('unicode') ? '<span class="unicode"><input type="text" value="' + this.getAttribute('unicode') + '" /></span>' : '';
   var xhtml = this.getAttribute('xhtml') ?   '<span class="html"><input type="text" value="' + encode(encode(this.getAttribute('xhtml'))) + '" />'  : '';
-  var ctg = this.getAttribute('ctg') ? '<span class="ctg">' + this.getAttribute('ctg') + '</span>' : '';
-  document.getElementById("status").innerHTML='<span class="emoji"><input id="input_emoji" type="text" value="' +  this.innerHTML + '" onclick="copyToClipboard(\'input_emoji\')"/></span>' + name + unicode + xhtml + ctg + '</span>';
+  var ctg = this.getAttribute('ctg') ? '<a href="#" class="ctg" onclick="filter(\'' +   slugify('ctg_' + this.getAttribute('ctg')) + '\')">' + this.getAttribute('ctg') + '</span>' : '';
+  var subctg = this.getAttribute('subctg') ? ' &rarr;&nbsp;<a href="#" class="subctg" onclick="filter(\'' +   slugify('sub_' + this.getAttribute('subctg')) + '\')">' + this.getAttribute('subctg') + '</span>' : '';
+  document.getElementById("status").innerHTML='<span class="emoji"><input id="input_emoji" type="text" value="' +  this.innerHTML + '" onclick="copyToClipboard(\'input_emoji\')"/></span>' + name + unicode + xhtml + ctg + subctg + '</span>';
 }
 
 function copyToClipboard(targetID) {
-
-var target= document.getElementById(targetID);
+  var target= document.getElementById(targetID);
   /* Select the text field */
   target.select();
   /* Copy the text inside the text field */
   document.execCommand("copy");
-target.blur();
+  target.blur();
 
   // target.focus();
-document.getElementById("msg").innerHTML='copied';
-document.getElementById("msg").classList.toggle('show');
-document.getElementById("msg").classList.toggle('hide');
-
-
-// var storedActivity = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
-var storedActivity = localStorage.getItem("activity") ? JSON.parse(localStorage.getItem("activity")) : {};
-storedActivity[target.value] = storedActivity[target.value] ? storedActivity[target.value] + 1 : 1;
-// storedActivity['this']=storedActivity[target.value];
-// console.log(storedActivity);
-localStorage.setItem("activity", JSON.stringify(storedActivity));
-// localStorage.clear();
-// console.log(storedActivity);
-console.log(target.value + ' → localStorage');
+  document.getElementById("msg").innerHTML='copied';
+  document.getElementById("msg").classList.toggle('show');
+  document.getElementById("msg").classList.toggle('hide');
+  var storedActivity = localStorage.getItem("activity") ? JSON.parse(localStorage.getItem("activity")) : {};
+  storedActivity[target.value] = storedActivity[target.value] ? storedActivity[target.value] + 1 : 1;
+  localStorage.setItem("activity", JSON.stringify(storedActivity));
+  // localStorage.clear();
+  console.log(target.value + ' → localStorage');
 }
 
 
@@ -107,25 +94,39 @@ function filter(className){
   document.getElementById("them_all").className="";
   document.getElementById("them_all").className=className;
   document.getElementById("panel-wrapper").className=className;
-
 }
 
 // https://www.w3schools.com/howto/howto_js_filter_lists.asp
 function emojyTitleSearch(inputID, targetID) {
-    var input, filter, ul, li, a, i;
-    input = document.getElementById(inputID);
-    // console.log(input.value)
-    filter = input.value.toUpperCase();
-    ul = document.getElementById(targetID);
-    li = ul.getElementsByTagName("li");
-    for (i = 0; i < li.length; i++) {
-        // a = li[i].getElementsByTagName("a")[0];
-        a = li[i];
-        // console.log(a);
-        if (a.title.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
-        }
+  // show all emoji
+  document.getElementById("them_all").className="showall";
+  document.getElementById("panel-wrapper").className='showall';
+
+  var input, filter, ul, li, a, i;
+  input = document.getElementById(inputID);
+  // console.log(input.value)
+  filter = input.value.toUpperCase();
+  ul = document.getElementById(targetID);
+  li = ul.getElementsByTagName("li");
+  for (i = 0; i < li.length; i++) {
+    // a = li[i].getElementsByTagName("a")[0];
+    a = li[i];
+    // console.log(a);
+    if (a.title.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
     }
+  }
+}
+
+// https://gist.github.com/mathewbyrne/1280286
+function slugify(text)
+{
+  return text.toString().toLowerCase()
+    .replace(/\s+/g, '-')           // Replace spaces with -
+    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+    .replace(/^-+/, '')             // Trim - from start of text
+    .replace(/-+$/, '');            // Trim - from end of text
 }

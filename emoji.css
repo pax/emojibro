@@ -26,6 +26,7 @@ ul#them_all li{
   display: inline-block;
   text-align: center;
 }
+
 #status input {
   background-color: transparent; border: none;
   text-align: center;
@@ -37,14 +38,14 @@ ul#them_all li{
 }
 .collections {
   display: block;
-  /*text-align: left;*/
+  text-align: left;
   font-size: 13px;
   margin-bottom: 2em;
 }
 .collections a {
   text-decoration: none;
   display: inline-block;
-  margin: 2px 1px;
+  margin: 2px 5px;
   padding: 2px 1px;
   text-transform: uppercase;
   border: none;
@@ -52,6 +53,9 @@ ul#them_all li{
   background-color: transparent;
   border-bottom: 1px solid #999;
   color: #666;
+}
+.collections a.subctg {
+  display: none;
 }
 .collections a:active {
  /*background-color: Black;*/
@@ -76,19 +80,45 @@ color: #333;
   background-color: rgba(255,0,0,.5); color: yellow;
 }
 #status span.html input,
+#status span.unicode input {
+  width: 5em;
+  /*border:1px dotted #999; */
+}
+#status span.html input,
 #status span.unicode input,
-#status span.ctg  {
+#status a.ctg,
+#status a.subctg   {
   font-size: 14px;
   text-transform: uppercase;
-  font-family: monospace;
+  /*font-family: monospace;*/
   margin-top: 3px;
 
 }
-#status span.ctg  {
-  display: none;
+#status a.ctg,
+#status a.subctg {
+  font-size: 13px;
+  display: inline-block;
+  text-decoration: none;
 }
+#status a.ctg:before {
+  content: 'Collections: ';
+  color: #333;
+  text-transform: none;
+}
+/*#status a.ctg + a.subctg:before{
+  content: ' \2192 ';
+  text-decoration: none;
+}*/
 #status span.title {
   font-size: 24px;
+  /*text-align: left;*/
+}
+#status span.unicode:before{
+  content: 'Unicode: ';
+  font-size: 13px;
+}
+#status span.unicode input {
+  text-align: left;
 }
 .todo {
   font-size: 14px;
@@ -146,27 +176,125 @@ color: #333;
 #them_all.showall li{
     display: inline-block;
 }
-#them_all.ctg_p li.ctg_p,
-#them_all.ctg_s li.ctg_s,
-#them_all.ctg_n li.ctg_n,
-#them_all.ctg_o li.ctg_o,
-#them_all.ctg_a li.ctg_a,
-#them_all.ctg_d li.ctg_d,
-#them_all.ctg_t li.ctg_t,
-#them_all.ctg_f li.ctg_f,
-#them_all.ctg_none li.ctg_none {
+
+#them_all.ctg_activities li.ctg_activities,
+#them_all.ctg_animals-and-nature li.ctg_animals-and-nature,
+#them_all.ctg_component li.ctg_component,
+#them_all.ctg_flags li.ctg_flags,
+#them_all.ctg_food-and-drink li.ctg_food-and-drink,
+#them_all.ctg_objects li.ctg_objects,
+#them_all.ctg_people li.ctg_people,
+#them_all.ctg_smileys li.ctg_smileys,
+#them_all.ctg_symbols li.ctg_symbols,
+#them_all.ctg_travel-and-places li.ctg_travel-and-places,
+#them_all.sub_arts-and-crafts li.sub_arts-and-crafts,
+#them_all.sub_award-medal li.sub_award-medal,
+#them_all.sub_event li.sub_event,
+#them_all.sub_game li.sub_game,
+#them_all.sub_sport li.sub_sport,
+#them_all.sub_animal-amphibian li.sub_animal-amphibian,
+#them_all.sub_animal-bird li.sub_animal-bird,
+#them_all.sub_animal-bug li.sub_animal-bug,
+#them_all.sub_animal-mammal li.sub_animal-mammal,
+#them_all.sub_animal-marine li.sub_animal-marine,
+#them_all.sub_animal-reptile li.sub_animal-reptile,
+#them_all.sub_plant-flower li.sub_plant-flower,
+#them_all.sub_plant-other li.sub_plant-other,
+#them_all.sub_gender li.sub_gender,
+#them_all.sub_country-flag li.sub_country-flag,
+#them_all.sub_flag li.sub_flag,
+#them_all.sub_dishware li.sub_dishware,
+#them_all.sub_drink li.sub_drink,
+#them_all.sub_food-asian li.sub_food-asian,
+#them_all.sub_food-fruit li.sub_food-fruit,
+#them_all.sub_food-marine li.sub_food-marine,
+#them_all.sub_food-prepared li.sub_food-prepared,
+#them_all.sub_food-sweet li.sub_food-sweet,
+#them_all.sub_food-vegetable li.sub_food-vegetable,
+#them_all.sub_book-paper li.sub_book-paper,
+#them_all.sub_clothing li.sub_clothing,
+#them_all.sub_computer li.sub_computer,
+#them_all.sub_household li.sub_household,
+#them_all.sub_light-and-video li.sub_light-and-video,
+#them_all.sub_lock li.sub_lock,
+#them_all.sub_mail li.sub_mail,
+#them_all.sub_medical li.sub_medical,
+#them_all.sub_money li.sub_money,
+#them_all.sub_music li.sub_music,
+#them_all.sub_musical-instrument li.sub_musical-instrument,
+#them_all.sub_office li.sub_office,
+#them_all.sub_other-object li.sub_other-object,
+#them_all.sub_phone li.sub_phone,
+#them_all.sub_science li.sub_science,
+#them_all.sub_sound li.sub_sound,
+#them_all.sub_tool li.sub_tool,
+#them_all.sub_writing li.sub_writing,
+#them_all.sub_body-parts li.sub_body-parts,
+#them_all.sub_family li.sub_family,
+#them_all.sub_hand-fingers-closed li.sub_hand-fingers-closed,
+#them_all.sub_hand-fingers-open li.sub_hand-fingers-open,
+#them_all.sub_hand-fingers-partial li.sub_hand-fingers-partial,
+#them_all.sub_hand-prop li.sub_hand-prop,
+#them_all.sub_hand-single-finger li.sub_hand-single-finger,
+#them_all.sub_hands li.sub_hands,
+#them_all.sub_person li.sub_person,
+#them_all.sub_person-activity li.sub_person-activity,
+#them_all.sub_person-fantasy li.sub_person-fantasy,
+#them_all.sub_person-gesture li.sub_person-gesture,
+#them_all.sub_person-resting li.sub_person-resting,
+#them_all.sub_person-role li.sub_person-role,
+#them_all.sub_person-sport li.sub_person-sport,
+#them_all.sub_person-symbol li.sub_person-symbol,
+#them_all.sub_cat-face li.sub_cat-face,
+#them_all.sub_emotion li.sub_emotion,
+#them_all.sub_face-affection li.sub_face-affection,
+#them_all.sub_face-concerned li.sub_face-concerned,
+#them_all.sub_face-costume li.sub_face-costume,
+#them_all.sub_face-glasses li.sub_face-glasses,
+#them_all.sub_face-hand li.sub_face-hand,
+#them_all.sub_face-negative li.sub_face-negative,
+#them_all.sub_face-neutral-skeptical li.sub_face-neutral-skeptical,
+#them_all.sub_face-sleepy li.sub_face-sleepy,
+#them_all.sub_face-smiling li.sub_face-smiling,
+#them_all.sub_face-tongue li.sub_face-tongue,
+#them_all.sub_face-unwell li.sub_face-unwell,
+#them_all.sub_monkey-face li.sub_monkey-face,
+#them_all.sub_alphanum li.sub_alphanum,
+#them_all.sub_arrow li.sub_arrow,
+#them_all.sub_av-symbol li.sub_av-symbol,
+#them_all.sub_geometric li.sub_geometric,
+#them_all.sub_keycap li.sub_keycap,
+#them_all.sub_other-symbol li.sub_other-symbol,
+#them_all.sub_religion li.sub_religion,
+#them_all.sub_transport-sign li.sub_transport-sign,
+#them_all.sub_warning li.sub_warning,
+#them_all.sub_zodiac li.sub_zodiac,
+#them_all.sub_hotel li.sub_hotel,
+#them_all.sub_place-building li.sub_place-building,
+#them_all.sub_place-geographic li.sub_place-geographic,
+#them_all.sub_place-map li.sub_place-map,
+#them_all.sub_place-other li.sub_place-other,
+#them_all.sub_place-religious li.sub_place-religious,
+#them_all.sub_sky-and-weather li.sub_sky-and-weather,
+#them_all.sub_time li.sub_time,
+#them_all.sub_transport-air li.sub_transport-air,
+#them_all.sub_transport-ground li.sub_transport-ground,
+#them_all.sub_transport-water li.sub_transport-water{
   display: inline-block;
 }
 
+
 #panel-wrapper.showall .xshowall,
-#panel-wrapper.ctg_p .ctg_p,
-#panel-wrapper.ctg_s .ctg_s,
-#panel-wrapper.ctg_n .ctg_n,
-#panel-wrapper.ctg_o .ctg_o,
-#panel-wrapper.ctg_a .ctg_a,
-#panel-wrapper.ctg_d .ctg_d,
-#panel-wrapper.ctg_t .ctg_t,
-#panel-wrapper.ctg_f .ctg_f,
+#panel-wrapper.ctg_activities .ctg_activities,
+#panel-wrapper.ctg_animals-and-nature .ctg_animals-and-nature,
+#panel-wrapper.ctg_component .ctg_component,
+#panel-wrapper.ctg_flags .ctg_flags,
+#panel-wrapper.ctg_food-and-drink .ctg_food-and-drink,
+#panel-wrapper.ctg_objects .ctg_objects,
+#panel-wrapper.ctg_people .ctg_people,
+#panel-wrapper.ctg_smileys .ctg_smileys,
+#panel-wrapper.ctg_symbols .ctg_symbols,
+#panel-wrapper.ctg_travel-and-places .ctg_travel-and-places,
 #panel-wrapper.ctg_none .ctg_none {
   color: black;
   border-bottom: 2px solid black;
@@ -231,6 +359,7 @@ input#emoji-search{
   /*border-bottom: 1px dashed #999;*/
   /*padding: .25ex 0 .6ex 0;*/
   margin-top: 1em;
+  text-align: center;
 }
 .search-wrapper .clear {
   position: absolute;
