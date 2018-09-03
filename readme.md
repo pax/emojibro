@@ -2,6 +2,9 @@
 
 _Where I learn how to set-up a simple [PWA](https://en.wikipedia.org/wiki/Progressive_Web_Apps)_
 
+![screenshot: desktop](assets/screenshot-desktop.png)
+![screenshot: mobile](assets/screenshot-mobile.png)
+
  #### Roadmap &amp; bugs [aka TO DO]
 
 - ~~record history to localStorage~~
