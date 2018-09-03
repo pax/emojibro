@@ -11,6 +11,10 @@ if (localStorage.getItem("activity")) {
   sortable.sort(function(a, b) {
     return b[1] - a[1];
   });
+
+// show only top 20 most used
+  sortable=sortable.slice(0, 20);
+
   var display=''
   // console.log(sortable)
   for (var element in sortable) {
