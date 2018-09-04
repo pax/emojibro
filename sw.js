@@ -6,9 +6,23 @@ if (workbox) {
   console.log(`Boo! Workbox didn't load 😬`);
 }
 
+workbox.precaching.precacheAndRoute([
+    'assets/emoji.css',
+    'assets/emoji.js',
+    { url: '/index.html', revision: '383676' },
+]);
+
+
 workbox.routing.registerRoute(
   new RegExp('.*\.js'),
   workbox.strategies.networkFirst()
+);
+
+workbox.routing.registerRoute(
+  new RegExp('.*\.html'),
+  workbox.strategies.networkFirst({
+    cacheName: 'html-cache'
+  })
 );
 
 workbox.routing.registerRoute(
