@@ -230,11 +230,12 @@ ul#them_all li{
 #show_action{
   position: fixed;
   top: 1em; right: 1ex;
-  display: inline-block; width: 300px;
+  pointer-events: none;
+  display: inline-block; 
+  width: 300px;
 }
 #msg{
   font-size: 24px;
-  border:1px dotted #999; 
   display: inline-block;
   color: Yellow;
   background-color: red;
@@ -301,6 +302,8 @@ ul#them_all li{
   text-decoration: none;
   border: none;
   opacity: .5;
+  /*z-index: 99;*/
+
 }
 
 .search-wrapper:hover .clear {
