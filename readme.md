@@ -14,7 +14,7 @@ _Where I learn how to set-up a simple [PWA](https://notes.pinboard.in/u:pax/note
 - ~~when searching reser select to 'all'~~
 - make bookmarks interactive
 - size in history based on usage
-- dispay last copied charcter on load 
+- dispaly last copied charcter on load
 - display random character on load
 - delete favorites: all / element
 - PWA – figure out service workers
@@ -30,7 +30,7 @@ _Where I learn how to set-up a simple [PWA](https://notes.pinboard.in/u:pax/note
 - add settings
     + default color
 - add common phrases
-- ~~optimize for mobile - search and categories menus hidden~~ 
+- ~~optimize for mobile - search and categories menus hidden~~
 - move to `emojibro.github.io`
 - create permalinks
 
