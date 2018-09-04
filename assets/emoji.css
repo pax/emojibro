@@ -30,12 +30,16 @@ ul#them_all li{
   display: none;
   margin: 2px 3px 3px 2px;
   cursor: hand;
+  font-family: sans-serif;
 }
 
 #status input {
   background-color: transparent; border: none;
   text-align: center;
   cursor: copy;
+}
+#status #input_emoji {
+  font-family: sans-serif;
 }
 #status input:focus{
   outline-color: transparent;
@@ -489,8 +493,10 @@ input#emoji-search{
   box-shadow: 0 1px 0 black;
 }
 
-#github {
+a#github {
   position: fixed;
-  right: 1ex;
-  bottom: 1ex;
+  right: 2ex;
+  bottom: 2ex;
+  text-decoration: none; 
+  font-size: 13px;
 }
