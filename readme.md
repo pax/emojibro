@@ -46,3 +46,4 @@ _Where I learn how to set-up a simple [PWA](https://notes.pinboard.in/u:pax/note
 - [decodemoji](http://decodemoji.com/)
 - [Alternative products to Emoji Translate](https://www.producthunt.com/alternatives/emoji-translate)
 - [WhatMoji](http://whatmoji.com/)
+- https://emojityper.com/
