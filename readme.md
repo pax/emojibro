@@ -7,6 +7,7 @@ _Where I learn how to set-up a simple [PWA](https://notes.pinboard.in/u:pax/note
 
  #### Roadmap &amp; bugs [aka TO DO]
 
+→ [moved here](https://github.com/pax/emojibro/projects/2)
 - ~~record history to localStorage~~
 - ~~replace copy function, ditch input select?~~
 - ~~refresh history on copy element~~
@@ -14,8 +15,8 @@ _Where I learn how to set-up a simple [PWA](https://notes.pinboard.in/u:pax/note
 - ~~when searching reser select to 'all'~~
 - make bookmarks interactive
 - size in history based on usage
-- dispaly last copied charcter on load
-- display random character on load
+- display last copied charcter on load
+    + display random character on first load
 - delete favorites: all / element
 - PWA – figure out service workers
 - analytics? log interaction → most popular (list)
@@ -39,6 +40,7 @@ _Where I learn how to set-up a simple [PWA](https://notes.pinboard.in/u:pax/note
 ### Alternatives / See also
 - [Full Emoji List](https://unicode.org/emoji/charts/full-emoji-list.html) (v11.0)
 - [EmojiKeyboard](https://emojikeyboard.io/)
+- [Emoji Tyoer](https://emojityper.com/)
 - [EmojiCopy](https://www.emojicopy.com/)
 - [Emojipedia](https://emojipedia.org/)
 - [Emojisaurus](https://emojisaurus.com/)
@@ -46,4 +48,4 @@ _Where I learn how to set-up a simple [PWA](https://notes.pinboard.in/u:pax/note
 - [decodemoji](http://decodemoji.com/)
 - [Alternative products to Emoji Translate](https://www.producthunt.com/alternatives/emoji-translate)
 - [WhatMoji](http://whatmoji.com/)
-- https://emojityper.com/
+
