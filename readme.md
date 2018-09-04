@@ -33,6 +33,7 @@ _Where I learn how to set-up a simple [PWA](https://notes.pinboard.in/u:pax/note
 - ~~optimize for mobile - search and categories menus hidden~~
 - move to `emojibro.github.io`
 - create permalinks
+- add info page, explain emoji different looking on systems
 
 
 ### Alternatives / See also
