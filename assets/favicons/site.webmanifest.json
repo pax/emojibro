@@ -14,6 +14,7 @@
             "type": "image/png"
         }
     ],
+    "start_url": "/emojibro/index.html",
     "theme_color": "#fff0f5",
     "background_color": "#fff0f5",
     "display": "standalone"
