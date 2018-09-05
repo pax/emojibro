@@ -79,6 +79,7 @@ function showinfo(){
   var ctg = this.getAttribute('ctg') ? '<a href="#" class="ctg" onclick="filter(\'' +   slugify('ctg_' + this.getAttribute('ctg')) + '\')">' + this.getAttribute('ctg') + '</span>' : '';
   var subctg = this.getAttribute('subctg') ? ' &rarr;&nbsp;<a href="#" class="subctg" onclick="filter(\'' +   slugify('sub_' + this.getAttribute('subctg')) + '\')">' + this.getAttribute('subctg') + '</span>' : '';
   document.getElementById("status").innerHTML='<span class="emoji"><input id="input_emoji" type="text" value="' +  this.innerHTML + '" onclick="copyToClipboard(\'input_emoji\')"/></span>' + name + unicode + xhtml + ctg + subctg + '</span>';
+  copyToClipboard('input_emoji')
 }
 
 function copyToClipboard(targetID) {
