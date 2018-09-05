@@ -9,7 +9,7 @@ if (workbox) {
 workbox.precaching.precacheAndRoute([
     'assets/emoji.css',
     'assets/emoji.js',
-    { url: 'index.html', revision: '383673' },
+    { url: 'index.html', revision: '383672'},
 ]);
 
 

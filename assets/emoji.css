@@ -184,27 +184,28 @@ ul#them_all li{
   }
 }
 @media screen and (max-width: 800px) {
-
+  #helperinfo {
+    display: none;
+  }
   #them_all{
   margin: 2.5em 0 3.5em 0;
   }
-      /*#status span.emoji input*/
-    #status span.emoji {
-      float: left;
-    }
-    #status span.emoji input {
-      font-size: 80px;
-    }
-    #status span, #status span input {
-      text-align: left;
-    }
+  /*#status span.emoji input*/
+  #status span.emoji {
+    float: left;
+  }
+  #status span.emoji input {
+    font-size: 80px;
+  }
+  #status span, #status span input {
+    text-align: left;
+  }
   .panel{
     left: 0;
     bottom: 0;
     max-height: 43vh;
     overflow: hidden;
     width: 100%;
-    ;
   }
   .panel .collections{
     position: fixed; top: 0; left: 0; width: 100%;
@@ -474,7 +475,6 @@ input#emoji-search{
   display: inline-block;
 }
 
-
 #panel-wrapper.showall .xshowall,
 #panel-wrapper.ctg_activities .ctg_activities,
 #panel-wrapper.ctg_animals-and-nature .ctg_animals-and-nature,
@@ -499,4 +499,18 @@ a#github {
   bottom: 2ex;
   text-decoration: none; 
   font-size: 13px;
+}
+
+#helperinfo {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  font-size: 12px;
+  opacity: .95;
+  background-color: LightYellow;
+  display: inline-block;
+  padding: 1ex;
+}
+#helperinfo:hover{
+  opacity: 1;
 }
