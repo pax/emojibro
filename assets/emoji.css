@@ -503,14 +503,10 @@ a#github {
 
 #helperinfo {
   position: fixed;
-  top: 0; 
+  top: 0;
   left: 0;
   font-size: 12px;
   opacity: .95;
-  background-color: LightYellow;
   display: inline-block;
   padding: 1ex;
-}
-#helperinfo:hover{
-  opacity: 1;
 }
