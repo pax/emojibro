@@ -2,12 +2,12 @@
 
 _Where I learn how to set-up a simple [PWA](https://notes.pinboard.in/u:pax/notes/81ded6e4a4013ca0ab4c)_
 
+[Roadmap](https://github.com/pax/emojibro/projects/2)
+
 ![screenshot: desktop](assets/screenshot-desktop.png)
 ![screenshot: mobile](assets/screenshot-mobile.png)
 
 Uses [lgarron/clipboard-polyfill](https://github.com/lgarron/clipboard-polyfill)
-
-[Roadmap](https://github.com/pax/emojibro/projects/2)
 
 ### Alternatives / See also
 - [Full Emoji List](https://unicode.org/emoji/charts/full-emoji-list.html) (v11.0)
