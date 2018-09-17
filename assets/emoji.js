@@ -79,27 +79,27 @@ function showinfo(){
   var ctg = this.getAttribute('ctg') ? '<a href="#" class="ctg" onclick="filter(\'' +   slugify('ctg_' + this.getAttribute('ctg')) + '\')">' + this.getAttribute('ctg') + '</span>' : '';
   var subctg = this.getAttribute('subctg') ? ' &rarr;&nbsp;<a href="#" class="subctg" onclick="filter(\'' +   slugify('sub_' + this.getAttribute('subctg')) + '\')">' + this.getAttribute('subctg') + '</span>' : '';
   document.getElementById("status").innerHTML='<span class="emoji"><input id="input_emoji" type="text" value="' +  this.innerHTML + '" onclick="copyToClipboard(\'input_emoji\')"/></span>' + name + unicode + xhtml + ctg + subctg + '</span>';
-  copyToClipboard('input_emoji')
+  copyToClipboard(this.innerHTML)
 }
 
-function copyToClipboard(targetID) {
-  var target= document.getElementById(targetID);
-  /* Select the text field */
-  target.select();
-  /* Copy the text inside the text field */
-  document.execCommand("copy");
-  target.blur();
 
-  // target.focus();
-  document.getElementById("msg").innerHTML='copied';
-  document.getElementById("msg").classList.toggle('show');
-  document.getElementById("msg").classList.toggle('hide');
-  var storedActivity = localStorage.getItem("activity") ? JSON.parse(localStorage.getItem("activity")) : {};
-  storedActivity[target.value] = storedActivity[target.value] ? storedActivity[target.value] + 1 : 1;
-  localStorage.setItem("activity", JSON.stringify(storedActivity));
-  // localStorage.clear();
-  console.log(target.value + ' → localStorage');
-  showActivity(); // update
+function copyToClipboard(stringToCopy) {
+
+    var resultField = document.getElementById("plain-copy-result");
+
+    clipboard.writeText(stringToCopy).then(function(){
+      document.getElementById("msg").innerHTML='copied';
+      document.getElementById("msg").classList.toggle('show');
+      document.getElementById("msg").classList.toggle('hide');
+      var storedActivity = localStorage.getItem("activity") ? JSON.parse(localStorage.getItem("activity")) : {};
+      storedActivity[stringToCopy] = storedActivity[stringToCopy] ? storedActivity[stringToCopy] + 1 : 1;
+      localStorage.setItem("activity", JSON.stringify(storedActivity));
+      // localStorage.clear();
+      console.log(stringToCopy + ' → localStorage');
+      showActivity(); // update
+    }, function(err){
+      resultField.textContent = err;
+    });
 }
 
 
