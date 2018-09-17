@@ -7,7 +7,7 @@ _Where I learn how to set-up a simple [PWA](https://notes.pinboard.in/u:pax/note
 ![screenshot: desktop](assets/screenshot-desktop.png)
 ![screenshot: mobile](assets/screenshot-mobile.png)
 
-Uses [lgarron/clipboard-polyfill](https://github.com/lgarron/clipboard-polyfill)
+Uses [lgarron/clipboard-polyfill](https://github.com/lgarron/clipboard-polyfill), [matthewmueller/x-ray](https://github.com/matthewmueller/x-ray/) 
 
 ### Alternatives / See also
 - [Full Emoji List](https://unicode.org/emoji/charts/full-emoji-list.html) (v11.0)
