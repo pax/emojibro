@@ -32,10 +32,7 @@ v2.0
 
 ![mick-up](assets/emoji-clipboard-mock-up.svg)
 
-v1.0
-
-![screenshot: desktop](assets/screenshot-desktop.png)
-![screenshot: mobile](assets/screenshot-mobile.png)
+v1.0 screenshots: [desktop](assets/screenshot-desktop.png), [mobile](assets/screenshot-mobile.png)
 
 ### Alternatives / See also
 - [Full Emoji List](https://unicode.org/emoji/charts/full-emoji-list.html) (v11.0)
