@@ -28,11 +28,12 @@ Google Sheets cols
 
 [Roadmap](https://github.com/pax/emojibro/projects/2)
 
-v2.0
+v2 **Mock-ups**
 
-![mick-up](assets/emoji-clipboard-mock-up.svg)
+desktop: ![mock-up desktop](assets/emoji-clipboard-mockup-desktop.svg)
+mobile: ![mock-up mobile](assets/emoji-clipboard-mockup-mobile.svg)
 
-v1.0 screenshots: [desktop](assets/screenshot-desktop.png), [mobile](assets/screenshot-mobile.png)
+v1 screenshots: [desktop](assets/screenshot-desktop.png), [mobile](assets/screenshot-mobile.png)
 
 ### Alternatives / See also
 - [Full Emoji List](https://unicode.org/emoji/charts/full-emoji-list.html) (v11.0)
