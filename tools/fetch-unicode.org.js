@@ -8,7 +8,6 @@ var x = Xray()
 // let pathToOutput='tools/data/unicode.org.json';
 let pathToHtml='tools/data/unicode.org_emoji-list.html';
 
-
 x(html, 'table ', [{
   tds: x('tr',[{
 
@@ -30,9 +29,7 @@ x(html, 'table ', [{
 });
 
 
-
 let emojiObj=[]
-
 let ctg = subctg = null
 
 emojis.forEach(function(element) {
@@ -48,7 +45,6 @@ emojis.forEach(function(element) {
     emojiObj[element.code]['subctg']=subctg;
   }
 });
-
 
 
 /*
@@ -70,11 +66,14 @@ Object.entries(emojiObj).forEach(([key, val]) => {
 
 out = '<ul>' + out+ '</ul>';
 
+/*
+  write HTML to file
+ */
+
 var fs = require('fs');
 fs.writeFile(pathToHtml, out, function(err) {
-    if(err) {
-        return console.log(err);
-    }
-
-    console.log("saved to >>> " + pathToHtml);
+  if(err) {
+    return console.log(err);
+  }
+  console.log("saved to >>> " + pathToHtml);
 });
