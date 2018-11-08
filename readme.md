@@ -38,7 +38,7 @@ v1 screenshots: [desktop](assets/screenshot-desktop.png), [mobile](assets/screen
 ### Alternatives / See also
 - [Full Emoji List](https://unicode.org/emoji/charts/full-emoji-list.html) (v11.0)
 - [EmojiKeyboard](https://emojikeyboard.io/)
-- [Emoji Tyoer](https://emojityper.com/)
+- [Emoji Typer](https://emojityper.com/)
 - [EmojiCopy](https://www.emojicopy.com/)
 - [Emojipedia](https://emojipedia.org/)
 - [Emojisaurus](https://emojisaurus.com/)
@@ -46,4 +46,5 @@ v1 screenshots: [desktop](assets/screenshot-desktop.png), [mobile](assets/screen
 - [decodemoji](http://decodemoji.com/)
 - [Alternative products to Emoji Translate](https://www.producthunt.com/alternatives/emoji-translate)
 - [WhatMoji](http://whatmoji.com/)
+- [animated emoji gif generator](https://jsfiddle.net/moritzkobrna/oxwjdc2m/)
 
